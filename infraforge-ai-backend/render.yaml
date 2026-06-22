@@ -1,0 +1,25 @@
+# Render Blueprint — connect repo, set secrets in dashboard, then deploy.
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: infraforge-api
+    runtime: python
+    rootDir: infraforge-ai-backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+      - key: ENVIRONMENT
+        value: production
+      - key: MONGODB_URL
+        sync: false
+      - key: DATABASE_NAME
+        value: infraforge_marketplace
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false

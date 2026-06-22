@@ -1,0 +1,5238 @@
+{
+  "summary": {
+    "generated_at": "2026-06-17T09:00:07.294087+00:00",
+    "conversations": 10,
+    "total_turns": 120,
+    "passed": 0,
+    "failed": 10,
+    "pass_rate": 0.0,
+    "turn_pass_rate": 55.5,
+    "avg_memory_score": 34.3,
+    "avg_quality": 82.0,
+    "duration_s": 285.7,
+    "by_lang_mix": {
+      "english": {
+        "total": 9,
+        "pass": 0,
+        "avg_quality": 82.0
+      },
+      "hinglish": {
+        "total": 1,
+        "pass": 0,
+        "avg_quality": 81.5
+      }
+    },
+    "by_flow_type": {
+      "greet_search_refine": {
+        "total": 10,
+        "pass": 0,
+        "avg_quality": 82.0
+      }
+    },
+    "judge_enabled": false
+  },
+  "results": [
+    {
+      "id": "en_greet_jaipur_excavator_refine",
+      "title": "EN greet→excavator jaipur→delhi refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, jaipur excavator, budget refine, switch to delhi, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 4,
+      "turns_failed": 7,
+      "memory_checks": 7,
+      "memory_remembered": 1,
+      "memory_forgot": 6,
+      "pass": false,
+      "failures": [
+        "turn 4: city: got '' want 'jaipur'",
+        "turn 5: category: got '' want 'excavator'",
+        "turn 5: city: got '' want 'jaipur'",
+        "turn 5 memory: context lost — category: got '' expected 'excavator'",
+        "turn 5 memory: context lost — city: got '' expected 'jaipur'",
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'jaipur'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'jaipur'",
+        "turn 7: category: got '' want 'excavator'",
+        "turn 7: city: got '' want 'jaipur'",
+        "turn 7 memory: context lost — category: got '' expected 'excavator'",
+        "turn 7 memory: context lost — city: got '' expected 'jaipur'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'delhi'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'delhi'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'delhi'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'delhi'",
+        "turn 10: category: got '' want 'excavator'",
+        "turn 10: city: got '' want 'delhi'",
+        "turn 10 memory: context lost — category: got '' expected 'excavator'",
+        "turn 10 memory: context lost — city: got '' expected 'delhi'"
+      ],
+      "memory_score": 14.3,
+      "avg_quality": 77.4,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Hello! Ready when you are — search, compare, booking, or support.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 90,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Thanks for introducing yourself. What would you like to do first?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in jaipur",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "Good news — I found 4 Excavator. Check the details below, then use **Contact Owner** on the card to take the next step:\n\n1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5\n2. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5\n3. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5\n4. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5",
+          "mode": "search",
+          "category": "excavator",
+          "city": "",
+          "machines_count": 4,
+          "used_previous_context": true,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": false,
+          "failures": [
+            "city: got '' want 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 88,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "Good news — I found 5 machines under ₹50000. Check the details below, then use **Contact Owner** on the card to take the next step:\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available\n2. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available\n3. AMMANN APOLLO KP-1200 KLM Vibratory Screed (KERB PAVER), AMMANN APOLLO KP-1200 KLM, — Jaipur, ₹600/daily, available, used 2018, rating not available\n4. TEREX CHIEFTAIN 1700-3D Crawler Mounted (MOBILE CRUSHER SCREEN CROWLER TYPE), TEREX CHIEFTAIN 1700-3D, — Jaipur, ₹700/daily, available, used 2019, rating not available\n5. Crawler (Unknown), — Kota, ₹3,000/daily, available, used 2021, rating not available",
+          "mode": "search",
+          "category": "",
+          "city": "",
+          "machines_count": 5,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 77,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Lower-priced options for Crawler Drill in Jaipur under ₹37500:\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic — ₹400/daily, Jaipur",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 1,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 71,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Clarify kar dein kya chahiye? Machines, rent/buy ya support me help kar sakta hoon.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 67,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in delhi",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "image_clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 69,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "JCB appears in these categories: backhoe loader, road roller, telehandler.",
+          "mode": "brand_inventory",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "I can help with that. Please share your booking or order ID.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 88,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_delhi_excavator_refine",
+      "title": "EN greet→excavator delhi→mumbai refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, delhi excavator, budget refine, switch to mumbai, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 4,
+      "turns_failed": 7,
+      "memory_checks": 7,
+      "memory_remembered": 1,
+      "memory_forgot": 6,
+      "pass": false,
+      "failures": [
+        "turn 4: city: got '' want 'delhi'",
+        "turn 5: category: got '' want 'excavator'",
+        "turn 5: city: got '' want 'delhi'",
+        "turn 5 memory: context lost — category: got '' expected 'excavator'",
+        "turn 5 memory: context lost — city: got '' expected 'delhi'",
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'delhi'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'delhi'",
+        "turn 7: category: got '' want 'excavator'",
+        "turn 7: city: got '' want 'delhi'",
+        "turn 7 memory: context lost — category: got '' expected 'excavator'",
+        "turn 7 memory: context lost — city: got '' expected 'delhi'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'mumbai'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'mumbai'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'mumbai'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'mumbai'",
+        "turn 10: category: got '' want 'excavator'",
+        "turn 10: city: got '' want 'mumbai'",
+        "turn 10 memory: context lost — category: got '' expected 'excavator'",
+        "turn 10 memory: context lost — city: got '' expected 'mumbai'"
+      ],
+      "memory_score": 14.3,
+      "avg_quality": 77.6,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Nice to meet you. How can I help you with InfraForge today?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 89,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in delhi",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "Good news — I found 4 Excavator. Check the details below, then use **Contact Owner** on the card to take the next step:\n\n1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5\n2. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5\n3. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5\n4. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5",
+          "mode": "search",
+          "category": "excavator",
+          "city": "",
+          "machines_count": 4,
+          "used_previous_context": true,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": false,
+          "failures": [
+            "city: got '' want 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 88,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "Good news — I found 5 machines under ₹50000. Check the details below, then use **Contact Owner** on the card to take the next step:\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available\n2. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available\n3. AMMANN APOLLO KP-1200 KLM Vibratory Screed (KERB PAVER), AMMANN APOLLO KP-1200 KLM, — Jaipur, ₹600/daily, available, used 2018, rating not available\n4. TEREX CHIEFTAIN 1700-3D Crawler Mounted (MOBILE CRUSHER SCREEN CROWLER TYPE), TEREX CHIEFTAIN 1700-3D, — Jaipur, ₹700/daily, available, used 2019, rating not available\n5. Crawler (Unknown), — Kota, ₹3,000/daily, available, used 2021, rating not available",
+          "mode": "search",
+          "category": "",
+          "city": "",
+          "machines_count": 5,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 74,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Lower-priced options for Crawler Drill in Jaipur under ₹37500:\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic — ₹400/daily, Jaipur",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 1,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Clarify kar dein kya chahiye? Machines, rent/buy ya support me help kar sakta hoon.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 67,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in mumbai",
+          "reply": "Could you clarify what you would like to do next?",
+          "mode": "image_clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'mumbai'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'mumbai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 63,
+          "analysis": "Expected excavator in mumbai.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "Could you clarify what you need? I can help with machines, rent/buy, or support.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'mumbai'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'mumbai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in mumbai.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "Which machine category should I check for JCB — excavator, road roller, crane, or another type?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'mumbai'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'mumbai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 74,
+          "analysis": "Expected excavator in mumbai.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "I can help with that. Please share your booking or order ID.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 88,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_mumbai_excavator_refine",
+      "title": "EN greet→excavator mumbai→pune refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, mumbai excavator, budget refine, switch to pune, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 5,
+      "turns_failed": 6,
+      "memory_checks": 7,
+      "memory_remembered": 2,
+      "memory_forgot": 5,
+      "pass": false,
+      "failures": [
+        "turn 4: category: got '' want 'excavator'",
+        "turn 4: city: got '' want 'mumbai'",
+        "turn 5: category: got '' want 'excavator'",
+        "turn 5: city: got '' want 'mumbai'",
+        "turn 5 memory: context lost — category: got '' expected 'excavator'",
+        "turn 5 memory: context lost — city: got '' expected 'mumbai'",
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'mumbai'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'mumbai'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'pune'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'pune'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'pune'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'pune'",
+        "turn 10: city: got 'mumbai' want 'pune'",
+        "turn 10 memory: context lost — city: got 'mumbai' expected 'pune'"
+      ],
+      "memory_score": 28.6,
+      "avg_quality": 78.7,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Thanks for introducing yourself. What would you like to do first?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in mumbai",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "What type of work is the machine for — digging, lifting, compaction, transport, or loading?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'mumbai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in mumbai.",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "Tell me the work type so I can suggest the right equipment category.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'mumbai'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'mumbai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in mumbai.",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "What would you like to do next — refine search, compare, or contact owner?",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'mumbai'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'mumbai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in mumbai.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Mumbai me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Pune** me listing hai — Pune check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "mumbai",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "mumbai"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Mumbai with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in pune",
+          "reply": "What type of work is the machine for — digging, lifting, compaction, transport, or loading?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'pune'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'pune'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in pune.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'pune'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'pune'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 69,
+          "analysis": "Expected excavator in pune.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Mumbai right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "mumbai",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'mumbai' want 'pune'",
+            "context lost — city: got 'mumbai' expected 'pune'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 86,
+          "analysis": "Expected excavator in pune.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "I can help with that. Please share your booking or order ID.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "mumbai",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 88,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_pune_excavator_refine",
+      "title": "EN greet→excavator pune→bangalore refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, pune excavator, budget refine, switch to bangalore, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 7,
+      "turns_failed": 4,
+      "memory_checks": 7,
+      "memory_remembered": 3,
+      "memory_forgot": 4,
+      "pass": false,
+      "failures": [
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'pune'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'pune'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'bangalore'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'bangalore'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'bangalore'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'bangalore'",
+        "turn 10: city: got 'pune' want 'bangalore'",
+        "turn 10 memory: context lost — city: got 'pune' expected 'bangalore'"
+      ],
+      "memory_score": 42.9,
+      "avg_quality": 85.1,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Welcome to InfraForge. Tell me what machine or help you need today.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Nice to meet you. How can I help you with InfraForge today?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 89,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in pune",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "Good news — I found 1 Excavator in Pune. Check the details below, then use **Contact Owner** on the card to take the next step:\n\n1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5",
+          "mode": "search",
+          "category": "excavator",
+          "city": "pune",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "I couldn't find an exact Excavator in Pune. No Excavator found in Pune under ₹50000. Showing nearest options above your budget.\n\n1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5\n\nThese are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "pune",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Lower-priced options for Excavator in Pune under ₹37500:\n\n1. Komatsu PC210 — ₹24,000/day, Pune",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 1,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'pune'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'pune'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 74,
+          "analysis": "Expected excavator in pune.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Exact Excavator Pune me nahi mila. No Excavator found in Pune under ₹91125. Showing nearest options above your budget.\n\n1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5\n\nYe close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "pune",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "pune"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in bangalore",
+          "reply": "Could you clarify what you would like to do next?",
+          "mode": "image_clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'bangalore'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'bangalore'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 63,
+          "analysis": "Expected excavator in bangalore.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'bangalore'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'bangalore'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 69,
+          "analysis": "Expected excavator in bangalore.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Pune. No Excavator found in Pune under ₹91125. Showing nearest options above your budget.\n\n1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5\n\nThese are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "pune",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'pune' want 'bangalore'",
+            "context lost — city: got 'pune' expected 'bangalore'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 86,
+          "analysis": "Expected excavator in bangalore.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "Could you clarify what you would like to do next?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "To proceed, please share your booking ID or registered mobile number.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "pune",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_bangalore_excavator_refine",
+      "title": "EN greet→excavator bangalore→chennai refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, bangalore excavator, budget refine, switch to chennai, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 7,
+      "turns_failed": 4,
+      "memory_checks": 7,
+      "memory_remembered": 3,
+      "memory_forgot": 4,
+      "pass": false,
+      "failures": [
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'bangalore'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'bangalore'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'chennai'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'chennai'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'chennai'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'chennai'",
+        "turn 10: city: got 'bangalore' want 'chennai'",
+        "turn 10 memory: context lost — city: got 'bangalore' expected 'chennai'"
+      ],
+      "memory_score": 42.9,
+      "avg_quality": 83.8,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Good to connect. I can help with machine search, recommendations, and support.",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in bangalore",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "I couldn't find an exact Excavator in Bangalore right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "bangalore",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Bangalore with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "I couldn't find an exact Excavator in Bangalore right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "bangalore",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Bangalore with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "What would you like to do next — refine search, compare, or contact owner?",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'bangalore'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'bangalore'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in bangalore.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Bangalore me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Chennai** me listing hai — Chennai check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "bangalore",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "bangalore"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Bangalore with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in chennai",
+          "reply": "Tell me the work type so I can suggest the right equipment category.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'chennai'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'chennai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in chennai.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I am not fully sure yet. Can you tell me — machine search, booking help, or support?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'chennai'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'chennai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in chennai.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Bangalore right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "bangalore",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'bangalore' want 'chennai'",
+            "context lost — city: got 'bangalore' expected 'chennai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 86,
+          "analysis": "Expected excavator in chennai.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "To proceed, please share your booking ID or registered mobile number.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "bangalore",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_chennai_excavator_refine",
+      "title": "EN greet→excavator chennai→hyderabad refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, chennai excavator, budget refine, switch to hyderabad, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 7,
+      "turns_failed": 4,
+      "memory_checks": 7,
+      "memory_remembered": 3,
+      "memory_forgot": 4,
+      "pass": false,
+      "failures": [
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'chennai'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'chennai'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'hyderabad'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'hyderabad'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'hyderabad'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'hyderabad'",
+        "turn 10: city: got 'chennai' want 'hyderabad'",
+        "turn 10 memory: context lost — city: got 'chennai' expected 'hyderabad'"
+      ],
+      "memory_score": 42.9,
+      "avg_quality": 85.2,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Welcome to InfraForge. Tell me what machine or help you need today.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Nice to meet you. How can I help you with InfraForge today?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 89,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in chennai",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "Good news — I found 1 Excavator in Chennai. Check the details below, then use **Contact Owner** on the card to take the next step:\n\n1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5",
+          "mode": "search",
+          "category": "excavator",
+          "city": "chennai",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): Hyundai R210 · Expected: Show relevant excavator machines in Chennai with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "I couldn't find an exact Excavator in Chennai. No Excavator found in Chennai under ₹50000. Showing nearest options above your budget.\n\n1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5\n\nThese are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "chennai",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): Hyundai R210 · Expected: Show relevant excavator machines in Chennai with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Lower-priced options for Excavator in Chennai under ₹37500:\n\n1. Hyundai R210 — ₹12,000/day, Chennai",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 1,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'chennai'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'chennai'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 74,
+          "analysis": "Expected excavator in chennai.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Exact Excavator Chennai me nahi mila. No Excavator found in Chennai under ₹91125. Showing nearest options above your budget.\n\n1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5\n\nYe close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "chennai",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "chennai"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): Hyundai R210 · Expected: Show relevant excavator machines in Chennai with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in hyderabad",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "image_clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'hyderabad'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'hyderabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in hyderabad.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I am not fully sure yet. Can you tell me — machine search, booking help, or support?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'hyderabad'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'hyderabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in hyderabad.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Chennai. No Excavator found in Chennai under ₹91125. Showing nearest options above your budget.\n\n1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5\n\nThese are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "chennai",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'chennai' want 'hyderabad'",
+            "context lost — city: got 'chennai' expected 'hyderabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 86,
+          "analysis": "Expected excavator in hyderabad.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "I can help with that. Please share your booking or order ID.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "chennai",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 88,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_hyderabad_excavator_refine",
+      "title": "EN greet→excavator hyderabad→ahmedabad refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, hyderabad excavator, budget refine, switch to ahmedabad, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 7,
+      "turns_failed": 4,
+      "memory_checks": 7,
+      "memory_remembered": 3,
+      "memory_forgot": 4,
+      "pass": false,
+      "failures": [
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'hyderabad'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'hyderabad'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'ahmedabad'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'ahmedabad'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'ahmedabad'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'ahmedabad'",
+        "turn 10: city: got 'hyderabad' want 'ahmedabad'",
+        "turn 10 memory: context lost — city: got 'hyderabad' expected 'ahmedabad'"
+      ],
+      "memory_score": 42.9,
+      "avg_quality": 83.5,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Welcome to InfraForge. Tell me what machine or help you need today.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Good to connect. I can help with machine search, recommendations, and support.",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in hyderabad",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "I couldn't find an exact Excavator in Hyderabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "hyderabad",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Hyderabad with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "I couldn't find an exact Excavator in Hyderabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "hyderabad",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Hyderabad with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Happy to continue. Pick an option below or tell me what you need.",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'hyderabad'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'hyderabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in hyderabad.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Hyderabad me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Chennai** me listing hai — Chennai check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "hyderabad",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "hyderabad"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Hyderabad with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in ahmedabad",
+          "reply": "Tell me the work type so I can suggest the right equipment category.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'ahmedabad'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'ahmedabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in ahmedabad.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I am not fully sure yet. Can you tell me — machine search, booking help, or support?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'ahmedabad'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'ahmedabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in ahmedabad.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Hyderabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "hyderabad",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'hyderabad' want 'ahmedabad'",
+            "context lost — city: got 'hyderabad' expected 'ahmedabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 82,
+          "analysis": "Expected excavator in ahmedabad.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "To proceed, please share your booking ID or registered mobile number.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "hyderabad",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_ahmedabad_excavator_refine",
+      "title": "EN greet→excavator ahmedabad→kolkata refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, ahmedabad excavator, budget refine, switch to kolkata, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 7,
+      "turns_failed": 4,
+      "memory_checks": 7,
+      "memory_remembered": 3,
+      "memory_forgot": 4,
+      "pass": false,
+      "failures": [
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'ahmedabad'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'ahmedabad'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'kolkata'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'kolkata'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'kolkata'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'kolkata'",
+        "turn 10: city: got 'ahmedabad' want 'kolkata'",
+        "turn 10 memory: context lost — city: got 'ahmedabad' expected 'kolkata'"
+      ],
+      "memory_score": 42.9,
+      "avg_quality": 83.3,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Welcome to InfraForge. Tell me what machine or help you need today.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Thanks for introducing yourself. What would you like to do first?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in ahmedabad",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "I couldn't find an exact Excavator in Ahmedabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "ahmedabad",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Ahmedabad with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "I couldn't find an exact Excavator in Ahmedabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "ahmedabad",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Ahmedabad with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Happy to continue. Pick an option below or tell me what you need.",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'ahmedabad'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'ahmedabad'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in ahmedabad.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Ahmedabad me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Pune** me listing hai — Pune check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "ahmedabad",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "ahmedabad"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Ahmedabad with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in kolkata",
+          "reply": "Tell me the work type so I can suggest the right equipment category.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'kolkata'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'kolkata'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in kolkata.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "I am not fully sure yet. Can you tell me — machine search, booking help, or support?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'kolkata'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'kolkata'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in kolkata.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Ahmedabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "ahmedabad",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'ahmedabad' want 'kolkata'",
+            "context lost — city: got 'ahmedabad' expected 'kolkata'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 82,
+          "analysis": "Expected excavator in kolkata.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "Could you clarify what you would like to do next?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "To proceed, please share your booking ID or registered mobile number.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "ahmedabad",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "en_greet_kolkata_excavator_refine",
+      "title": "EN greet→excavator kolkata→jaipur refine",
+      "lang_mix": "english",
+      "flow_type": "greet_search_refine",
+      "description": "English: greeting, kolkata excavator, budget refine, switch to jaipur, support.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 7,
+      "turns_failed": 4,
+      "memory_checks": 7,
+      "memory_remembered": 3,
+      "memory_forgot": 4,
+      "pass": false,
+      "failures": [
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'kolkata'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'kolkata'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'jaipur'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'jaipur'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'jaipur'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'jaipur'",
+        "turn 10: city: got 'kolkata' want 'jaipur'",
+        "turn 10 memory: context lost — city: got 'kolkata' expected 'jaipur'"
+      ],
+      "memory_score": 42.9,
+      "avg_quality": 83.6,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "hi",
+          "reply": "Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "how are you",
+          "reply": "Good to connect. I can help with machine search, recommendations, and support.",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "i need a machine in kolkata",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator",
+          "reply": "I couldn't find an exact Excavator in Kolkata right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai, Delhi, Gurgaon and Pune. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "kolkata",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Kolkata with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "under 50000 per day",
+          "reply": "I couldn't find an exact Excavator in Kolkata right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai, Delhi, Gurgaon and Pune. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "kolkata",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Kolkata with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "show cheaper options",
+          "reply": "Happy to continue. Pick an option below or tell me what you need.",
+          "mode": "cheaper_options",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'kolkata'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'kolkata'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 64,
+          "analysis": "Expected excavator in kolkata.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "higher budget me kya option hai",
+          "reply": "Kolkata me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Chennai** me listing hai — Chennai, Delhi, Gurgaon and Pune check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "kolkata",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 50000,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "kolkata"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 96,
+          "analysis": "Expected: Show relevant excavator machines in Kolkata with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "same in jaipur",
+          "reply": "What type of work is the machine for — digging, lifting, compaction, transport, or loading?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "with operator included",
+          "reply": "Could you clarify what you need? I can help with machines, rent/buy, or support.",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand only",
+          "reply": "I couldn't find an exact Excavator in Kolkata right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai, Delhi, Gurgaon and Pune. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I'll find the best fit.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "kolkata",
+          "machines_count": 0,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'kolkata' want 'jaipur'",
+            "context lost — city: got 'kolkata' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 82,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "thanks that helps",
+          "reply": "I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?",
+          "mode": "support",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "how does payment work for booking",
+          "reply": "I can help with that. Please share your booking or order ID.",
+          "mode": "refund_return",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "kolkata",
+            "max_price": 91125,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 88,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    },
+    {
+      "id": "hi_greet_jaipur_excavator_refine",
+      "title": "Hinglish greet→excavator jaipur→delhi",
+      "lang_mix": "hinglish",
+      "flow_type": "greet_search_refine",
+      "description": "Hinglish contractor: namaste se search tak, jaipur se delhi.",
+      "turn_count": 12,
+      "turns_with_expect": 11,
+      "turns_passed": 6,
+      "turns_failed": 5,
+      "memory_checks": 7,
+      "memory_remembered": 2,
+      "memory_forgot": 5,
+      "pass": false,
+      "failures": [
+        "turn 5: category: got '' want 'excavator'",
+        "turn 5: city: got '' want 'jaipur'",
+        "turn 5 memory: context lost — category: got '' expected 'excavator'",
+        "turn 5 memory: context lost — city: got '' expected 'jaipur'",
+        "turn 6: category: got '' want 'excavator'",
+        "turn 6: city: got '' want 'jaipur'",
+        "turn 6 memory: context lost — category: got '' expected 'excavator'",
+        "turn 6 memory: context lost — city: got '' expected 'jaipur'",
+        "turn 8: category: got '' want 'excavator'",
+        "turn 8: city: got '' want 'delhi'",
+        "turn 8 memory: city switch lost category: got '' expected 'excavator'",
+        "turn 8 memory: city switch failed: got '' expected 'delhi'",
+        "turn 9: category: got '' want 'excavator'",
+        "turn 9: city: got '' want 'delhi'",
+        "turn 9 memory: context lost — category: got '' expected 'excavator'",
+        "turn 9 memory: context lost — city: got '' expected 'delhi'",
+        "turn 10: city: got 'jaipur' want 'delhi'",
+        "turn 10 memory: context lost — city: got 'jaipur' expected 'delhi'"
+      ],
+      "memory_score": 28.6,
+      "avg_quality": 81.5,
+      "turns": [
+        {
+          "turn": 1,
+          "query": "namaste",
+          "reply": "Welcome to InfraForge. Tell me what machine or help you need today.",
+          "mode": "greeting",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "greeting",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 92,
+          "analysis": "Expected: Logical, relevant reply matching user intent",
+          "judge": null
+        },
+        {
+          "turn": 2,
+          "query": "kaise ho aap",
+          "reply": "Thanks for introducing yourself. What would you like to do first?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "none",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 86,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        },
+        {
+          "turn": 3,
+          "query": "mujhe jaipur me machine chahiye",
+          "reply": "Mujhe poora clear nahi hai kaunsi machine chahiye. Kaam ka type aur city bata dein?",
+          "mode": "unknown",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "establish_city",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": null,
+          "failures": [],
+          "expect": {},
+          "verdict": "INFO",
+          "overall_quality": null,
+          "analysis": "",
+          "judge": null
+        },
+        {
+          "turn": 4,
+          "query": "excavator chahiye",
+          "reply": "Exact Excavator Jaipur me nahi mila. No Excavator in Jaipur. Showing similar machines available in Jaipur.\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available\n\nYe close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "jaipur",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "establish_category",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 5,
+          "query": "8000 se kam budget me",
+          "reply": "I can compare in chat — tell me two brands/models and machine type (e.g. 'JCB vs CAT road roller in Delhi').",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_budget",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 6,
+          "query": "aur saste options dikhao",
+          "reply": "Poora clear nahi hai. Machine search, booking help ya support — kya chahiye?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "refine_cheaper",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'jaipur'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'jaipur'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 66,
+          "analysis": "Expected excavator in jaipur.",
+          "judge": null
+        },
+        {
+          "turn": 7,
+          "query": "thoda budget badha do",
+          "reply": "I couldn't find an exact Excavator in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available\n\nThese are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "jaipur",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "refine_higher_budget",
+          "memory_required": true,
+          "memory_remembered": true,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "backend flagged used_previous_context=true",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "category": "excavator",
+            "city": "jaipur"
+          },
+          "verdict": "RELEVANT",
+          "overall_quality": 97,
+          "analysis": "Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details",
+          "judge": null
+        },
+        {
+          "turn": 8,
+          "query": "delhi me bhi same chahiye",
+          "reply": "Agla step clarify kar dein?",
+          "mode": "image_clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "city_switch",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "city switch lost category: got '' expected 'excavator'",
+            "city switch failed: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 63,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 9,
+          "query": "operator ke sath",
+          "reply": "I'm not fully sure which machine you need. Can you tell me the work type and city?",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "operator",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "used_previous_context=false but follow-up expected prior search; follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "category: got '' want 'excavator'",
+            "city: got '' want 'delhi'",
+            "context lost — category: got '' expected 'excavator'",
+            "context lost — city: got '' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 69,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 10,
+          "query": "jcb brand dikhao",
+          "reply": "Exact Excavator Jaipur me nahi mila. No Excavator in Jaipur. Showing similar machines available in Jaipur.\n\n1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available\n\nYe close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.",
+          "mode": "no_result",
+          "category": "excavator",
+          "city": "jaipur",
+          "machines_count": 1,
+          "used_previous_context": true,
+          "memory_role": "brand_filter",
+          "memory_required": true,
+          "memory_remembered": false,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": ""
+          },
+          "expected_context": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "actual_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": "jcb"
+          },
+          "memory_notes": "follow-up did not retain prior filters",
+          "structural_pass": false,
+          "failures": [
+            "city: got 'jaipur' want 'delhi'",
+            "context lost — city: got 'jaipur' expected 'delhi'"
+          ],
+          "expect": {
+            "category": "excavator",
+            "city": "delhi"
+          },
+          "verdict": "WRONG",
+          "overall_quality": 86,
+          "analysis": "Expected excavator in delhi.",
+          "judge": null
+        },
+        {
+          "turn": 11,
+          "query": "booking kaise hoti hai",
+          "reply": "I can compare in chat — tell me two brands/models and machine type (e.g. 'JCB vs CAT road roller in Delhi').",
+          "mode": "clarification",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "support",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "support turn — search context pause expected",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0,
+            "not_assistant_mode": "machine_search"
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 88,
+          "analysis": "Clarification reply should ask city/category clearly",
+          "judge": null
+        },
+        {
+          "turn": 12,
+          "query": "theek hai dhanyavaad",
+          "reply": "Nice to meet you. Aaj InfraForge me kaise madad kar sakta hoon?",
+          "mode": "conversational",
+          "category": "",
+          "city": "",
+          "machines_count": 0,
+          "used_previous_context": false,
+          "memory_role": "thanks",
+          "memory_required": false,
+          "memory_remembered": null,
+          "prior_context": {
+            "category": "excavator",
+            "city": "jaipur",
+            "max_price": null,
+            "brand": "jcb"
+          },
+          "expected_context": {},
+          "actual_context": {
+            "category": "",
+            "city": "",
+            "max_price": null,
+            "brand": ""
+          },
+          "memory_notes": "",
+          "structural_pass": true,
+          "failures": [],
+          "expect": {
+            "machines_max": 0
+          },
+          "verdict": "PARTIAL",
+          "overall_quality": 87,
+          "analysis": "Wording could better reflect parsed intent.",
+          "judge": null
+        }
+      ]
+    }
+  ]
+}

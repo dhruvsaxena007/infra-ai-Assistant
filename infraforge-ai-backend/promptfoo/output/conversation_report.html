@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Conversation Eval — InfraForge Assistant</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Segoe UI,system-ui,sans-serif;margin:0;background:#0a0a0f;color:#e8e8ec}
+.header{background:linear-gradient(135deg,#1a1030,#0f0f18);padding:24px 32px;border-bottom:1px solid #333}
+h1{margin:0;color:#c4b5fd;font-size:22px}
+.sub{color:#9ca3af;font-size:13px;margin-top:8px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.stat{background:#1a1a28;padding:12px 18px;border-radius:10px;border:1px solid #2d2d3d}
+.stat b{display:block;font-size:22px;color:#fff}
+.stat span{font-size:11px;color:#9ca3af}
+.note{margin:20px 32px;padding:14px 18px;background:#1a1528;border-left:4px solid #a78bfa;border-radius:0 8px 8px 0;font-size:13px}
+.section{padding:16px 32px}
+h2{color:#a78bfa;font-size:16px}
+.filter input, .filter select{padding:10px 14px;background:#1a1a22;border:1px solid #444;color:#fff;border-radius:8px;margin-right:8px;margin-bottom:8px}
+.conv-card{background:#12121a;border:1px solid #2a2a35;border-radius:12px;margin:20px 32px;overflow:hidden}
+.conv-header{padding:16px 20px;background:#1a1a24}
+.conv-header h3{margin:0 0 8px;color:#e2e8f0;font-size:16px}
+.conv-header .id{color:#94a3b8;font-weight:normal;font-size:13px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:#94a3b8;align-items:center}
+.badge{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;color:#000}
+.desc{font-size:13px;color:#a5b4fc;margin:10px 0 0}
+.fails{background:#2a1515;padding:10px;border-radius:8px;margin-top:10px;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#151520;padding:8px;text-align:left;border-bottom:2px solid #6366f1}
+td{padding:8px;border-bottom:1px solid #222;vertical-align:top}
+td.user{font-weight:600;color:#f0f0ff;min-width:140px;max-width:200px}
+td.bot{background:#0f0f16;color:#e2e8f0;white-space:pre-wrap;word-break:break-word;min-width:280px;max-width:420px;border-left:3px solid #6366f1}
+td.ctx{font-size:11px;color:#a5b4fc;max-width:220px}
+td.fail{color:#fbbf24;font-size:11px}
+.summary-table td, .summary-table th{padding:8px 12px}
+</style>
+<script>
+function filterConvs() {
+  const q = (document.getElementById('q').value || '').toLowerCase();
+  const lang = document.getElementById('lang').value;
+  const flow = document.getElementById('flow').value;
+  document.querySelectorAll('.conv-card').forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const okQ = !q || text.includes(q);
+    const okL = !lang || card.dataset.lang === lang;
+    const okF = !flow || card.dataset.flow === flow;
+    card.style.display = (okQ && okL && okF) ? '' : 'none';
+  });
+}
+</script>
+</head><body>
+<div class="header">
+  <h1>Sequential Conversation Eval Report</h1>
+  <div class="sub">10–15 turn real-life chats · English / Hinglish / Hindi · 2026-06-17T09:00:07</div>
+  <div class="stats">
+    <div class="stat"><b>10</b><span>conversations</span></div>
+    <div class="stat"><b>120</b><span>total messages</span></div>
+    <div class="stat"><b style="color:#34d399">0</b><span>conversations passed</span></div>
+    <div class="stat"><b style="color:#f87171">10</b><span>conversations failed</span></div>
+    <div class="stat"><b>55.5%</b><span>turn checks passed</span></div>
+    <div class="stat"><b>34.3%</b><span>avg memory score</span></div>
+    <div class="stat"><b>82.0%</b><span>avg quality (checked turns)</span></div>
+  </div>
+</div>
+
+<div class="note">
+  <b>Yeh report single prompts se alag hai.</b> Har card ek poori conversation hai (10–15 messages).
+  <b>USER</b> → <b>ASSISTANT REPLY</b> sequence dekho.   <b>Remembered?</b> = kya assistant ne pichla context (category/city) yaad rakha — har follow-up query ke liye.
+  <b>Context column</b> = need/prior/got — kya chahiye tha, pehle kya tha, response me kya aaya.
+</div>
+
+<div class="section">
+  <h2>Breakdown by language mix</h2>
+  <table class="summary-table"><tr><th>Lang mix</th><th>Pass</th><th>Avg quality</th></tr><tr><td>english</td><td>0/9</td><td>82.0%</td></tr><tr><td>hinglish</td><td>0/1</td><td>81.5%</td></tr></table>
+  <h2>Breakdown by flow type</h2>
+  <table class="summary-table"><tr><th>Flow</th><th>Pass</th><th>Avg quality</th></tr><tr><td>greet_search_refine</td><td>0/10</td><td>82.0%</td></tr></table>
+</div>
+
+<div class="section filter">
+  <input id="q" placeholder="Search conversation text…" oninput="filterConvs()">
+  <select id="lang" onchange="filterConvs()">
+    <option value="">All languages</option>
+    <option value="english">English</option>
+    <option value="hinglish">Hinglish</option>
+    <option value="hindi">Hindi</option>
+    <option value="mixed">Mixed</option>
+  </select>
+  <select id="flow" onchange="filterConvs()">
+    <option value="">All flows</option>
+    <option value="greet_search_refine">greet_search_refine</option>
+  </select>
+</div>
+
+
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator jaipur→delhi refine <span class="id">(en_greet_jaipur_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 14.3% (1/7 remembered)</span>
+              <span>quality 77.4%</span>
+              <span>4/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, jaipur excavator, budget refine, switch to delhi, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 4: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 5: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 5: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 5 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 5 memory: context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 7: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 7: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 7 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 7 memory: context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 10: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 10: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 10 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Hello! Ready when you are — search, compare, booking, or support.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Thanks for introducing yourself. What would you like to do first?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in jaipur</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">Good news — I found 4 Excavator. Check the details below, then use **Contact Owner** on the card to take the next step:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+2. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5
+3. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+4. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: —/— · got: excavator/—</td>
+              <td>search</td>
+              <td>excavator</td>
+              <td></td>
+              <td>4</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;&#x27; want &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">Good news — I found 5 machines under ₹50000. Check the details below, then use **Contact Owner** on the card to take the next step:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+2. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+3. AMMANN APOLLO KP-1200 KLM Vibratory Screed (KERB PAVER), AMMANN APOLLO KP-1200 KLM, — Jaipur, ₹600/daily, available, used 2018, rating not available
+4. TEREX CHIEFTAIN 1700-3D Crawler Mounted (MOBILE CRUSHER SCREEN CROWLER TYPE), TEREX CHIEFTAIN 1700-3D, — Jaipur, ₹700/daily, available, used 2019, rating not available
+5. Crawler (Unknown), — Kota, ₹3,000/daily, available, used 2021, rating not available</td>
+              <td>refine_budget</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/— · got: —/—</td>
+              <td>search</td>
+              <td></td>
+              <td></td>
+              <td>5</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Lower-priced options for Crawler Drill in Jaipur under ₹37500:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic — ₹400/daily, Jaipur</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/— · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>1</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Clarify kar dein kya chahiye? Machines, rent/buy ya support me help kar sakta hoon.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/— · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in delhi</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/— · got: —/—</td>
+              <td>image_clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/— · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">JCB appears in these categories: backhoe loader, road roller, telehandler.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/— · got: —/—</td>
+              <td>brand_inventory</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">I can help with that. Please share your booking or order ID.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator delhi→mumbai refine <span class="id">(en_greet_delhi_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 14.3% (1/7 remembered)</span>
+              <span>quality 77.6%</span>
+              <span>4/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, delhi excavator, budget refine, switch to mumbai, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 4: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 5: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 5: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 5 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 5 memory: context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 7: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 7: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 7 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 7 memory: context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;mumbai&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;mumbai&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;mumbai&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</li><li>turn 10: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 10: city: got &#x27;&#x27; want &#x27;mumbai&#x27;</li><li>turn 10 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Nice to meet you. How can I help you with InfraForge today?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in delhi</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">Good news — I found 4 Excavator. Check the details below, then use **Contact Owner** on the card to take the next step:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+2. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5
+3. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+4. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/delhi · prior: —/— · got: excavator/—</td>
+              <td>search</td>
+              <td>excavator</td>
+              <td></td>
+              <td>4</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;&#x27; want &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">Good news — I found 5 machines under ₹50000. Check the details below, then use **Contact Owner** on the card to take the next step:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+2. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+3. AMMANN APOLLO KP-1200 KLM Vibratory Screed (KERB PAVER), AMMANN APOLLO KP-1200 KLM, — Jaipur, ₹600/daily, available, used 2018, rating not available
+4. TEREX CHIEFTAIN 1700-3D Crawler Mounted (MOBILE CRUSHER SCREEN CROWLER TYPE), TEREX CHIEFTAIN 1700-3D, — Jaipur, ₹700/daily, available, used 2019, rating not available
+5. Crawler (Unknown), — Kota, ₹3,000/daily, available, used 2021, rating not available</td>
+              <td>refine_budget</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/— · got: —/—</td>
+              <td>search</td>
+              <td></td>
+              <td></td>
+              <td>5</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Lower-priced options for Crawler Drill in Jaipur under ₹37500:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic — ₹400/daily, Jaipur</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/— · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>1</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Clarify kar dein kya chahiye? Machines, rent/buy ya support me help kar sakta hoon.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/— · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in mumbai</td>
+              <td class="bot">Could you clarify what you would like to do next?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: excavator/— · got: —/—</td>
+              <td>image_clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;mumbai&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;mumbai&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">Could you clarify what you need? I can help with machines, rent/buy, or support.</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: excavator/— · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;mumbai&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">Which machine category should I check for JCB — excavator, road roller, crane, or another type?</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: excavator/— · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;mumbai&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">I can help with that. Please share your booking or order ID.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator mumbai→pune refine <span class="id">(en_greet_mumbai_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 28.6% (2/7 remembered)</span>
+              <span>quality 78.7%</span>
+              <span>5/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, mumbai excavator, budget refine, switch to pune, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 4: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 4: city: got &#x27;&#x27; want &#x27;mumbai&#x27;</li><li>turn 5: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 5: city: got &#x27;&#x27; want &#x27;mumbai&#x27;</li><li>turn 5 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 5 memory: context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</li><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;mumbai&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;pune&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;pune&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;pune&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;pune&#x27;</li><li>turn 10: city: got &#x27;mumbai&#x27; want &#x27;pune&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;mumbai&#x27; expected &#x27;pune&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Thanks for introducing yourself. What would you like to do first?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in mumbai</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">What type of work is the machine for — digging, lifting, compaction, transport, or loading?</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: —/— · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;mumbai&#x27;</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">Tell me the work type so I can suggest the right equipment category.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: excavator/mumbai · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;mumbai&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">What would you like to do next — refine search, compare, or contact owner?</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: excavator/mumbai · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;mumbai&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;mumbai&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Mumbai me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Pune** me listing hai — Pune check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/mumbai · prior: excavator/mumbai · got: excavator/mumbai</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>mumbai</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in pune</td>
+              <td class="bot">What type of work is the machine for — digging, lifting, compaction, transport, or loading?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/pune · prior: excavator/mumbai · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;pune&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;pune&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/pune · prior: excavator/mumbai · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;pune&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;pune&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Mumbai right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/pune · prior: excavator/mumbai · got: excavator/mumbai</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>mumbai</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;mumbai&#x27; want &#x27;pune&#x27;<br>context lost — city: got &#x27;mumbai&#x27; expected &#x27;pune&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">I can help with that. Please share your booking or order ID.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator pune→bangalore refine <span class="id">(en_greet_pune_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 42.9% (3/7 remembered)</span>
+              <span>quality 85.1%</span>
+              <span>7/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, pune excavator, budget refine, switch to bangalore, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;pune&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;pune&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;bangalore&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;bangalore&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;bangalore&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;bangalore&#x27;</li><li>turn 10: city: got &#x27;pune&#x27; want &#x27;bangalore&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;pune&#x27; expected &#x27;bangalore&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Welcome to InfraForge. Tell me what machine or help you need today.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Nice to meet you. How can I help you with InfraForge today?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in pune</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">Good news — I found 1 Excavator in Pune. Check the details below, then use **Contact Owner** on the card to take the next step:
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/pune · prior: —/— · got: excavator/pune</td>
+              <td>search</td>
+              <td>excavator</td>
+              <td>pune</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Pune. No Excavator found in Pune under ₹50000. Showing nearest options above your budget.
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+
+These are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/pune · prior: excavator/pune · got: excavator/pune</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>pune</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Lower-priced options for Excavator in Pune under ₹37500:
+
+1. Komatsu PC210 — ₹24,000/day, Pune</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/pune · prior: excavator/pune · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>1</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;pune&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;pune&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Exact Excavator Pune me nahi mila. No Excavator found in Pune under ₹91125. Showing nearest options above your budget.
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+
+Ye close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/pune · prior: excavator/pune · got: excavator/pune</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>pune</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in bangalore</td>
+              <td class="bot">Could you clarify what you would like to do next?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: excavator/pune · got: —/—</td>
+              <td>image_clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;bangalore&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;bangalore&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: excavator/pune · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;bangalore&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;bangalore&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Pune. No Excavator found in Pune under ₹91125. Showing nearest options above your budget.
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+
+These are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: excavator/pune · got: excavator/pune</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>pune</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;pune&#x27; want &#x27;bangalore&#x27;<br>context lost — city: got &#x27;pune&#x27; expected &#x27;bangalore&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">Could you clarify what you would like to do next?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">To proceed, please share your booking ID or registered mobile number.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator bangalore→chennai refine <span class="id">(en_greet_bangalore_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 42.9% (3/7 remembered)</span>
+              <span>quality 83.8%</span>
+              <span>7/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, bangalore excavator, budget refine, switch to chennai, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;bangalore&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;bangalore&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;chennai&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;chennai&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;chennai&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;chennai&#x27;</li><li>turn 10: city: got &#x27;bangalore&#x27; want &#x27;chennai&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;bangalore&#x27; expected &#x27;chennai&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Good to connect. I can help with machine search, recommendations, and support.</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in bangalore</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Bangalore right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: —/— · got: excavator/bangalore</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>bangalore</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Bangalore right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: excavator/bangalore · got: excavator/bangalore</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>bangalore</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">What would you like to do next — refine search, compare, or contact owner?</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: excavator/bangalore · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;bangalore&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;bangalore&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Bangalore me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Chennai** me listing hai — Chennai check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/bangalore · prior: excavator/bangalore · got: excavator/bangalore</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>bangalore</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in chennai</td>
+              <td class="bot">Tell me the work type so I can suggest the right equipment category.</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/chennai · prior: excavator/bangalore · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;chennai&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;chennai&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I am not fully sure yet. Can you tell me — machine search, booking help, or support?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/chennai · prior: excavator/bangalore · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;chennai&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;chennai&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Bangalore right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/chennai · prior: excavator/bangalore · got: excavator/bangalore</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>bangalore</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;bangalore&#x27; want &#x27;chennai&#x27;<br>context lost — city: got &#x27;bangalore&#x27; expected &#x27;chennai&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">To proceed, please share your booking ID or registered mobile number.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator chennai→hyderabad refine <span class="id">(en_greet_chennai_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 42.9% (3/7 remembered)</span>
+              <span>quality 85.2%</span>
+              <span>7/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, chennai excavator, budget refine, switch to hyderabad, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;chennai&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;chennai&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;hyderabad&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;hyderabad&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;hyderabad&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;hyderabad&#x27;</li><li>turn 10: city: got &#x27;chennai&#x27; want &#x27;hyderabad&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;chennai&#x27; expected &#x27;hyderabad&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Welcome to InfraForge. Tell me what machine or help you need today.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Nice to meet you. How can I help you with InfraForge today?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in chennai</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">Good news — I found 1 Excavator in Chennai. Check the details below, then use **Contact Owner** on the card to take the next step:
+
+1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/chennai · prior: —/— · got: excavator/chennai</td>
+              <td>search</td>
+              <td>excavator</td>
+              <td>chennai</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Chennai. No Excavator found in Chennai under ₹50000. Showing nearest options above your budget.
+
+1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+
+These are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/chennai · prior: excavator/chennai · got: excavator/chennai</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>chennai</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Lower-priced options for Excavator in Chennai under ₹37500:
+
+1. Hyundai R210 — ₹12,000/day, Chennai</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/chennai · prior: excavator/chennai · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>1</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;chennai&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;chennai&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Exact Excavator Chennai me nahi mila. No Excavator found in Chennai under ₹91125. Showing nearest options above your budget.
+
+1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+
+Ye close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/chennai · prior: excavator/chennai · got: excavator/chennai</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>chennai</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in hyderabad</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: excavator/chennai · got: —/—</td>
+              <td>image_clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;hyderabad&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;hyderabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I am not fully sure yet. Can you tell me — machine search, booking help, or support?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: excavator/chennai · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;hyderabad&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;hyderabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Chennai. No Excavator found in Chennai under ₹91125. Showing nearest options above your budget.
+
+1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+
+These are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: excavator/chennai · got: excavator/chennai</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>chennai</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;chennai&#x27; want &#x27;hyderabad&#x27;<br>context lost — city: got &#x27;chennai&#x27; expected &#x27;hyderabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">I can help with that. Please share your booking or order ID.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator hyderabad→ahmedabad refine <span class="id">(en_greet_hyderabad_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 42.9% (3/7 remembered)</span>
+              <span>quality 83.5%</span>
+              <span>7/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, hyderabad excavator, budget refine, switch to ahmedabad, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;hyderabad&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;hyderabad&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;ahmedabad&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;ahmedabad&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;ahmedabad&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;ahmedabad&#x27;</li><li>turn 10: city: got &#x27;hyderabad&#x27; want &#x27;ahmedabad&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;hyderabad&#x27; expected &#x27;ahmedabad&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Welcome to InfraForge. Tell me what machine or help you need today.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Good to connect. I can help with machine search, recommendations, and support.</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in hyderabad</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Hyderabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: —/— · got: excavator/hyderabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>hyderabad</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Hyderabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: excavator/hyderabad · got: excavator/hyderabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>hyderabad</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Happy to continue. Pick an option below or tell me what you need.</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: excavator/hyderabad · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;hyderabad&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;hyderabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Hyderabad me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Chennai** me listing hai — Chennai check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/hyderabad · prior: excavator/hyderabad · got: excavator/hyderabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>hyderabad</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in ahmedabad</td>
+              <td class="bot">Tell me the work type so I can suggest the right equipment category.</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: excavator/hyderabad · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;ahmedabad&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;ahmedabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I am not fully sure yet. Can you tell me — machine search, booking help, or support?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: excavator/hyderabad · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;ahmedabad&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;ahmedabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Hyderabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: excavator/hyderabad · got: excavator/hyderabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>hyderabad</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;hyderabad&#x27; want &#x27;ahmedabad&#x27;<br>context lost — city: got &#x27;hyderabad&#x27; expected &#x27;ahmedabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">To proceed, please share your booking ID or registered mobile number.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator ahmedabad→kolkata refine <span class="id">(en_greet_ahmedabad_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 42.9% (3/7 remembered)</span>
+              <span>quality 83.3%</span>
+              <span>7/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, ahmedabad excavator, budget refine, switch to kolkata, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;ahmedabad&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;ahmedabad&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;kolkata&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;kolkata&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;kolkata&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;kolkata&#x27;</li><li>turn 10: city: got &#x27;ahmedabad&#x27; want &#x27;kolkata&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;ahmedabad&#x27; expected &#x27;kolkata&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Welcome to InfraForge. Tell me what machine or help you need today.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Thanks for introducing yourself. What would you like to do first?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in ahmedabad</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Ahmedabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: —/— · got: excavator/ahmedabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>ahmedabad</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Ahmedabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: excavator/ahmedabad · got: excavator/ahmedabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>ahmedabad</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Happy to continue. Pick an option below or tell me what you need.</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: excavator/ahmedabad · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;ahmedabad&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;ahmedabad&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Ahmedabad me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Pune** me listing hai — Pune check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/ahmedabad · prior: excavator/ahmedabad · got: excavator/ahmedabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>ahmedabad</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in kolkata</td>
+              <td class="bot">Tell me the work type so I can suggest the right equipment category.</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: excavator/ahmedabad · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;kolkata&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;kolkata&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">I am not fully sure yet. Can you tell me — machine search, booking help, or support?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: excavator/ahmedabad · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;kolkata&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;kolkata&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Ahmedabad right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Pune. Would you like me to check Pune? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: excavator/ahmedabad · got: excavator/ahmedabad</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>ahmedabad</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;ahmedabad&#x27; want &#x27;kolkata&#x27;<br>context lost — city: got &#x27;ahmedabad&#x27; expected &#x27;kolkata&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">Could you clarify what you would like to do next?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">To proceed, please share your booking ID or registered mobile number.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="english" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>EN greet→excavator kolkata→jaipur refine <span class="id">(en_greet_kolkata_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>english</span>
+              <span>greet_search_refine</span>
+              <span>memory 42.9% (3/7 remembered)</span>
+              <span>quality 83.6%</span>
+              <span>7/11 checks passed</span>
+            </div>
+            <p class="desc">English: greeting, kolkata excavator, budget refine, switch to jaipur, support.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;kolkata&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;kolkata&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 10: city: got &#x27;kolkata&#x27; want &#x27;jaipur&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;kolkata&#x27; expected &#x27;jaipur&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">hi</td>
+              <td class="bot">Hello! I can help you search machines, compare options, rent or buy, and handle support on InfraForge.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">how are you</td>
+              <td class="bot">Good to connect. I can help with machine search, recommendations, and support.</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">i need a machine in kolkata</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Kolkata right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai, Delhi, Gurgaon and Pune. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: —/— · got: excavator/kolkata</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>kolkata</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">under 50000 per day</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Kolkata right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai, Delhi, Gurgaon and Pune. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>refine_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: excavator/kolkata · got: excavator/kolkata</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>kolkata</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">show cheaper options</td>
+              <td class="bot">Happy to continue. Pick an option below or tell me what you need.</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: excavator/kolkata · got: —/—</td>
+              <td>cheaper_options</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;kolkata&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;kolkata&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">higher budget me kya option hai</td>
+              <td class="bot">Kolkata me abhi Excavator nahi mila — par rukiye mat! Similar options: JCB / Backhoe Loader, Crawler Drill, Bulldozer. **Chennai** me listing hai — Chennai, Delhi, Gurgaon and Pune check karoon? Ya bataiye kaam kya hai (digging, lifting, transport) — sahi machine dhoondhunga.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/kolkata · prior: excavator/kolkata · got: excavator/kolkata</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>kolkata</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">same in jaipur</td>
+              <td class="bot">What type of work is the machine for — digging, lifting, compaction, transport, or loading?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/kolkata · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">with operator included</td>
+              <td class="bot">Could you clarify what you need? I can help with machines, rent/buy, or support.</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/kolkata · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand only</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Kolkata right now. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Nearby options with listings: Chennai, Delhi, Gurgaon and Pune. Would you like me to check Chennai? Or tell me what work you need (digging, lifting, transport) and I&#x27;ll find the best fit.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/kolkata · got: excavator/kolkata</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>kolkata</td>
+              <td>—</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;kolkata&#x27; want &#x27;jaipur&#x27;<br>context lost — city: got &#x27;kolkata&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">thanks that helps</td>
+              <td class="bot">I am not fully sure yet. Can you tell me what you need — machine search, booking help, or support?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>support</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">how does payment work for booking</td>
+              <td class="bot">I can help with that. Please share your booking or order ID.</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>refund_return</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="conv-card" data-lang="hinglish" data-flow="greet_search_refine">
+          <div class="conv-header" style="border-left:4px solid #f87171">
+            <h3>Hinglish greet→excavator jaipur→delhi <span class="id">(hi_greet_jaipur_excavator_refine)</span></h3>
+            <div class="meta">
+              <span class="badge" style="background:#f87171">FAIL</span>
+              <span>12 turns</span>
+              <span>hinglish</span>
+              <span>greet_search_refine</span>
+              <span>memory 28.6% (2/7 remembered)</span>
+              <span>quality 81.5%</span>
+              <span>6/11 checks passed</span>
+            </div>
+            <p class="desc">Hinglish contractor: namaste se search tak, jaipur se delhi.</p>
+            <div class='fails'><b>Failures:</b><ul><li>turn 5: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 5: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 5 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 5 memory: context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 6: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 6: city: got &#x27;&#x27; want &#x27;jaipur&#x27;</li><li>turn 6 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 6 memory: context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</li><li>turn 8: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 8: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 8 memory: city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 8 memory: city switch failed: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 9: category: got &#x27;&#x27; want &#x27;excavator&#x27;</li><li>turn 9: city: got &#x27;&#x27; want &#x27;delhi&#x27;</li><li>turn 9 memory: context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;</li><li>turn 9 memory: context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</li><li>turn 10: city: got &#x27;jaipur&#x27; want &#x27;delhi&#x27;</li><li>turn 10 memory: context lost — city: got &#x27;jaipur&#x27; expected &#x27;delhi&#x27;</li></ul></div>
+          </div>
+          <table>
+            <thead><tr>
+              <th>#</th><th>USER</th><th>ASSISTANT REPLY</th><th>Role</th>
+              <th>Remembered?</th><th>Context need/prior/got</th><th>Mode</th>
+              <th>Category</th><th>City</th><th>Machines</th><th>Used ctx</th>
+              <th>Check</th><th>Issues</th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td class="user">namaste</td>
+              <td class="bot">Welcome to InfraForge. Tell me what machine or help you need today.</td>
+              <td>greeting</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>greeting</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="user">kaise ho aap</td>
+              <td class="bot">Thanks for introducing yourself. What would you like to do first?</td>
+              <td>none</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="user">mujhe jaipur me machine chahiye</td>
+              <td class="bot">Mujhe poora clear nahi hai kaunsi machine chahiye. Kaam ka type aur city bata dein?</td>
+              <td>establish_city</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>unknown</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#94a3b8">—</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="user">excavator chahiye</td>
+              <td class="bot">Exact Excavator Jaipur me nahi mila. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.</td>
+              <td>establish_category</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: —/— · got: excavator/jaipur</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>jaipur</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="user">8000 se kam budget me</td>
+              <td class="bot">I can compare in chat — tell me two brands/models and machine type (e.g. &#x27;JCB vs CAT road roller in Delhi&#x27;).</td>
+              <td>refine_budget</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/jaipur · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="user">aur saste options dikhao</td>
+              <td class="bot">Poora clear nahi hai. Machine search, booking help ya support — kya chahiye?</td>
+              <td>refine_cheaper</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/jaipur · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;jaipur&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;jaipur&#x27;</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="user">thoda budget badha do</td>
+              <td class="bot">I couldn&#x27;t find an exact Excavator in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are close alternatives — compare price, condition and city before you tap Contact Owner on your preferred card.</td>
+              <td>refine_higher_budget</td>
+              <td><span style="color:#34d399;font-weight:700">YES</span></td>
+              <td class="ctx">need: excavator/jaipur · prior: excavator/jaipur · got: excavator/jaipur</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>jaipur</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="user">delhi me bhi same chahiye</td>
+              <td class="bot">Agla step clarify kar dein?</td>
+              <td>city_switch</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/jaipur · got: —/—</td>
+              <td>image_clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>city switch lost category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>city switch failed: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="user">operator ke sath</td>
+              <td class="bot">I&#x27;m not fully sure which machine you need. Can you tell me the work type and city?</td>
+              <td>operator</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/jaipur · got: —/—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">category: got &#x27;&#x27; want &#x27;excavator&#x27;<br>city: got &#x27;&#x27; want &#x27;delhi&#x27;<br>context lost — category: got &#x27;&#x27; expected &#x27;excavator&#x27;<br>context lost — city: got &#x27;&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td class="user">jcb brand dikhao</td>
+              <td class="bot">Exact Excavator Jaipur me nahi mila. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye close alternatives hain — Contact Owner se pehle price, condition aur city compare karein.</td>
+              <td>brand_filter</td>
+              <td><span style="color:#f87171;font-weight:700">NO</span></td>
+              <td class="ctx">need: excavator/delhi · prior: excavator/jaipur · got: excavator/jaipur</td>
+              <td>no_result</td>
+              <td>excavator</td>
+              <td>jaipur</td>
+              <td>1</td>
+              <td>yes</td>
+              <td><span style="color:#f87171">FAIL</span></td>
+              <td class="fail">city: got &#x27;jaipur&#x27; want &#x27;delhi&#x27;<br>context lost — city: got &#x27;jaipur&#x27; expected &#x27;delhi&#x27;</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td class="user">booking kaise hoti hai</td>
+              <td class="bot">I can compare in chat — tell me two brands/models and machine type (e.g. &#x27;JCB vs CAT road roller in Delhi&#x27;).</td>
+              <td>support</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>clarification</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td class="user">theek hai dhanyavaad</td>
+              <td class="bot">Nice to meet you. Aaj InfraForge me kaise madad kar sakta hoon?</td>
+              <td>thanks</td>
+              <td><span style="color:#64748b">n/a</span></td>
+              <td class="ctx">—</td>
+              <td>conversational</td>
+              <td></td>
+              <td></td>
+              <td>—</td>
+              <td>—</td>
+              <td><span style="color:#34d399">PASS</span></td>
+              <td class="fail">—</td>
+            </tr></tbody>
+          </table>
+        </div>
+</body></html>

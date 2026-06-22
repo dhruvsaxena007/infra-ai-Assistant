@@ -1,0 +1,3136 @@
+[
+  {
+    "id": "greet_hi",
+    "session_id": "pf_greet_hi",
+    "clear_session": true,
+    "message": "hi",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hello",
+    "session_id": "pf_greet_hello",
+    "clear_session": true,
+    "message": "hello",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hey",
+    "session_id": "pf_greet_hey",
+    "clear_session": true,
+    "message": "hey",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_good_morning",
+    "session_id": "pf_greet_good_morning",
+    "clear_session": true,
+    "message": "good morning",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_namaste",
+    "session_id": "pf_greet_namaste",
+    "clear_session": true,
+    "message": "namaste",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hello_there",
+    "session_id": "pf_greet_hello_there",
+    "clear_session": true,
+    "message": "hello there",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hii",
+    "session_id": "pf_greet_hii",
+    "clear_session": true,
+    "message": "hii",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_helo",
+    "session_id": "pf_greet_helo",
+    "clear_session": true,
+    "message": "helo",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hi_there",
+    "session_id": "pf_greet_hi_there",
+    "clear_session": true,
+    "message": "hi there",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_good_evening",
+    "session_id": "pf_greet_good_evening",
+    "clear_session": true,
+    "message": "good evening",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hey_there",
+    "session_id": "pf_greet_hey_there",
+    "clear_session": true,
+    "message": "hey there",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "greet_hola",
+    "session_id": "pf_greet_hola",
+    "clear_session": true,
+    "message": "hola",
+    "expect": {
+      "assistant_mode": "greeting",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "search_000",
+    "session_id": "pf_search_000",
+    "clear_session": true,
+    "message": "excavator in delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_001",
+    "session_id": "pf_search_001",
+    "clear_session": true,
+    "message": "excavator in jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_002",
+    "session_id": "pf_search_002",
+    "clear_session": true,
+    "message": "excavator in mumbai",
+    "expect": {
+      "category": "excavator",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_003",
+    "session_id": "pf_search_003",
+    "clear_session": true,
+    "message": "excavator in pune",
+    "expect": {
+      "category": "excavator",
+      "city": "pune"
+    }
+  },
+  {
+    "id": "search_004",
+    "session_id": "pf_search_004",
+    "clear_session": true,
+    "message": "excavator in bangalore",
+    "expect": {
+      "category": "excavator",
+      "city": "bangalore"
+    }
+  },
+  {
+    "id": "search_005",
+    "session_id": "pf_search_005",
+    "clear_session": true,
+    "message": "excavator in chennai",
+    "expect": {
+      "category": "excavator",
+      "city": "chennai"
+    }
+  },
+  {
+    "id": "search_006",
+    "session_id": "pf_search_006",
+    "clear_session": true,
+    "message": "excavator in hyderabad",
+    "expect": {
+      "category": "excavator",
+      "city": "hyderabad"
+    }
+  },
+  {
+    "id": "search_007",
+    "session_id": "pf_search_007",
+    "clear_session": true,
+    "message": "excavator in kolkata",
+    "expect": {
+      "category": "excavator",
+      "city": "kolkata"
+    }
+  },
+  {
+    "id": "search_008",
+    "session_id": "pf_search_008",
+    "clear_session": true,
+    "message": "excavator in ahmedabad",
+    "expect": {
+      "category": "excavator",
+      "city": "ahmedabad"
+    }
+  },
+  {
+    "id": "search_009",
+    "session_id": "pf_search_009",
+    "clear_session": true,
+    "message": "crane in jaipur",
+    "expect": {
+      "category": "crane",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_010",
+    "session_id": "pf_search_010",
+    "clear_session": true,
+    "message": "crane in delhi",
+    "expect": {
+      "category": "crane",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_011",
+    "session_id": "pf_search_011",
+    "clear_session": true,
+    "message": "crane in mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_012",
+    "session_id": "pf_search_012",
+    "clear_session": true,
+    "message": "hydra crane in delhi",
+    "expect": {
+      "category": "hydra crane",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_013",
+    "session_id": "pf_search_013",
+    "clear_session": true,
+    "message": "hydra crane in jaipur",
+    "expect": {
+      "category": "hydra crane",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_014",
+    "session_id": "pf_search_014",
+    "clear_session": true,
+    "message": "road roller in jaipur",
+    "expect": {
+      "category": "road roller",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_015",
+    "session_id": "pf_search_015",
+    "clear_session": true,
+    "message": "road roller in pune",
+    "expect": {
+      "category": "road roller",
+      "city": "pune"
+    }
+  },
+  {
+    "id": "search_016",
+    "session_id": "pf_search_016",
+    "clear_session": true,
+    "message": "road roller in delhi",
+    "expect": {
+      "category": "road roller",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_017",
+    "session_id": "pf_search_017",
+    "clear_session": true,
+    "message": "crawler drill in jaipur",
+    "expect": {
+      "category": "crawler drill",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_018",
+    "session_id": "pf_search_018",
+    "clear_session": true,
+    "message": "crawler drill in delhi",
+    "expect": {
+      "category": "crawler drill",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_019",
+    "session_id": "pf_search_019",
+    "clear_session": true,
+    "message": "dump truck in mumbai",
+    "expect": {
+      "category": "dump truck",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_020",
+    "session_id": "pf_search_020",
+    "clear_session": true,
+    "message": "dump truck in delhi",
+    "expect": {
+      "category": "dump truck",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_021",
+    "session_id": "pf_search_021",
+    "clear_session": true,
+    "message": "bulldozer in jaipur",
+    "expect": {
+      "category": "bulldozer",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_022",
+    "session_id": "pf_search_022",
+    "clear_session": true,
+    "message": "wheel loader in delhi",
+    "expect": {
+      "category": "wheel loader",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_023",
+    "session_id": "pf_search_023",
+    "clear_session": true,
+    "message": "concrete mixer in mumbai",
+    "expect": {
+      "category": "concrete mixer",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_024",
+    "session_id": "pf_search_024",
+    "clear_session": true,
+    "message": "grader in jaipur",
+    "expect": {
+      "category": "motor grader",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_025",
+    "session_id": "pf_search_025",
+    "clear_session": true,
+    "message": "jcb in jaipur",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_026",
+    "session_id": "pf_search_026",
+    "clear_session": true,
+    "message": "JCB in Jaipur under 8000",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_027",
+    "session_id": "pf_search_027",
+    "clear_session": true,
+    "message": "jcb in delhi",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_028",
+    "session_id": "pf_search_028",
+    "clear_session": true,
+    "message": "jcb 3dx in jaipur",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_029",
+    "session_id": "pf_search_029",
+    "clear_session": true,
+    "message": "backhoe loader in jaipur",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_030",
+    "session_id": "pf_search_030",
+    "clear_session": true,
+    "message": "CAT excavator Mumbai",
+    "expect": {
+      "category": "excavator",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_031",
+    "session_id": "pf_search_031",
+    "clear_session": true,
+    "message": "komatsu excavator delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_032",
+    "session_id": "pf_search_032",
+    "clear_session": true,
+    "message": "volvo excavator pune",
+    "expect": {
+      "category": "excavator",
+      "city": "pune"
+    }
+  },
+  {
+    "id": "search_033",
+    "session_id": "pf_search_033",
+    "clear_session": true,
+    "message": "terex crane mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_034",
+    "session_id": "pf_search_034",
+    "clear_session": true,
+    "message": "poclain in delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_035",
+    "session_id": "pf_search_035",
+    "clear_session": true,
+    "message": "poclain in jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_036",
+    "session_id": "pf_search_036",
+    "clear_session": true,
+    "message": "mobile crusher in delhi",
+    "expect": {
+      "category": "mobile crusher",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_037",
+    "session_id": "pf_search_037",
+    "clear_session": true,
+    "message": "feller buncher in delhi",
+    "expect": {
+      "category": "feller buncher",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_038",
+    "session_id": "pf_search_038",
+    "clear_session": true,
+    "message": "excavator in jaipur under 8000",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_039",
+    "session_id": "pf_search_039",
+    "clear_session": true,
+    "message": "crane in jaipur under 15000",
+    "expect": {
+      "category": "crane",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_040",
+    "session_id": "pf_search_040",
+    "clear_session": true,
+    "message": "rent excavator in delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_041",
+    "session_id": "pf_search_041",
+    "clear_session": true,
+    "message": "buy jcb in jaipur",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_042",
+    "session_id": "pf_search_042",
+    "clear_session": true,
+    "message": "used excavator in mumbai",
+    "expect": {
+      "category": "excavator",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_043",
+    "session_id": "pf_search_043",
+    "clear_session": true,
+    "message": "new crane in delhi",
+    "expect": {
+      "category": "crane",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_044",
+    "session_id": "pf_search_044",
+    "clear_session": true,
+    "message": "excavator for rent in pune",
+    "expect": {
+      "category": "excavator",
+      "city": "pune"
+    }
+  },
+  {
+    "id": "search_045",
+    "session_id": "pf_search_045",
+    "clear_session": true,
+    "message": "dumper in jaipur",
+    "expect": {
+      "category": "dump truck",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_046",
+    "session_id": "pf_search_046",
+    "clear_session": true,
+    "message": "tipper in delhi",
+    "expect": {
+      "category": "dump truck",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_047",
+    "session_id": "pf_search_047",
+    "clear_session": true,
+    "message": "roller in jaipur",
+    "expect": {
+      "category": "road roller",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_048",
+    "session_id": "pf_search_048",
+    "clear_session": true,
+    "message": "dozer in delhi",
+    "expect": {
+      "category": "bulldozer",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "search_049",
+    "session_id": "pf_search_049",
+    "clear_session": true,
+    "message": "loader in mumbai",
+    "expect": {
+      "category": "wheel loader",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "search_050",
+    "session_id": "pf_search_050",
+    "clear_session": true,
+    "message": "mixer in jaipur",
+    "expect": {
+      "category": "concrete mixer",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_051",
+    "session_id": "pf_search_051",
+    "clear_session": true,
+    "message": "drill in jaipur",
+    "expect": {
+      "category": "crawler drill",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_052",
+    "session_id": "pf_search_052",
+    "clear_session": true,
+    "message": "excavator jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_053",
+    "session_id": "pf_search_053",
+    "clear_session": true,
+    "message": "jaipur me excavator",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "search_054",
+    "session_id": "pf_search_054",
+    "clear_session": true,
+    "message": "delhi me crane chahiye",
+    "expect": {
+      "category": "crane",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "spell_000",
+    "session_id": "pf_spell_000",
+    "clear_session": true,
+    "message": "excvator in jaipir",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_001",
+    "session_id": "pf_spell_001",
+    "clear_session": true,
+    "message": "hydra crne in delih",
+    "expect": {
+      "category": "hydra crane",
+      "city": "delhi",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_002",
+    "session_id": "pf_spell_002",
+    "clear_session": true,
+    "message": "road rolar in pune",
+    "expect": {
+      "category": "road roller",
+      "city": "pune",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_003",
+    "session_id": "pf_spell_003",
+    "clear_session": true,
+    "message": "jcb chahiy",
+    "expect": {
+      "category": "backhoe loader",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_004",
+    "session_id": "pf_spell_004",
+    "clear_session": true,
+    "message": "dump truk mumbai",
+    "expect": {
+      "category": "dump truck",
+      "city": "mumbai",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_005",
+    "session_id": "pf_spell_005",
+    "clear_session": true,
+    "message": "crawlar dril jaipur",
+    "expect": {
+      "category": "crawler drill",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_006",
+    "session_id": "pf_spell_006",
+    "clear_session": true,
+    "message": "exavator delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_007",
+    "session_id": "pf_spell_007",
+    "clear_session": true,
+    "message": "excavater in jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_008",
+    "session_id": "pf_spell_008",
+    "clear_session": true,
+    "message": "crain in mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_009",
+    "session_id": "pf_spell_009",
+    "clear_session": true,
+    "message": "buldozer jaipur",
+    "expect": {
+      "category": "bulldozer",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_010",
+    "session_id": "pf_spell_010",
+    "clear_session": true,
+    "message": "roler in delhi",
+    "expect": {
+      "category": "road roller",
+      "city": "delhi",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_011",
+    "session_id": "pf_spell_011",
+    "clear_session": true,
+    "message": "jcb in jaiur",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_012",
+    "session_id": "pf_spell_012",
+    "clear_session": true,
+    "message": "poclain in jaiur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_013",
+    "session_id": "pf_spell_013",
+    "clear_session": true,
+    "message": "excavator in nodia",
+    "expect": {
+      "category": "excavator",
+      "city": "noida",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_014",
+    "session_id": "pf_spell_014",
+    "clear_session": true,
+    "message": "crane in banglore",
+    "expect": {
+      "category": "crane",
+      "city": "bangalore",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_015",
+    "session_id": "pf_spell_015",
+    "clear_session": true,
+    "message": "hydra crane in dilli",
+    "expect": {
+      "category": "hydra crane",
+      "city": "delhi",
+      "not_assistant_mode": "spell_confirmation"
+    }
+  },
+  {
+    "id": "spell_016",
+    "session_id": "pf_spell_016",
+    "clear_session": true,
+    "message": "mujhe Crawlre Dril chaiye",
+    "expect": {
+      "category": "crawler drill",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_017",
+    "session_id": "pf_spell_017",
+    "clear_session": true,
+    "message": "excavtor mumbai",
+    "expect": {
+      "category": "excavator",
+      "city": "mumbai",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_018",
+    "session_id": "pf_spell_018",
+    "clear_session": true,
+    "message": "dumper in mumabi",
+    "expect": {
+      "category": "dump truck",
+      "city": "mumbai",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_019",
+    "session_id": "pf_spell_019",
+    "clear_session": true,
+    "message": "grader in ahmdabad",
+    "expect": {
+      "category": "motor grader",
+      "city": "ahmedabad",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_020",
+    "session_id": "pf_spell_020",
+    "clear_session": true,
+    "message": "mixer in chenai",
+    "expect": {
+      "category": "concrete mixer",
+      "city": "chennai",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_021",
+    "session_id": "pf_spell_021",
+    "clear_session": true,
+    "message": "loader in hydrabad",
+    "expect": {
+      "category": "wheel loader",
+      "city": "hyderabad",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_022",
+    "session_id": "pf_spell_022",
+    "clear_session": true,
+    "message": "excavator in kolkatta",
+    "expect": {
+      "category": "excavator",
+      "city": "kolkata",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_023",
+    "session_id": "pf_spell_023",
+    "clear_session": true,
+    "message": "crane in puna",
+    "expect": {
+      "category": "crane",
+      "city": "pune",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_024",
+    "session_id": "pf_spell_024",
+    "clear_session": true,
+    "message": "jcb in ahemdabad",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "ahmedabad",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_025",
+    "session_id": "pf_spell_025",
+    "clear_session": true,
+    "message": "road roller in japur",
+    "expect": {
+      "category": "road roller",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_026",
+    "session_id": "pf_spell_026",
+    "clear_session": true,
+    "message": "drill in jaypur",
+    "expect": {
+      "category": "crawler drill",
+      "city": "jaipur",
+      "not_assistant_mode": "spell_confirmation",
+      "has_corrections": true
+    }
+  },
+  {
+    "id": "spell_027",
+    "session_id": "pf_spell_027",
+    "clear_session": true,
+    "message": "nodia",
+    "expect": {
+      "city": "noida",
+      "not_assistant_mode": "spell_confirmation"
+    }
+  },
+  {
+    "id": "hinglish_000",
+    "session_id": "pf_hinglish_000",
+    "clear_session": true,
+    "message": "mujhe jaipur ke andar excavator chahiye",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_001",
+    "session_id": "pf_hinglish_001",
+    "clear_session": true,
+    "message": "mujhe jaipur ke andar jcb chahiye",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_002",
+    "session_id": "pf_hinglish_002",
+    "clear_session": true,
+    "message": "mujhe delhi me crane chahiye",
+    "expect": {
+      "category": "crane",
+      "city": "delhi",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_003",
+    "session_id": "pf_hinglish_003",
+    "clear_session": true,
+    "message": "mujhe pune me road roller chahiye",
+    "expect": {
+      "category": "road roller",
+      "city": "pune",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_004",
+    "session_id": "pf_hinglish_004",
+    "clear_session": true,
+    "message": "mujhe mumbai me dump truck chahiye",
+    "expect": {
+      "category": "dump truck",
+      "city": "mumbai",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_005",
+    "session_id": "pf_hinglish_005",
+    "clear_session": true,
+    "message": "मुझे जयपुर में एक मशीन चाहिए",
+    "expect": {
+      "city": "jaipur",
+      "reply_language": "hindi"
+    }
+  },
+  {
+    "id": "hinglish_006",
+    "session_id": "pf_hinglish_006",
+    "clear_session": true,
+    "message": "मुझे दिल्ली में एक्सकेवेटर चाहिए",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi",
+      "reply_language": "hindi"
+    }
+  },
+  {
+    "id": "hinglish_007",
+    "session_id": "pf_hinglish_007",
+    "clear_session": true,
+    "message": "मुझे जयपुर में जेसीबी चाहिए",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur",
+      "reply_language": "hindi"
+    }
+  },
+  {
+    "id": "hinglish_008",
+    "session_id": "pf_hinglish_008",
+    "clear_session": true,
+    "message": "i want a machine in jaipur",
+    "expect": {
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_009",
+    "session_id": "pf_hinglish_009",
+    "clear_session": true,
+    "message": "mujhe sasta excavator chahiye jaipur me",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_010",
+    "session_id": "pf_hinglish_010",
+    "clear_session": true,
+    "message": "mujhe jaipur me excavator chahiye",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_011",
+    "session_id": "pf_hinglish_011",
+    "clear_session": true,
+    "message": "excavator chahiye delhi me",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_012",
+    "session_id": "pf_hinglish_012",
+    "clear_session": true,
+    "message": "jcb chaiye jaipur",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_013",
+    "session_id": "pf_hinglish_013",
+    "clear_session": true,
+    "message": "crane chaiye mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_014",
+    "session_id": "pf_hinglish_014",
+    "clear_session": true,
+    "message": "road roller chaiye",
+    "expect": {
+      "category": "road roller",
+      "assistant_mode": "clarification",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_015",
+    "session_id": "pf_hinglish_015",
+    "clear_session": true,
+    "message": "mujhe bulldozer chahiye delhi me",
+    "expect": {
+      "category": "bulldozer",
+      "city": "delhi",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_016",
+    "session_id": "pf_hinglish_016",
+    "clear_session": true,
+    "message": "kya jaipur me excavator available hai",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_017",
+    "session_id": "pf_hinglish_017",
+    "clear_session": true,
+    "message": "delhi me koi crane hai kya",
+    "expect": {
+      "category": "crane",
+      "city": "delhi",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_018",
+    "session_id": "pf_hinglish_018",
+    "clear_session": true,
+    "message": "मेरा बजट 10,000 है",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "hinglish_019",
+    "session_id": "pf_hinglish_019",
+    "clear_session": true,
+    "message": "mujhe 8000 ke andar excavator chahiye jaipur me",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_020",
+    "session_id": "pf_hinglish_020",
+    "clear_session": true,
+    "message": "rent pe excavator chahiye delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_021",
+    "session_id": "pf_hinglish_021",
+    "clear_session": true,
+    "message": "khareedna hai jcb jaipur me",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_022",
+    "session_id": "pf_hinglish_022",
+    "clear_session": true,
+    "message": "मुझे मुंबई में क्रेन चाहिए",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai",
+      "reply_language": "hindi"
+    }
+  },
+  {
+    "id": "hinglish_023",
+    "session_id": "pf_hinglish_023",
+    "clear_session": true,
+    "message": "mujhe hyderabad me loader chahiye",
+    "expect": {
+      "category": "wheel loader",
+      "city": "hyderabad",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "hinglish_024",
+    "session_id": "pf_hinglish_024",
+    "clear_session": true,
+    "message": "pune me mixer chahiye",
+    "expect": {
+      "category": "concrete mixer",
+      "city": "pune",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    }
+  },
+  {
+    "id": "clarify_jaipur",
+    "session_id": "pf_clarify_jaipur",
+    "clear_session": true,
+    "message": "jaipur",
+    "expect": {
+      "city": "jaipur",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_delhi",
+    "session_id": "pf_clarify_delhi",
+    "clear_session": true,
+    "message": "delhi",
+    "expect": {
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_mumbai",
+    "session_id": "pf_clarify_mumbai",
+    "clear_session": true,
+    "message": "mumbai",
+    "expect": {
+      "city": "mumbai",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_pune",
+    "session_id": "pf_clarify_pune",
+    "clear_session": true,
+    "message": "pune",
+    "expect": {
+      "city": "pune",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_excavator_no_city",
+    "session_id": "pf_clarify_excavator_no_city",
+    "clear_session": true,
+    "message": "excavator under 10000",
+    "expect": {
+      "category": "excavator",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_crane_no_city",
+    "session_id": "pf_clarify_crane_no_city",
+    "clear_session": true,
+    "message": "crane under 15000",
+    "expect": {
+      "category": "crane",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_jcb_no_city",
+    "session_id": "pf_clarify_jcb_no_city",
+    "clear_session": true,
+    "message": "jcb chahiye",
+    "expect": {
+      "category": "backhoe loader",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_roller_no_city",
+    "session_id": "pf_clarify_roller_no_city",
+    "clear_session": true,
+    "message": "road roller chaiye",
+    "expect": {
+      "category": "road roller",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_drill_no_city",
+    "session_id": "pf_clarify_drill_no_city",
+    "clear_session": true,
+    "message": "crawler drill",
+    "expect": {
+      "category": "crawler drill",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_hydra_no_city",
+    "session_id": "pf_clarify_hydra_no_city",
+    "clear_session": true,
+    "message": "hydra crane",
+    "expect": {
+      "category": "hydra crane",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_dump_no_city",
+    "session_id": "pf_clarify_dump_no_city",
+    "clear_session": true,
+    "message": "dump truck",
+    "expect": {
+      "category": "dump truck",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_bulldozer_no_city",
+    "session_id": "pf_clarify_bulldozer_no_city",
+    "clear_session": true,
+    "message": "bulldozer",
+    "expect": {
+      "category": "bulldozer",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_loader_no_city",
+    "session_id": "pf_clarify_loader_no_city",
+    "clear_session": true,
+    "message": "wheel loader",
+    "expect": {
+      "category": "wheel loader",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_mixer_no_city",
+    "session_id": "pf_clarify_mixer_no_city",
+    "clear_session": true,
+    "message": "concrete mixer",
+    "expect": {
+      "category": "concrete mixer",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "clarify_grader_no_city",
+    "session_id": "pf_clarify_grader_no_city",
+    "clear_session": true,
+    "message": "grader",
+    "expect": {
+      "category": "motor grader",
+      "assistant_mode": "clarification"
+    }
+  },
+  {
+    "id": "offtopic_000",
+    "session_id": "pf_offtopic_000",
+    "clear_session": true,
+    "message": "what is the weather today",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_001",
+    "session_id": "pf_offtopic_001",
+    "clear_session": true,
+    "message": "best action movie in 2026",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_002",
+    "session_id": "pf_offtopic_002",
+    "clear_session": true,
+    "message": "who won the cricket match",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_003",
+    "session_id": "pf_offtopic_003",
+    "clear_session": true,
+    "message": "tell me a joke",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_004",
+    "session_id": "pf_offtopic_004",
+    "clear_session": true,
+    "message": "what is python programming",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_005",
+    "session_id": "pf_offtopic_005",
+    "clear_session": true,
+    "message": "bitcoin price today",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_006",
+    "session_id": "pf_offtopic_006",
+    "clear_session": true,
+    "message": "recipe for biryani",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_007",
+    "session_id": "pf_offtopic_007",
+    "clear_session": true,
+    "message": "latest news headlines",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_008",
+    "session_id": "pf_offtopic_008",
+    "clear_session": true,
+    "message": "chutiya hai kya",
+    "expect": {
+      "machines_max": 0,
+      "not_assistant_mode": "machine_search"
+    },
+    "expected_behavior": "Abuse/frustration — support recovery, not machine search"
+  },
+  {
+    "id": "offtopic_009",
+    "session_id": "pf_offtopic_009",
+    "clear_session": true,
+    "message": "stock market tips",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_010",
+    "session_id": "pf_offtopic_010",
+    "clear_session": true,
+    "message": "how to lose weight",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "offtopic_011",
+    "session_id": "pf_offtopic_011",
+    "clear_session": true,
+    "message": "best netflix series",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    }
+  },
+  {
+    "id": "free_excavator",
+    "session_id": "pf_free_excavator",
+    "clear_session": true,
+    "message": "can i get excavator for free of cost",
+    "expect": {
+      "message_contains": "free machines are not available"
+    }
+  },
+  {
+    "id": "free_jcb",
+    "session_id": "pf_free_jcb",
+    "clear_session": true,
+    "message": "free jcb in jaipur",
+    "expect": {
+      "message_contains": "free"
+    }
+  },
+  {
+    "id": "budget_zero",
+    "session_id": "pf_budget_zero",
+    "clear_session": true,
+    "message": "excavator for 0 rupees",
+    "expect": {
+      "not_assistant_mode": "search"
+    }
+  },
+  {
+    "id": "list_all_delhi",
+    "session_id": "pf_list_all_delhi",
+    "clear_session": true,
+    "message": "what about excavator in delhi list all the machines",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "cheaper_options",
+    "session_id": "pf_cheaper_options",
+    "clear_session": true,
+    "message": "show cheaper options",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "under_5000",
+    "session_id": "pf_under_5000",
+    "clear_session": true,
+    "message": "excavator under 5000 jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "under_20000",
+    "session_id": "pf_under_20000",
+    "clear_session": true,
+    "message": "crane under 20000 mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "rent_only",
+    "session_id": "pf_rent_only",
+    "clear_session": true,
+    "message": "excavator on rent delhi",
+    "expect": {
+      "category": "excavator",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "buy_only",
+    "session_id": "pf_buy_only",
+    "clear_session": true,
+    "message": "buy excavator jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    }
+  },
+  {
+    "id": "used_only",
+    "session_id": "pf_used_only",
+    "clear_session": true,
+    "message": "used jcb delhi",
+    "expect": {
+      "category": "backhoe loader",
+      "city": "delhi"
+    }
+  },
+  {
+    "id": "new_only",
+    "session_id": "pf_new_only",
+    "clear_session": true,
+    "message": "new crane mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai"
+    }
+  },
+  {
+    "id": "pincode_search",
+    "session_id": "pf_pincode_search",
+    "clear_session": true,
+    "message": "machine in 302026",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "ctx_same_delhi",
+    "session_id": "pf_ctx_same_delhi",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "crawler drill in jaipur"
+      },
+      {
+        "message": "same in delhi",
+        "expect": {
+          "category": "crawler drill",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_excavator_delhi",
+    "session_id": "pf_ctx_excavator_delhi",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "same in delhi",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_what_about_mumbai",
+    "session_id": "pf_ctx_what_about_mumbai",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "what about mumbai",
+        "expect": {
+          "category": "excavator",
+          "city": "mumbai"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_jcb_override",
+    "session_id": "pf_ctx_jcb_override",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "want a JCB 3DX instead of excavator",
+        "expect": {
+          "category": "backhoe loader"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_roller_pune",
+    "session_id": "pf_ctx_roller_pune",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "road roller chaiye"
+      },
+      {
+        "message": "pune",
+        "expect": {
+          "category": "road roller",
+          "city": "pune"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_crane_excavator_switch",
+    "session_id": "pf_ctx_crane_excavator_switch",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "crane in jaipur"
+      },
+      {
+        "message": "excavator in delhi",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_roller_jcb_switch",
+    "session_id": "pf_ctx_roller_jcb_switch",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "road roller in jaipur"
+      },
+      {
+        "message": "JCB in Ahmedabad",
+        "expect": {
+          "category": "backhoe loader",
+          "city": "ahmedabad"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_budget_jaipur",
+    "session_id": "pf_ctx_budget_jaipur",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator under 10000"
+      },
+      {
+        "message": "in jaipur",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_city_then_category",
+    "session_id": "pf_ctx_city_then_category",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "jaipur"
+      },
+      {
+        "message": "mujhe Crawlre Dril chaiye",
+        "expect": {
+          "category": "crawler drill",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_delhi_category_switch",
+    "session_id": "pf_ctx_delhi_category_switch",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "delhi"
+      },
+      {
+        "message": "Mobile Crusher",
+        "expect": {
+          "category": "mobile crusher",
+          "city": "delhi"
+        }
+      },
+      {
+        "message": "Feller Buncher",
+        "expect": {
+          "category": "feller buncher",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_need_crane_after_delhi",
+    "session_id": "pf_ctx_need_crane_after_delhi",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "delhi"
+      },
+      {
+        "message": "need a crane",
+        "expect": {
+          "category": "crane",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_need_crane_after_search",
+    "session_id": "pf_ctx_need_crane_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "dump truck in delhi"
+      },
+      {
+        "message": "need a crane",
+        "expect": {
+          "category": "crane",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_city_only_after_search",
+    "session_id": "pf_ctx_city_only_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "crane in jaipur"
+      },
+      {
+        "message": "delhi",
+        "expect": {
+          "assistant_mode": "clarification"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_hindi_budget",
+    "session_id": "pf_ctx_hindi_budget",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "crawler drill in jaipur"
+      },
+      {
+        "message": "मेरा बजट 10,000 है",
+        "expect": {
+          "not_assistant_mode": "off_topic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_spell_no_trap",
+    "session_id": "pf_ctx_spell_no_trap",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excvator in jaipir"
+      },
+      {
+        "message": "no",
+        "expect": {
+          "not_assistant_mode": "spell_confirmation"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_project_pune",
+    "session_id": "pf_ctx_project_pune",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "road project ke liye best machine kaunsi hai?"
+      },
+      {
+        "message": "3",
+        "expect": {
+          "category": "excavator"
+        }
+      },
+      {
+        "message": "in pune",
+        "expect": {
+          "category": "excavator",
+          "city": "pune"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_cheaper",
+    "session_id": "pf_ctx_cheaper",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "show cheaper options",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_same_hindi",
+    "session_id": "pf_ctx_same_hindi",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "mujhe jaipur me excavator chahiye"
+      },
+      {
+        "message": "delhi me bhi",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_also_in",
+    "session_id": "pf_ctx_also_in",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "jcb in jaipur"
+      },
+      {
+        "message": "also in delhi",
+        "expect": {
+          "category": "backhoe loader",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_under_budget",
+    "session_id": "pf_ctx_under_budget",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "crane in mumbai"
+      },
+      {
+        "message": "under 12000",
+        "expect": {
+          "category": "crane",
+          "city": "mumbai"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_brand_switch",
+    "session_id": "pf_ctx_brand_switch",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "CAT excavator Mumbai"
+      },
+      {
+        "message": "komatsu excavator delhi",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_rent_followup",
+    "session_id": "pf_ctx_rent_followup",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in delhi"
+      },
+      {
+        "message": "on rent only",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_purpose_dump",
+    "session_id": "pf_ctx_purpose_dump",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "dump truck in jaipur",
+        "expect": {
+          "category": "dump truck",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_list_all",
+    "session_id": "pf_ctx_list_all",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in delhi"
+      },
+      {
+        "message": "list all machines",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_switch_city_hinglish",
+    "session_id": "pf_ctx_switch_city_hinglish",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "mujhe jaipur ke andar jcb chahiye"
+      },
+      {
+        "message": "mumbai me bhi",
+        "expect": {
+          "category": "backhoe loader",
+          "city": "mumbai"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_hydra_followup",
+    "session_id": "pf_ctx_hydra_followup",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "hydra crane in delhi"
+      },
+      {
+        "message": "cheaper options",
+        "expect": {
+          "category": "hydra crane",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_abusive_after_search",
+    "session_id": "pf_ctx_abusive_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator under 10000"
+      },
+      {
+        "message": "chutiya hai kya",
+        "expect": {
+          "machines_max": 0,
+          "not_assistant_mode": "machine_search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ctx_how_to_rent",
+    "session_id": "pf_ctx_how_to_rent",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "dump truck in delhi"
+      },
+      {
+        "message": "ya this machine is good how to rent it",
+        "expect": {
+          "assistant_mode": "booking_guidance",
+          "machines_max": 0,
+          "msg_contains": "Contact Owner"
+        }
+      }
+    ]
+  },
+  {
+    "id": "adversarial_000",
+    "session_id": "pf_adversarial_000",
+    "clear_session": true,
+    "message": "abcxyz",
+    "expect": {
+      "not_assistant_mode": "search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Nonsense — should NOT return random machines"
+  },
+  {
+    "id": "adversarial_001",
+    "session_id": "pf_adversarial_001",
+    "clear_session": true,
+    "message": "asdfghjkl",
+    "expect": {
+      "not_assistant_mode": "search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Keyboard mash — clarify or redirect"
+  },
+  {
+    "id": "adversarial_002",
+    "session_id": "pf_adversarial_002",
+    "clear_session": true,
+    "message": "???",
+    "expect": {
+      "machines_max": 0
+    },
+    "expected_behavior": "Punctuation only — ask what user needs"
+  },
+  {
+    "id": "adversarial_003",
+    "session_id": "pf_adversarial_003",
+    "clear_session": true,
+    "message": "12345",
+    "expect": {
+      "machines_max": 0
+    },
+    "expected_behavior": "Numbers only — ask machine + city"
+  },
+  {
+    "id": "adversarial_004",
+    "session_id": "pf_adversarial_004",
+    "clear_session": true,
+    "message": "machine",
+    "expect": {
+      "assistant_mode": "clarification",
+      "machines_max": 0
+    },
+    "expected_behavior": "Too vague — ask city and type"
+  },
+  {
+    "id": "adversarial_005",
+    "session_id": "pf_adversarial_005",
+    "clear_session": true,
+    "message": "what is 2+2",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Math off-topic — redirect to machines"
+  },
+  {
+    "id": "adversarial_006",
+    "session_id": "pf_adversarial_006",
+    "clear_session": true,
+    "message": "sell my house in jaipur",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Real estate — off-topic block"
+  },
+  {
+    "id": "adversarial_007",
+    "session_id": "pf_adversarial_007",
+    "clear_session": true,
+    "message": "order pizza mumbai",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Food delivery — off-topic block"
+  },
+  {
+    "id": "adversarial_008",
+    "session_id": "pf_adversarial_008",
+    "clear_session": true,
+    "message": "book flight to delhi",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Travel — off-topic block"
+  },
+  {
+    "id": "adversarial_009",
+    "session_id": "pf_adversarial_009",
+    "clear_session": true,
+    "message": "who is the prime minister",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Politics — off-topic block"
+  },
+  {
+    "id": "adversarial_010",
+    "session_id": "pf_adversarial_010",
+    "clear_session": true,
+    "message": "write python code for me",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Coding help — off-topic block"
+  },
+  {
+    "id": "adversarial_011",
+    "session_id": "pf_adversarial_011",
+    "clear_session": true,
+    "message": "random gibberish query test",
+    "expect": {
+      "not_assistant_mode": "search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Gibberish — no machine search"
+  },
+  {
+    "id": "adversarial_012",
+    "session_id": "pf_adversarial_012",
+    "clear_session": true,
+    "message": "xyz machine in abc city",
+    "expect": {
+      "machines_max": 0
+    },
+    "expected_behavior": "Invalid entities — clarify or honest no-result"
+  },
+  {
+    "id": "adversarial_013",
+    "session_id": "pf_adversarial_013",
+    "clear_session": true,
+    "message": "jaipur mai excavator chaiye",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur",
+      "reply_language_in": [
+        "english",
+        "hinglish"
+      ]
+    },
+    "expected_behavior": "Valid Hinglish — excavator results in Jaipur"
+  },
+  {
+    "id": "adversarial_014",
+    "session_id": "pf_adversarial_014",
+    "clear_session": true,
+    "message": "mujhe kuch bhi machine dedo",
+    "expect": {
+      "assistant_mode": "clarification",
+      "machines_max": 0
+    },
+    "expected_behavior": "Vague Hindi — ask city/category"
+  },
+  {
+    "id": "adversarial_015",
+    "session_id": "pf_adversarial_015",
+    "clear_session": true,
+    "message": "cheapest thing available",
+    "expect": {
+      "assistant_mode": "clarification",
+      "machines_max": 0
+    },
+    "expected_behavior": "Vague budget — ask category + city"
+  },
+  {
+    "id": "adversarial_016",
+    "session_id": "pf_adversarial_016",
+    "clear_session": true,
+    "message": "show me everything",
+    "expect": {
+      "assistant_mode": "clarification",
+      "machines_max": 0
+    },
+    "expected_behavior": "Too broad — ask city or category"
+  },
+  {
+    "id": "adversarial_017",
+    "session_id": "pf_adversarial_017",
+    "clear_session": true,
+    "message": "tell me about quantum physics",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Science off-topic — redirect"
+  },
+  {
+    "id": "adversarial_018",
+    "session_id": "pf_adversarial_018",
+    "clear_session": true,
+    "message": "dhoni ka score kya hai",
+    "expect": {
+      "assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Cricket off-topic — redirect"
+  },
+  {
+    "id": "project_road",
+    "session_id": "pf_project_road",
+    "clear_session": true,
+    "message": "road project ke liye best machine kaunsi hai?",
+    "expect": {
+      "assistant_mode": "recommendation_clarification"
+    }
+  },
+  {
+    "id": "project_earthwork",
+    "session_id": "pf_project_earthwork",
+    "clear_session": true,
+    "message": "earthwork ke liye best machine?",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "project_mining",
+    "session_id": "pf_project_mining",
+    "clear_session": true,
+    "message": "mining project ke liye machine?",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "project_construction",
+    "session_id": "pf_project_construction",
+    "clear_session": true,
+    "message": "building construction ke liye best machine?",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "project_demolition",
+    "session_id": "pf_project_demolition",
+    "clear_session": true,
+    "message": "demolition ke liye machine chahiye",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    }
+  },
+  {
+    "id": "support_payment_hindi",
+    "session_id": "pf_support_payment_hindi",
+    "clear_session": true,
+    "message": "payment cut gaya booking nahi hui",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Payment deducted but booking failed"
+  },
+  {
+    "id": "support_payment_en",
+    "session_id": "pf_support_payment_en",
+    "clear_session": true,
+    "message": "payment failed amount deducted from my account",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Payment failure support"
+  },
+  {
+    "id": "support_refund",
+    "session_id": "pf_support_refund",
+    "clear_session": true,
+    "message": "I want refund for my booking",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Refund request"
+  },
+  {
+    "id": "support_return",
+    "session_id": "pf_support_return",
+    "clear_session": true,
+    "message": "machine return karna hai booking cancel",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Return/cancel request"
+  },
+  {
+    "id": "support_order_issue",
+    "session_id": "pf_support_order_issue",
+    "clear_session": true,
+    "message": "I ordered a machine and there is a problem",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Post-order equipment issue"
+  },
+  {
+    "id": "support_technical",
+    "session_id": "pf_support_technical",
+    "clear_session": true,
+    "message": "i rented equipment and there is a technical problem with it",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Post-rent technical fault"
+  },
+  {
+    "id": "support_booking_help",
+    "session_id": "pf_support_booking_help",
+    "clear_session": true,
+    "message": "booking me issue hai kya karun",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Booking problem help"
+  },
+  {
+    "id": "support_deposit",
+    "session_id": "pf_support_deposit",
+    "clear_session": true,
+    "message": "security deposit wapas nahi aaya",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Deposit not returned"
+  },
+  {
+    "id": "support_invoice",
+    "session_id": "pf_support_invoice",
+    "clear_session": true,
+    "message": "invoice galat hai amount mismatch",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Invoice mismatch"
+  },
+  {
+    "id": "support_delivery",
+    "session_id": "pf_support_delivery",
+    "clear_session": true,
+    "message": "machine delivery late ho gayi",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Delivery delay"
+  },
+  {
+    "id": "support_contact",
+    "session_id": "pf_support_contact",
+    "clear_session": true,
+    "message": "I need help from support",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Human support request"
+  },
+  {
+    "id": "frustration_useless",
+    "session_id": "pf_frustration_useless",
+    "clear_session": true,
+    "message": "you are useless idiot bot",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Frustration insult — recovery not search"
+  },
+  {
+    "id": "frustration_hopeless",
+    "session_id": "pf_frustration_hopeless",
+    "clear_session": true,
+    "message": "you are a hopeless assistant",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Frustration — no machine search"
+  },
+  {
+    "id": "frustration_bekar",
+    "session_id": "pf_frustration_bekar",
+    "clear_session": true,
+    "message": "tum bilkul bekar ho",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Hinglish frustration"
+  },
+  {
+    "id": "compare_jcb_cat_roller",
+    "session_id": "pf_compare_jcb_cat_roller",
+    "clear_session": true,
+    "message": "JCB ke road roller acche hote hai ya CAT ke",
+    "expect": {
+      "not_assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Brand comparison road roller"
+  },
+  {
+    "id": "compare_volvo_komatsu",
+    "session_id": "pf_compare_volvo_komatsu",
+    "clear_session": true,
+    "message": "volvo excavator vs komatsu excavator",
+    "expect": {
+      "not_assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Excavator brand comparison"
+  },
+  {
+    "id": "compare_generic",
+    "session_id": "pf_compare_generic",
+    "clear_session": true,
+    "message": "compare two excavator brands for road work",
+    "expect": {
+      "not_assistant_mode": "off_topic",
+      "machines_max": 0
+    },
+    "expected_behavior": "Generic comparison"
+  },
+  {
+    "id": "brand_roadroller_list",
+    "session_id": "pf_brand_roadroller_list",
+    "clear_session": true,
+    "message": "konse konse brands ke road roller hai tumhare pas",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    },
+    "expected_behavior": "Brand inventory by category"
+  },
+  {
+    "id": "brand_jcb_available",
+    "session_id": "pf_brand_jcb_available",
+    "clear_session": true,
+    "message": "jcb available hai kya jaipur me",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    },
+    "expected_behavior": "Brand availability check"
+  },
+  {
+    "id": "brand_cat_excavator",
+    "session_id": "pf_brand_cat_excavator",
+    "clear_session": true,
+    "message": "CAT excavator brands in mumbai",
+    "expect": {
+      "not_assistant_mode": "off_topic"
+    },
+    "expected_behavior": "Brand in city"
+  },
+  {
+    "id": "city_inv_jaipur",
+    "session_id": "pf_city_inv_jaipur",
+    "clear_session": true,
+    "message": "what machines are available in jaipur",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "City-wide inventory for jaipur — category chips from DB"
+  },
+  {
+    "id": "city_inv_delhi",
+    "session_id": "pf_city_inv_delhi",
+    "clear_session": true,
+    "message": "list all machines in delhi",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "City-wide inventory for delhi — category chips from DB"
+  },
+  {
+    "id": "city_inv_pune",
+    "session_id": "pf_city_inv_pune",
+    "clear_session": true,
+    "message": "show equipment near pune",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "City-wide inventory for pune — category chips from DB"
+  },
+  {
+    "id": "city_inv_mumbai",
+    "session_id": "pf_city_inv_mumbai",
+    "clear_session": true,
+    "message": "machines available in mumbai",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "City-wide inventory for mumbai — category chips from DB"
+  },
+  {
+    "id": "city_inv_hinglish",
+    "session_id": "pf_city_inv_hinglish",
+    "clear_session": true,
+    "message": "jaipur me kaun kaun si machines milegi",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "City-wide inventory for jaipur — category chips from DB"
+  },
+  {
+    "id": "doc_question",
+    "session_id": "pf_doc_question",
+    "clear_session": true,
+    "message": "what does the uploaded pdf document say",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Document Q&A without search"
+  },
+  {
+    "id": "platform_how_rent",
+    "session_id": "pf_platform_how_rent",
+    "clear_session": true,
+    "message": "how do I rent a machine on infraforge",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Platform how-to"
+  },
+  {
+    "id": "platform_cancel",
+    "session_id": "pf_platform_cancel",
+    "clear_session": true,
+    "message": "what is the rental cancellation policy",
+    "expect": {
+      "not_assistant_mode": "machine_search",
+      "machines_max": 0
+    },
+    "expected_behavior": "Booking policy FAQ"
+  },
+  {
+    "id": "broad_rent",
+    "session_id": "pf_broad_rent",
+    "clear_session": true,
+    "message": "i want to rent a machine",
+    "expect": {
+      "assistant_mode": "clarification",
+      "machines_max": 0
+    },
+    "expected_behavior": "Broad rent — clarify first"
+  },
+  {
+    "id": "broad_machine",
+    "session_id": "pf_broad_machine",
+    "clear_session": true,
+    "message": "mujhe machine chahiye",
+    "expect": {
+      "assistant_mode": "clarification",
+      "machines_max": 0
+    },
+    "expected_behavior": "Vague machine — clarify"
+  },
+  {
+    "id": "rel_support_after_search",
+    "session_id": "pf_rel_support_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "there is a technical problem in it",
+        "expect": {
+          "machines_max": 0,
+          "not_assistant_mode": "machine_search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_frustration_after_search",
+    "session_id": "pf_rel_frustration_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "crane in mumbai"
+      },
+      {
+        "message": "you are a fool",
+        "expect": {
+          "machines_max": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_payment_after_search",
+    "session_id": "pf_rel_payment_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "jcb in delhi"
+      },
+      {
+        "message": "payment failed for my booking",
+        "expect": {
+          "machines_max": 0,
+          "not_assistant_mode": "machine_search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_cheaper_after_search",
+    "session_id": "pf_rel_cheaper_after_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "show cheaper options",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_comparison_purpose",
+    "session_id": "pf_rel_comparison_purpose",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "compare jcb vs cat excavator in jaipur"
+      },
+      {
+        "message": "for road work",
+        "expect": {
+          "not_assistant_mode": "off_topic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_requirement_preserve",
+    "session_id": "pf_rel_requirement_preserve",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator under 10000"
+      },
+      {
+        "message": "jaipur",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      },
+      {
+        "message": "under 7000",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_city_inv_then_category",
+    "session_id": "pf_rel_city_inv_then_category",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "what machines are available in jaipur"
+      },
+      {
+        "message": "excavator",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_support_no_filter_proof",
+    "session_id": "pf_rel_support_no_filter_proof",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur"
+      },
+      {
+        "message": "i rented this machine but it broke down",
+        "expect": {
+          "machines_max": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_ack_continue",
+    "session_id": "pf_rel_ack_continue",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "i want to rent a machine"
+      },
+      {
+        "message": "ok",
+        "expect": {
+          "not_assistant_mode": "machine_search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_name_greeting",
+    "session_id": "pf_rel_name_greeting",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "hi"
+      },
+      {
+        "message": "my name is Rahul",
+        "expect": {
+          "not_assistant_mode": "machine_search"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_brand_followup",
+    "session_id": "pf_rel_brand_followup",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "konse konse brands ke road roller hai tumhare pas"
+      },
+      {
+        "message": "jcb dikhao",
+        "expect": {
+          "category": "road roller"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_higher_budget",
+    "session_id": "pf_rel_higher_budget",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur under 8000"
+      },
+      {
+        "message": "higher budget me kya option hai",
+        "expect": {
+          "category": "excavator",
+          "city": "jaipur"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_demonstrative_city",
+    "session_id": "pf_rel_demonstrative_city",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "excavator in jaipur"
+      },
+      {
+        "message": "same in delhi",
+        "expect": {
+          "category": "excavator",
+          "city": "delhi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rel_switch_support_back_search",
+    "session_id": "pf_rel_switch_support_back_search",
+    "clear_session": true,
+    "turns": [
+      {
+        "message": "payment failed",
+        "expect": {
+          "machines_max": 0
+        }
+      },
+      {
+        "message": "excavator in pune",
+        "expect": {
+          "category": "excavator",
+          "city": "pune"
+        }
+      }
+    ]
+  },
+  {
+    "id": "site_foundation",
+    "session_id": "pf_site_foundation",
+    "clear_session": true,
+    "message": "foundation digging ke liye machine chahiye jaipur me",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    },
+    "expected_behavior": "Site query: excavator in jaipur"
+  },
+  {
+    "id": "site_road_compaction",
+    "session_id": "pf_site_road_compaction",
+    "clear_session": true,
+    "message": "road compaction ke liye roller chahiye pune",
+    "expect": {
+      "category": "road roller",
+      "city": "pune"
+    },
+    "expected_behavior": "Site query: road roller in pune"
+  },
+  {
+    "id": "site_lift_steel",
+    "session_id": "pf_site_lift_steel",
+    "clear_session": true,
+    "message": "steel lifting ke liye crane mumbai",
+    "expect": {
+      "category": "crane",
+      "city": "mumbai"
+    },
+    "expected_behavior": "Site query: crane in mumbai"
+  },
+  {
+    "id": "site_concrete_pour",
+    "session_id": "pf_site_concrete_pour",
+    "clear_session": true,
+    "message": "concrete pouring mixer delhi",
+    "expect": {
+      "category": "concrete mixer",
+      "city": "delhi"
+    },
+    "expected_behavior": "Site query: concrete mixer in delhi"
+  },
+  {
+    "id": "site_mining_drill",
+    "session_id": "pf_site_mining_drill",
+    "clear_session": true,
+    "message": "mining drilling machine hyderabad",
+    "expect": {
+      "category": "crawler drill",
+      "city": "hyderabad"
+    },
+    "expected_behavior": "Site query: crawler drill in hyderabad"
+  },
+  {
+    "id": "site_earth_moving",
+    "session_id": "pf_site_earth_moving",
+    "clear_session": true,
+    "message": "earth moving dozer ahmedabad",
+    "expect": {
+      "category": "bulldozer",
+      "city": "ahmedabad"
+    },
+    "expected_behavior": "Site query: bulldozer in ahmedabad"
+  },
+  {
+    "id": "site_material_haul",
+    "session_id": "pf_site_material_haul",
+    "clear_session": true,
+    "message": "material hauling tipper kolkata",
+    "expect": {
+      "category": "dump truck",
+      "city": "kolkata"
+    },
+    "expected_behavior": "Site query: dump truck in kolkata"
+  },
+  {
+    "id": "site_urgent_rent",
+    "session_id": "pf_site_urgent_rent",
+    "clear_session": true,
+    "message": "urgent excavator rent needed tomorrow in jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    },
+    "expected_behavior": "Site query: excavator in jaipur"
+  },
+  {
+    "id": "site_monthly_rent",
+    "session_id": "pf_site_monthly_rent",
+    "clear_session": true,
+    "message": "monthly rent crane delhi",
+    "expect": {
+      "category": "crane",
+      "city": "delhi"
+    },
+    "expected_behavior": "Site query: crane in delhi"
+  },
+  {
+    "id": "site_operator_included",
+    "session_id": "pf_site_operator_included",
+    "clear_session": true,
+    "message": "excavator with operator jaipur",
+    "expect": {
+      "category": "excavator",
+      "city": "jaipur"
+    },
+    "expected_behavior": "Site query: excavator in jaipur"
+  }
+]

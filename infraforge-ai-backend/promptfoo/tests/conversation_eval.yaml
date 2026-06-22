@@ -1,0 +1,1072 @@
+# Auto-generated conversation eval — do not edit by hand.
+# Conversations: 107 · Total turns: 1102
+
+- description: en_greet_jaipur_excavator_refine
+  vars:
+    session_id: "conv_en_greet_jaipur_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in jaipur\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_delhi_excavator_refine
+  vars:
+    session_id: "conv_en_greet_delhi_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in delhi\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_mumbai_excavator_refine
+  vars:
+    session_id: "conv_en_greet_mumbai_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in mumbai\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_pune_excavator_refine
+  vars:
+    session_id: "conv_en_greet_pune_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in pune\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_bangalore_excavator_refine
+  vars:
+    session_id: "conv_en_greet_bangalore_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in bangalore\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"same in chennai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_chennai_excavator_refine
+  vars:
+    session_id: "conv_en_greet_chennai_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in chennai\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"same in hyderabad\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_hyderabad_excavator_refine
+  vars:
+    session_id: "conv_en_greet_hyderabad_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in hyderabad\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"same in ahmedabad\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_ahmedabad_excavator_refine
+  vars:
+    session_id: "conv_en_greet_ahmedabad_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in ahmedabad\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"ahmedabad\"}}, {\"message\": \"same in kolkata\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_greet_kolkata_excavator_refine
+  vars:
+    session_id: "conv_en_greet_kolkata_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"how are you\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need a machine in kolkata\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"under 50000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"higher budget me kya option hai\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"kolkata\"}}, {\"message\": \"same in jaipur\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"with operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"jcb brand only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"thanks that helps\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"how does payment work for booking\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_jaipur_excavator_refine
+  vars:
+    session_id: "conv_hi_greet_jaipur_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"8000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_jaipur_crane_refine
+  vars:
+    session_id: "conv_hi_greet_jaipur_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"7000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_jaipur_road_roller_refine
+  vars:
+    session_id: "conv_hi_greet_jaipur_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"6000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_jaipur_backhoe_loader_refine
+  vars:
+    session_id: "conv_hi_greet_jaipur_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"backhoe loader chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"9000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_delhi_excavator_refine
+  vars:
+    session_id: "conv_hi_greet_delhi_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"8000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_delhi_crane_refine
+  vars:
+    session_id: "conv_hi_greet_delhi_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"7000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_delhi_road_roller_refine
+  vars:
+    session_id: "conv_hi_greet_delhi_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"6000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_delhi_backhoe_loader_refine
+  vars:
+    session_id: "conv_hi_greet_delhi_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"backhoe loader chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"9000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_mumbai_excavator_refine
+  vars:
+    session_id: "conv_hi_greet_mumbai_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"8000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_mumbai_crane_refine
+  vars:
+    session_id: "conv_hi_greet_mumbai_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"7000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_mumbai_road_roller_refine
+  vars:
+    session_id: "conv_hi_greet_mumbai_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"6000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_mumbai_backhoe_loader_refine
+  vars:
+    session_id: "conv_hi_greet_mumbai_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"backhoe loader chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"9000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_pune_excavator_refine
+  vars:
+    session_id: "conv_hi_greet_pune_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"8000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_pune_crane_refine
+  vars:
+    session_id: "conv_hi_greet_pune_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"7000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_pune_road_roller_refine
+  vars:
+    session_id: "conv_hi_greet_pune_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"6000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_pune_backhoe_loader_refine
+  vars:
+    session_id: "conv_hi_greet_pune_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"backhoe loader chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"9000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_bangalore_excavator_refine
+  vars:
+    session_id: "conv_hi_greet_bangalore_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"8000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_bangalore_crane_refine
+  vars:
+    session_id: "conv_hi_greet_bangalore_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"7000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_bangalore_road_roller_refine
+  vars:
+    session_id: "conv_hi_greet_bangalore_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"6000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_bangalore_backhoe_loader_refine
+  vars:
+    session_id: "conv_hi_greet_bangalore_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"backhoe loader chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"9000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_chennai_excavator_refine
+  vars:
+    session_id: "conv_hi_greet_chennai_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe chennai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"8000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"hyderabad me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_chennai_crane_refine
+  vars:
+    session_id: "conv_hi_greet_chennai_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe chennai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"7000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"hyderabad me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_chennai_road_roller_refine
+  vars:
+    session_id: "conv_hi_greet_chennai_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe chennai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"6000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"hyderabad me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"hyderabad\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"hyderabad\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"hyderabad\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_greet_chennai_backhoe_loader_refine
+  vars:
+    session_id: "conv_hi_greet_chennai_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"kaise ho aap\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe chennai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"backhoe loader chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"9000 se kam budget me\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"aur saste options dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"thoda budget badha do\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"chennai\"}}, {\"message\": \"hyderabad me bhi same chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"hyderabad\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"hyderabad\"}}, {\"message\": \"jcb brand dikhao\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"hyderabad\"}}, {\"message\": \"booking kaise hoti hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_jaipur_excavator_refine
+  vars:
+    session_id: "conv_hn_greet_jaipur_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"din me 8000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_jaipur_crane_refine
+  vars:
+    session_id: "conv_hn_greet_jaipur_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"din me 7000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_jaipur_road_roller_refine
+  vars:
+    session_id: "conv_hn_greet_jaipur_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe jaipur me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"din me 6000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_delhi_excavator_refine
+  vars:
+    session_id: "conv_hn_greet_delhi_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"din me 8000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_delhi_crane_refine
+  vars:
+    session_id: "conv_hn_greet_delhi_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"din me 7000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_delhi_road_roller_refine
+  vars:
+    session_id: "conv_hn_greet_delhi_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe delhi me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"din me 6000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_mumbai_excavator_refine
+  vars:
+    session_id: "conv_hn_greet_mumbai_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"din me 8000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_mumbai_crane_refine
+  vars:
+    session_id: "conv_hn_greet_mumbai_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"din me 7000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_mumbai_road_roller_refine
+  vars:
+    session_id: "conv_hn_greet_mumbai_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe mumbai me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"din me 6000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_pune_excavator_refine
+  vars:
+    session_id: "conv_hn_greet_pune_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"din me 8000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_pune_crane_refine
+  vars:
+    session_id: "conv_hn_greet_pune_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"din me 7000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_pune_road_roller_refine
+  vars:
+    session_id: "conv_hn_greet_pune_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe pune me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"din me 6000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_bangalore_excavator_refine
+  vars:
+    session_id: "conv_hn_greet_bangalore_excavator_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"din me 8000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_bangalore_crane_refine
+  vars:
+    session_id: "conv_hn_greet_bangalore_crane_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"crane chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"din me 7000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hn_greet_bangalore_road_roller_refine
+  vars:
+    session_id: "conv_hn_greet_bangalore_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste ji\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"aap kaise hain\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe bangalore me machine chahiye\", \"memory_role\": \"establish_city\"}, {\"message\": \"road roller chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"din me 6000 rupaye se kam\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"budget thoda badha sakte hain\", \"memory_role\": \"refine_higher_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi wahi chahiye\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"operator included\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"jcb brand\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"chennai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"payment kaise hota hai booking me\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}]"
+    expect_json: "{\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_jaipur_road_roller_refine
+  vars:
+    session_id: "conv_en_direct_jaipur_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"road roller in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"under 8000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_jaipur_backhoe_loader_refine
+  vars:
+    session_id: "conv_en_direct_jaipur_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"backhoe loader in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"under 12000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_delhi_road_roller_refine
+  vars:
+    session_id: "conv_en_direct_delhi_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"road roller in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"under 8000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_delhi_backhoe_loader_refine
+  vars:
+    session_id: "conv_en_direct_delhi_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"backhoe loader in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"under 12000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_mumbai_road_roller_refine
+  vars:
+    session_id: "conv_en_direct_mumbai_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"road roller in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"under 8000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_mumbai_backhoe_loader_refine
+  vars:
+    session_id: "conv_en_direct_mumbai_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"backhoe loader in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"under 12000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_pune_road_roller_refine
+  vars:
+    session_id: "conv_en_direct_pune_road_roller_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"road roller in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"under 8000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_direct_pune_backhoe_loader_refine
+  vars:
+    session_id: "conv_en_direct_pune_backhoe_loader_refine"
+    clear_session: true
+    turns_json: "[{\"message\": \"backhoe loader in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"under 12000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"show more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"monthly rent possible\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"jcb only\", \"memory_role\": \"brand_filter\", \"expect\": {\"category\": \"backhoe loader\", \"city\": \"bangalore\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_cityinv_jaipur_excavator
+  vars:
+    session_id: "conv_en_cityinv_jaipur_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\"}, {\"message\": \"what machines are available in jaipur\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"under 10000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"how do I rent on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"show machines again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"ok thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_cityinv_jaipur_crane
+  vars:
+    session_id: "conv_en_cityinv_jaipur_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\"}, {\"message\": \"what machines are available in jaipur\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"under 10000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"how do I rent on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"show machines again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"ok thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_cityinv_delhi_excavator
+  vars:
+    session_id: "conv_en_cityinv_delhi_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\"}, {\"message\": \"what machines are available in delhi\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"under 10000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"how do I rent on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"show machines again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"ok thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_cityinv_delhi_crane
+  vars:
+    session_id: "conv_en_cityinv_delhi_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\"}, {\"message\": \"what machines are available in delhi\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"under 10000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"how do I rent on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"show machines again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"ok thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_cityinv_mumbai_excavator
+  vars:
+    session_id: "conv_en_cityinv_mumbai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\"}, {\"message\": \"what machines are available in mumbai\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"under 10000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"how do I rent on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"show machines again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"ok thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_cityinv_mumbai_crane
+  vars:
+    session_id: "conv_en_cityinv_mumbai_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\"}, {\"message\": \"what machines are available in mumbai\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"under 10000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"how do I rent on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"show machines again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"ok thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_cityinv_pune_excavator
+  vars:
+    session_id: "conv_hi_cityinv_pune_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\"}, {\"message\": \"pune me kaun si machines hain\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"sasta dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"rent kaise hota hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_cityinv_bangalore_excavator
+  vars:
+    session_id: "conv_hi_cityinv_bangalore_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\"}, {\"message\": \"bangalore me kaun si machines hain\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"sasta dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"rent kaise hota hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_cityinv_chennai_excavator
+  vars:
+    session_id: "conv_hi_cityinv_chennai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\"}, {\"message\": \"chennai me kaun si machines hain\", \"memory_role\": \"city_inventory\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"sasta dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"hyderabad me bhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"rent kaise hota hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"hyderabad\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_jaipur_excavator
+  vars:
+    session_id: "conv_en_support_jaipur_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show excavator again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_jaipur_crane
+  vars:
+    session_id: "conv_en_support_jaipur_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show crane again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_delhi_excavator
+  vars:
+    session_id: "conv_en_support_delhi_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show excavator again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_delhi_crane
+  vars:
+    session_id: "conv_en_support_delhi_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show crane again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_mumbai_excavator
+  vars:
+    session_id: "conv_en_support_mumbai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show excavator again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_mumbai_crane
+  vars:
+    session_id: "conv_en_support_mumbai_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show crane again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_pune_excavator
+  vars:
+    session_id: "conv_en_support_pune_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show excavator again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_support_pune_crane
+  vars:
+    session_id: "conv_en_support_pune_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"payment failed amount deducted\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"I want refund\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ok show crane again\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_support_bangalore_crane
+  vars:
+    session_id: "conv_hi_support_bangalore_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane chahiye bangalore me\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"sasta option\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"payment cut gaya booking nahi hui\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"refund chahiye\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai ab crane dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi dekho\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_support_chennai_crane
+  vars:
+    session_id: "conv_hi_support_chennai_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane chahiye chennai me\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"sasta option\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"payment cut gaya booking nahi hui\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"refund chahiye\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai ab crane dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"chennai\"}}, {\"message\": \"hyderabad me bhi dekho\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_support_hyderabad_crane
+  vars:
+    session_id: "conv_hi_support_hyderabad_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane chahiye hyderabad me\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"sasta option\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"payment cut gaya booking nahi hui\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"refund chahiye\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai ab crane dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"hyderabad\"}}, {\"message\": \"ahmedabad me bhi dekho\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"ahmedabad\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"crane\", \"city\": \"ahmedabad\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_support_ahmedabad_crane
+  vars:
+    session_id: "conv_hi_support_ahmedabad_crane"
+    clear_session: true
+    turns_json: "[{\"message\": \"namaste\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"crane chahiye ahmedabad me\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"ahmedabad\"}}, {\"message\": \"sasta option\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"crane\", \"city\": \"ahmedabad\"}}, {\"message\": \"payment cut gaya booking nahi hui\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"refund chahiye\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"theek hai ab crane dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"crane\", \"city\": \"ahmedabad\"}}, {\"message\": \"kolkata me bhi dekho\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"crane\", \"city\": \"kolkata\"}}, {\"message\": \"aur options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"crane\", \"city\": \"kolkata\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_frust_jaipur_excavator
+  vars:
+    session_id: "conv_hi_frust_jaipur_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hey\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in jaipur under 8000\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"tum bilkul bekar ho\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"sorry gussa ho gaya\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"payment issue hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ab excavator dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_frust_delhi_excavator
+  vars:
+    session_id: "conv_hi_frust_delhi_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hey\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in delhi under 8000\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"tum bilkul bekar ho\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"sorry gussa ho gaya\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"payment issue hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ab excavator dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_frust_mumbai_excavator
+  vars:
+    session_id: "conv_hi_frust_mumbai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hey\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in mumbai under 8000\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"tum bilkul bekar ho\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"sorry gussa ho gaya\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"payment issue hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ab excavator dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_frust_pune_excavator
+  vars:
+    session_id: "conv_hi_frust_pune_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hey\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in pune under 8000\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"tum bilkul bekar ho\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"sorry gussa ho gaya\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"payment issue hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ab excavator dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_frust_bangalore_excavator
+  vars:
+    session_id: "conv_hi_frust_bangalore_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hey\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in bangalore under 8000\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"tum bilkul bekar ho\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"sorry gussa ho gaya\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in chennai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"operator ke sath\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"payment issue hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"ab excavator dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_project_jaipur_excavator
+  vars:
+    session_id: "conv_en_project_jaipur_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"I have a construction project in jaipur\", \"memory_role\": \"establish_city\"}, {\"message\": \"what machine do you recommend\", \"memory_role\": \"none\"}, {\"message\": \"excavator sounds good\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"under 12000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"how to book on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_project_delhi_excavator
+  vars:
+    session_id: "conv_en_project_delhi_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"I have a construction project in delhi\", \"memory_role\": \"establish_city\"}, {\"message\": \"what machine do you recommend\", \"memory_role\": \"none\"}, {\"message\": \"excavator sounds good\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"under 12000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"how to book on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_project_mumbai_excavator
+  vars:
+    session_id: "conv_en_project_mumbai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"I have a construction project in mumbai\", \"memory_role\": \"establish_city\"}, {\"message\": \"what machine do you recommend\", \"memory_role\": \"none\"}, {\"message\": \"excavator sounds good\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"under 12000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"how to book on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_project_pune_excavator
+  vars:
+    session_id: "conv_en_project_pune_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"I have a construction project in pune\", \"memory_role\": \"establish_city\"}, {\"message\": \"what machine do you recommend\", \"memory_role\": \"none\"}, {\"message\": \"excavator sounds good\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"under 12000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"how to book on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_project_bangalore_excavator
+  vars:
+    session_id: "conv_en_project_bangalore_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"I have a construction project in bangalore\", \"memory_role\": \"establish_city\"}, {\"message\": \"what machine do you recommend\", \"memory_role\": \"none\"}, {\"message\": \"excavator sounds good\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"under 12000 per day\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"show cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"same in chennai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"how to book on infraforge\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_compare_jaipur_excavator
+  vars:
+    session_id: "conv_en_compare_jaipur_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"compare jcb vs cat excavator\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show jcb excavator in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"under 9000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"thanks bye\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_compare_delhi_excavator
+  vars:
+    session_id: "conv_en_compare_delhi_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"compare jcb vs cat excavator\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show jcb excavator in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"under 9000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"thanks bye\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_compare_mumbai_excavator
+  vars:
+    session_id: "conv_en_compare_mumbai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"compare jcb vs cat excavator\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show jcb excavator in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"under 9000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"thanks bye\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_compare_pune_excavator
+  vars:
+    session_id: "conv_en_compare_pune_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"compare jcb vs cat excavator\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show jcb excavator in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"under 9000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"same in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"thanks bye\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_compare_bangalore_excavator
+  vars:
+    session_id: "conv_en_compare_bangalore_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"compare jcb vs cat excavator\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show jcb excavator in bangalore\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"under 9000\", \"memory_role\": \"refine_budget\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"cheaper please\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"same in chennai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"with operator\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"thanks bye\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_vague_jaipur_roller
+  vars:
+    session_id: "conv_en_vague_jaipur_roller"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i want to rent a machine\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"jaipur\", \"memory_role\": \"establish_city\", \"expect\": {\"city\": \"jaipur\"}}, {\"message\": \"road roller\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"jaipur\"}}, {\"message\": \"same in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_vague_jaipur_mixer
+  vars:
+    session_id: "conv_hi_vague_jaipur_mixer"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe machine chahiye\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"jaipur me\", \"memory_role\": \"establish_city\", \"expect\": {\"city\": \"jaipur\"}}, {\"message\": \"concrete mixer chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"jaipur\"}}, {\"message\": \"sasta\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"delhi\"}}, {\"message\": \"aur dikhao\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"delhi\"}}, {\"message\": \"thanks bhai\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_vague_delhi_roller
+  vars:
+    session_id: "conv_en_vague_delhi_roller"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i want to rent a machine\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"delhi\", \"memory_role\": \"establish_city\", \"expect\": {\"city\": \"delhi\"}}, {\"message\": \"road roller\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"same in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_vague_delhi_mixer
+  vars:
+    session_id: "conv_hi_vague_delhi_mixer"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe machine chahiye\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"delhi me\", \"memory_role\": \"establish_city\", \"expect\": {\"city\": \"delhi\"}}, {\"message\": \"concrete mixer chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"delhi\"}}, {\"message\": \"sasta\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"mumbai\"}}, {\"message\": \"aur dikhao\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"mumbai\"}}, {\"message\": \"thanks bhai\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_vague_mumbai_roller
+  vars:
+    session_id: "conv_en_vague_mumbai_roller"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i want to rent a machine\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mumbai\", \"memory_role\": \"establish_city\", \"expect\": {\"city\": \"mumbai\"}}, {\"message\": \"road roller\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper options\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"same in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"more options\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: hi_vague_mumbai_mixer
+  vars:
+    session_id: "conv_hi_vague_mumbai_mixer"
+    clear_session: true
+    turns_json: "[{\"message\": \"hi\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mujhe machine chahiye\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"mumbai me\", \"memory_role\": \"establish_city\", \"expect\": {\"city\": \"mumbai\"}}, {\"message\": \"concrete mixer chahiye\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"mumbai\"}}, {\"message\": \"sasta\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"pune\"}}, {\"message\": \"aur dikhao\", \"memory_role\": \"more_options\", \"expect\": {\"category\": \"concrete mixer\", \"city\": \"pune\"}}, {\"message\": \"thanks bhai\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: mix_lang_jaipur_excavator
+  vars:
+    session_id: "conv_mix_lang_jaipur_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello good morning\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need equipment in jaipur\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"ab sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"operator ke sath chahiye\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"delhi me bhi same\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"rental policy kya hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: mix_lang_delhi_excavator
+  vars:
+    session_id: "conv_mix_lang_delhi_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello good morning\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need equipment in delhi\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"ab sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"operator ke sath chahiye\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"mumbai me bhi same\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"rental policy kya hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: mix_lang_mumbai_excavator
+  vars:
+    session_id: "conv_mix_lang_mumbai_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello good morning\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need equipment in mumbai\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"ab sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"operator ke sath chahiye\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"pune me bhi same\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"rental policy kya hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: mix_lang_pune_excavator
+  vars:
+    session_id: "conv_mix_lang_pune_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello good morning\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need equipment in pune\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"ab sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"operator ke sath chahiye\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"bangalore me bhi same\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"rental policy kya hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: mix_lang_bangalore_excavator
+  vars:
+    session_id: "conv_mix_lang_bangalore_excavator"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello good morning\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"i need equipment in bangalore\", \"memory_role\": \"establish_city\"}, {\"message\": \"excavator\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"ab sasta option dikhao\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"operator ke sath chahiye\", \"memory_role\": \"operator\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"chennai me bhi same\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"rental policy kya hai\", \"memory_role\": \"support\", \"expect\": {\"machines_max\": 0, \"not_assistant_mode\": \"machine_search\"}}, {\"message\": \"wapas machine dikhao\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"chennai\"}}, {\"message\": \"dhanyavaad\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_multicat_jaipur
+  vars:
+    session_id: "conv_en_multicat_jaipur"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"highway project chal raha hai\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"crane in jaipur\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"jaipur\"}}, {\"message\": \"road roller in delhi\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"cheaper roller\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"delhi\"}}, {\"message\": \"excavator in delhi too\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"compare volvo vs komatsu\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show excavator in jaipur\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"jaipur\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_multicat_delhi
+  vars:
+    session_id: "conv_en_multicat_delhi"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"highway project chal raha hai\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"crane in delhi\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"delhi\"}}, {\"message\": \"road roller in mumbai\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"cheaper roller\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"mumbai\"}}, {\"message\": \"excavator in mumbai too\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"compare volvo vs komatsu\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show excavator in delhi\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"delhi\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_multicat_mumbai
+  vars:
+    session_id: "conv_en_multicat_mumbai"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"highway project chal raha hai\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"crane in mumbai\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"mumbai\"}}, {\"message\": \"road roller in pune\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"cheaper roller\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"pune\"}}, {\"message\": \"excavator in pune too\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"compare volvo vs komatsu\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show excavator in mumbai\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"mumbai\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true
+
+- description: en_multicat_pune
+  vars:
+    session_id: "conv_en_multicat_pune"
+    clear_session: true
+    turns_json: "[{\"message\": \"hello\", \"memory_role\": \"greeting\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"highway project chal raha hai\", \"memory_role\": \"none\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"excavator in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"crane in pune\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"crane\", \"city\": \"pune\"}}, {\"message\": \"road roller in bangalore\", \"memory_role\": \"city_switch\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"cheaper roller\", \"memory_role\": \"refine_cheaper\", \"expect\": {\"category\": \"road roller\", \"city\": \"bangalore\"}}, {\"message\": \"excavator in bangalore too\", \"memory_role\": \"establish_category\", \"expect\": {\"category\": \"excavator\", \"city\": \"bangalore\"}}, {\"message\": \"compare volvo vs komatsu\", \"memory_role\": \"compare\", \"expect\": {\"machines_max\": 0}}, {\"message\": \"show excavator in pune\", \"memory_role\": \"resume_search\", \"expect\": {\"category\": \"excavator\", \"city\": \"pune\"}}, {\"message\": \"thanks\", \"memory_role\": \"thanks\", \"expect\": {\"machines_max\": 0}}]"
+    expect_json: "{\"machines_max\": 0}"
+  assert:
+    - type: javascript
+      value: JSON.parse(output).pass === true

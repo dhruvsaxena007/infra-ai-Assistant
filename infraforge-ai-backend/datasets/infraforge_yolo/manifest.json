@@ -1,0 +1,3056 @@
+{
+  "total_documents": 195,
+  "exported_machines": 163,
+  "skipped_no_images": 0,
+  "skipped_no_category": 5,
+  "class_counts": {
+    "air_compressor": 8,
+    "articulated_hauler": 8,
+    "asphalt_paver": 8,
+    "backhoe_loader": 8,
+    "boom_lift": 8,
+    "bulldozer": 8,
+    "carry_deck_crane": 8,
+    "cold_planer": 8,
+    "compact_loader": 8,
+    "compact_track_loader": 8,
+    "compactor": 8,
+    "concrete_mixer_truck": 8,
+    "concrete_pump": 8,
+    "crane": 8,
+    "crawler_drill": 8,
+    "dragline_excavator": 8,
+    "drill_rig": 8,
+    "drum_roller": 8,
+    "dump_truck": 8,
+    "excavator": 8,
+    "feller_buncher": 8,
+    "forklift": 8,
+    "forwarder": 8,
+    "harvester": 8,
+    "hydra_crane": 8,
+    "knuckleboom_loader": 8,
+    "mobile_crusher": 8,
+    "motor_grader": 10,
+    "off_highway_truck": 8,
+    "pipe_layer": 8,
+    "road_roller": 8,
+    "rock_breaker": 8,
+    "scissor_lift": 8,
+    "single_man_lift": 8,
+    "skidder": 8,
+    "telehandler": 8,
+    "towable_light_tower": 8,
+    "trencher": 8,
+    "truck_mounted_crane": 8,
+    "tunnel_boring_machine": 8,
+    "utility_vehicle": 8,
+    "walkie_stacker": 8,
+    "wheel_loader": 14,
+    "wheel_tractor_scraper": 8
+  },
+  "machines": [
+    {
+      "machine_id": "6a16b76582b06050df8abd07",
+      "name": "SANY SCS800A",
+      "category": "crane",
+      "category_display": "CRAWLER CRANE(65-80 TON)",
+      "class_slug": "crane",
+      "source": null,
+      "status": "pending",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779873636771_Screenshot__1_.png",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779873636771_Screenshot__1_.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a16b76582b06050df8abd07\\00.png",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a16b76582b06050df8abd07\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "69b9261c1db81df5dfd658a5",
+      "name": "JCB 432 ZX Heavy Duty",
+      "category": "wheel loader",
+      "category_display": "WHEEL LOADER 3 T",
+      "class_slug": "wheel_loader",
+      "source": null,
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507412/retinacreative-piling-rig-4429049.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508073/thumb_memorycatcher-truck-417149.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508073/thumb_retinacreative-piling-rig-4429049.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508071/thumb_dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b9261c1db81df5dfd658a5\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b9261c1db81df5dfd658a5\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b9261c1db81df5dfd658a5\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b9261c1db81df5dfd658a5\\03.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b9261c1db81df5dfd658a5\\04.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b9261c1db81df5dfd658a5\\05.jpg"
+      ]
+    },
+    {
+      "machine_id": "69b93165ca37e9c975d35884",
+      "name": "AMMANN APOLLO KP-1200 KLM Vibratory Screed",
+      "category": "asphalt paver",
+      "category_display": "KERB PAVER",
+      "class_slug": "asphalt_paver",
+      "source": null,
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507375/tama66-excavator-1212472.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507375/ralphs_fotos-excavator-5556325.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508044/thumb_dimitrisvetsikas1969-machine-3023906.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508044/thumb_tama66-excavator-1212472.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508043/thumb_ralphs_fotos-excavator-5556325.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b93165ca37e9c975d35884\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b93165ca37e9c975d35884\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b93165ca37e9c975d35884\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b93165ca37e9c975d35884\\03.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b93165ca37e9c975d35884\\04.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b93165ca37e9c975d35884\\05.jpg"
+      ]
+    },
+    {
+      "machine_id": "69fc31ad12fc53b5c05aa59d",
+      "name": "TATA SIGNA 3525.TK 10 Wheeler",
+      "category": "dump truck",
+      "category_display": "TIPPER",
+      "class_slug": "dump_truck",
+      "source": null,
+      "status": "available",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341126_eb786e8ae7.png",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341129_press-13aug20-lowres.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779942341126_eb786e8ae7.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779942341129_press-13aug20-lowres.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fc31ad12fc53b5c05aa59d\\00.png",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fc31ad12fc53b5c05aa59d\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fc31ad12fc53b5c05aa59d\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fc31ad12fc53b5c05aa59d\\03.jpg"
+      ]
+    },
+    {
+      "machine_id": "6a17c71c4c62630319f33954",
+      "name": "ATLAS COPCO XA-157 Diesel",
+      "category": "air compressor",
+      "category_display": "AIR COMPRESSOR",
+      "class_slug": "air_compressor",
+      "source": null,
+      "status": "pending",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779943190787_air-compressor-support-truck-1702019936-7199582.webp",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779943190787_air-compressor-support-truck-1702019936-7199582.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a17c71c4c62630319f33954\\00.webp",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a17c71c4c62630319f33954\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "6a18fde1fe43a1b0c302f2ed",
+      "name": "JCB 3DX Loader Bucket",
+      "category": "backhoe loader",
+      "category_display": "BACKHOE LOADER",
+      "class_slug": "backhoe_loader",
+      "source": null,
+      "status": "pending",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1780022752197_motor_grader_front.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1780022752208_motor_grader_side.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1780022752197_motor_grader_front.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1780022752208_motor_grader_side.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a18fde1fe43a1b0c302f2ed\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a18fde1fe43a1b0c302f2ed\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a18fde1fe43a1b0c302f2ed\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a18fde1fe43a1b0c302f2ed\\03.jpg"
+      ]
+    },
+    {
+      "machine_id": "69b924311db81df5dfd6583c",
+      "name": "EPIROC AIR ROC D-35(LM-100) Pneumatic",
+      "category": "crawler drill",
+      "category_display": "CRAWLER DRILL",
+      "class_slug": "crawler_drill",
+      "source": null,
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507461/ds_30-equipment-4840223.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507461/ricobino-skw-2580437.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508095/thumb_ds_30-equipment-4840223.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508095/thumb_ricobino-skw-2580437.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b924311db81df5dfd6583c\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b924311db81df5dfd6583c\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b924311db81df5dfd6583c\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b924311db81df5dfd6583c\\03.jpg"
+      ]
+    },
+    {
+      "machine_id": "69c24c9f3571674bda133434",
+      "name": "SCHWING STETTER BP 350 DXT Trailer Mounted",
+      "category": "concrete pump",
+      "category_display": "CONCRETE PUMP",
+      "class_slug": "concrete_pump",
+      "source": null,
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/dimitrisvetsikas1969-bulldozer-2195329.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507928/thumb_652234-excavator-1174428.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507938/thumb_katerwursty-road-roller-6564386.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507928/thumb_dimitrisvetsikas1969-bulldozer-2195329.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69c24c9f3571674bda133434\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69c24c9f3571674bda133434\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69c24c9f3571674bda133434\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69c24c9f3571674bda133434\\03.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69c24c9f3571674bda133434\\04.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69c24c9f3571674bda133434\\05.jpg"
+      ]
+    },
+    {
+      "machine_id": "6a181da782b06050df8ac470",
+      "name": "JCB 3DX 4WD",
+      "category": "backhoe loader",
+      "category_display": "BACKHOE LOADER",
+      "class_slug": "backhoe_loader",
+      "source": null,
+      "status": "pending",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779965351513_Login.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779965351513_Login.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a181da782b06050df8ac470\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a181da782b06050df8ac470\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "69b933348e02c415a7499977",
+      "name": "TEREX CHIEFTAIN 1700-3D Crawler Mounted",
+      "category": "mobile crusher",
+      "category_display": "MOBILE CRUSHER SCREEN CROWLER TYPE",
+      "class_slug": "mobile_crusher",
+      "source": null,
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507333/elsemargriet-excavator-5907586.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507333/dimitrisvetsikas1969-heavy-machinery-6761291.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508004/thumb_elsemargriet-excavator-5907586.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508006/thumb_pexels-digger-1867268.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774508005/thumb_dimitrisvetsikas1969-heavy-machinery-6761291.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b933348e02c415a7499977\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b933348e02c415a7499977\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b933348e02c415a7499977\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b933348e02c415a7499977\\03.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b933348e02c415a7499977\\04.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69b933348e02c415a7499977\\05.jpg"
+      ]
+    },
+    {
+      "machine_id": "6a0af13ba16053e42c30d7c7",
+      "name": "TATA SIGNA 3525.TK 10 Wheeler",
+      "category": "dump truck",
+      "category_display": "TIPPER",
+      "class_slug": "dump_truck",
+      "source": null,
+      "status": "available",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942377195_press-13aug20-lowres.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779942377195_press-13aug20-lowres.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a0af13ba16053e42c30d7c7\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a0af13ba16053e42c30d7c7\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "6a154c05ce818f893c71d0f6",
+      "name": "CATERPILLAR 120K2 Heavy Duty",
+      "category": "motor grader",
+      "category_display": "MOTOR GRADER",
+      "class_slug": "motor_grader",
+      "source": null,
+      "status": "pending",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779780612094_motor_grader_front.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779780612094_motor_grader_front.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a154c05ce818f893c71d0f6\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a154c05ce818f893c71d0f6\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "69fdbf95e5e6293ca9f7dd8c",
+      "name": "VOLVO L-120 F High Lift",
+      "category": "wheel loader",
+      "category_display": "WHEEL LOADER",
+      "class_slug": "wheel_loader",
+      "source": null,
+      "status": "available",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243542/productImages_1778243538897_serial.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243540/productImages_1778243538926_engine.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243540/productImages_1778243538929_side.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243540/productImages_1778243538932_front.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243543/thumb_productImages_1778243538897_serial.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243542/thumb_productImages_1778243538926_engine.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243541/thumb_productImages_1778243538929_side.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243541/thumb_productImages_1778243538932_front.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\03.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\04.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\05.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\06.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\69fdbf95e5e6293ca9f7dd8c\\07.jpg"
+      ]
+    },
+    {
+      "machine_id": "6a168587e338973bf96271cf",
+      "name": "CATERPILLAR 120K2 Heavy Duty",
+      "category": "motor grader",
+      "category_display": "MOTOR GRADER",
+      "class_slug": "motor_grader",
+      "source": null,
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779860870596_motor_grader_back.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779860870638_motor_grader_front.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779860870639_motor_grader_serial.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779860870640_motor_grader_side.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779860870596_motor_grader_back.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779860870638_motor_grader_front.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779860870639_motor_grader_serial.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/thumb_productImages_1779860870640_motor_grader_side.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\01.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\02.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\03.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\04.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\05.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\06.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\6a168587e338973bf96271cf\\07.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_boom_lift_01",
+      "name": "JLG 600S",
+      "category": "boom lift",
+      "category_display": "boom lift",
+      "class_slug": "boom_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_boom_lift_02",
+      "name": "Genie S-65",
+      "category": "boom lift",
+      "category_display": "boom lift",
+      "class_slug": "boom_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_boom_lift_03",
+      "name": "Haulotte HA20PX",
+      "category": "boom lift",
+      "category_display": "boom lift",
+      "class_slug": "boom_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_boom_lift_04",
+      "name": "Skyjack SJ66T",
+      "category": "boom lift",
+      "category_display": "boom lift",
+      "class_slug": "boom_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_boom_lift_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_scissor_lift_01",
+      "name": "Genie GS-1930",
+      "category": "scissor lift",
+      "category_display": "scissor lift",
+      "class_slug": "scissor_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_scissor_lift_02",
+      "name": "JLG 2630ES",
+      "category": "scissor lift",
+      "category_display": "scissor lift",
+      "class_slug": "scissor_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_scissor_lift_03",
+      "name": "Skyjack SJIII 3219",
+      "category": "scissor lift",
+      "category_display": "scissor lift",
+      "class_slug": "scissor_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_scissor_lift_04",
+      "name": "Haulotte Compact 14",
+      "category": "scissor lift",
+      "category_display": "scissor lift",
+      "class_slug": "scissor_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_scissor_lift_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forklift_01",
+      "name": "Toyota 8FGU25",
+      "category": "forklift",
+      "category_display": "forklift",
+      "class_slug": "forklift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg",
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forklift_02",
+      "name": "Caterpillar DP40N",
+      "category": "forklift",
+      "category_display": "forklift",
+      "class_slug": "forklift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg",
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forklift_03",
+      "name": "Hyster H2.5FT",
+      "category": "forklift",
+      "category_display": "forklift",
+      "class_slug": "forklift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg",
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forklift_04",
+      "name": "Komatsu FG25T-16",
+      "category": "forklift",
+      "category_display": "forklift",
+      "class_slug": "forklift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg",
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forklift_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_single_man_lift_01",
+      "name": "JLG E400AJP",
+      "category": "single man lift",
+      "category_display": "single man lift",
+      "class_slug": "single_man_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_single_man_lift_02",
+      "name": "Genie Z-45/25J",
+      "category": "single man lift",
+      "category_display": "single man lift",
+      "class_slug": "single_man_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_single_man_lift_03",
+      "name": "Bravi Leonardo HD",
+      "category": "single man lift",
+      "category_display": "single man lift",
+      "class_slug": "single_man_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_single_man_lift_04",
+      "name": "Dingli BA16CRT",
+      "category": "single man lift",
+      "category_display": "single man lift",
+      "class_slug": "single_man_lift",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_single_man_lift_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_telehandler_01",
+      "name": "JCB 540-170",
+      "category": "telehandler",
+      "category_display": "telehandler",
+      "class_slug": "telehandler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_telehandler_02",
+      "name": "Manitou MT 1840",
+      "category": "telehandler",
+      "category_display": "telehandler",
+      "class_slug": "telehandler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_telehandler_03",
+      "name": "Caterpillar TH417D",
+      "category": "telehandler",
+      "category_display": "telehandler",
+      "class_slug": "telehandler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857303/productImages_1776857300241_backhoe_loader.png"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_03\\01.png"
+      ]
+    },
+    {
+      "machine_id": "seed_telehandler_04",
+      "name": "Merlo P40.17",
+      "category": "telehandler",
+      "category_display": "telehandler",
+      "class_slug": "telehandler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857303/productImages_1776857300241_backhoe_loader.png",
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_04\\00.png",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_telehandler_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_bulldozer_01",
+      "name": "Caterpillar D6",
+      "category": "bulldozer",
+      "category_display": "bulldozer",
+      "class_slug": "bulldozer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/8361810/pexels-photo-8361810.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/dimitrisvetsikas1969-bulldozer-2195329.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_bulldozer_02",
+      "name": "Komatsu D65PX",
+      "category": "bulldozer",
+      "category_display": "bulldozer",
+      "class_slug": "bulldozer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/dimitrisvetsikas1969-bulldozer-2195329.jpg.jpg",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_bulldozer_03",
+      "name": "CASE 1650M",
+      "category": "bulldozer",
+      "category_display": "bulldozer",
+      "class_slug": "bulldozer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
+        "https://images.pexels.com/photos/15363842/pexels-photo-15363842.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_bulldozer_04",
+      "name": "Shantui SD32",
+      "category": "bulldozer",
+      "category_display": "bulldozer",
+      "class_slug": "bulldozer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/15363842/pexels-photo-15363842.jpeg",
+        "https://images.pexels.com/photos/8361810/pexels-photo-8361810.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_bulldozer_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_wheel_tractor_scraper_01",
+      "name": "Caterpillar 627K",
+      "category": "wheel tractor scraper",
+      "category_display": "wheel tractor scraper",
+      "class_slug": "wheel_tractor_scraper",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/8361810/pexels-photo-8361810.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/dimitrisvetsikas1969-bulldozer-2195329.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_wheel_tractor_scraper_02",
+      "name": "Caterpillar 623K",
+      "category": "wheel tractor scraper",
+      "category_display": "wheel tractor scraper",
+      "class_slug": "wheel_tractor_scraper",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/dimitrisvetsikas1969-bulldozer-2195329.jpg.jpg",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_wheel_tractor_scraper_03",
+      "name": "K-Tec 1237ADT",
+      "category": "wheel tractor scraper",
+      "category_display": "wheel tractor scraper",
+      "class_slug": "wheel_tractor_scraper",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
+        "https://images.pexels.com/photos/15363842/pexels-photo-15363842.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_wheel_tractor_scraper_04",
+      "name": "John Deere 2112D",
+      "category": "wheel tractor scraper",
+      "category_display": "wheel tractor scraper",
+      "class_slug": "wheel_tractor_scraper",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/15363842/pexels-photo-15363842.jpeg",
+        "https://images.pexels.com/photos/8361810/pexels-photo-8361810.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_wheel_tractor_scraper_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_loader_01",
+      "name": "Bobcat S650",
+      "category": "compact loader",
+      "category_display": "compact loader",
+      "class_slug": "compact_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_loader_02",
+      "name": "Caterpillar 226D3",
+      "category": "compact loader",
+      "category_display": "compact loader",
+      "class_slug": "compact_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_loader_03",
+      "name": "CASE SR270B",
+      "category": "compact loader",
+      "category_display": "compact loader",
+      "class_slug": "compact_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857303/productImages_1776857300241_backhoe_loader.png"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_03\\01.png"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_loader_04",
+      "name": "JCB 190T",
+      "category": "compact loader",
+      "category_display": "compact loader",
+      "class_slug": "compact_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857303/productImages_1776857300241_backhoe_loader.png",
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_04\\00.png",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_loader_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_excavator_01",
+      "name": "Caterpillar 320D",
+      "category": "excavator",
+      "category_display": "excavator",
+      "class_slug": "excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_excavator_02",
+      "name": "Komatsu PC210",
+      "category": "excavator",
+      "category_display": "excavator",
+      "class_slug": "excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_excavator_03",
+      "name": "Hitachi ZX210",
+      "category": "excavator",
+      "category_display": "excavator",
+      "class_slug": "excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_excavator_04",
+      "name": "Hyundai R210",
+      "category": "excavator",
+      "category_display": "excavator",
+      "class_slug": "excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg",
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_excavator_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_feller_buncher_01",
+      "name": "Tigercat 845",
+      "category": "feller buncher",
+      "category_display": "feller buncher",
+      "class_slug": "feller_buncher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_feller_buncher_02",
+      "name": "John Deere 959M",
+      "category": "feller buncher",
+      "category_display": "feller buncher",
+      "class_slug": "feller_buncher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_feller_buncher_03",
+      "name": "Komatsu 951",
+      "category": "feller buncher",
+      "category_display": "feller buncher",
+      "class_slug": "feller_buncher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_feller_buncher_04",
+      "name": "Caterpillar 552",
+      "category": "feller buncher",
+      "category_display": "feller buncher",
+      "class_slug": "feller_buncher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_feller_buncher_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_harvester_01",
+      "name": "Ponsse Scorpion",
+      "category": "harvester",
+      "category_display": "harvester",
+      "class_slug": "harvester",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_harvester_02",
+      "name": "Valmet 940",
+      "category": "harvester",
+      "category_display": "harvester",
+      "class_slug": "harvester",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_harvester_03",
+      "name": "John Deere 1270G",
+      "category": "harvester",
+      "category_display": "harvester",
+      "class_slug": "harvester",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_harvester_04",
+      "name": "Komatsu 951",
+      "category": "harvester",
+      "category_display": "harvester",
+      "class_slug": "harvester",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_harvester_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_trencher_01",
+      "name": "Vermeer T655",
+      "category": "trencher",
+      "category_display": "trencher",
+      "class_slug": "trencher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_trencher_02",
+      "name": "Ditch Witch HT115",
+      "category": "trencher",
+      "category_display": "trencher",
+      "class_slug": "trencher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_trencher_03",
+      "name": "Caterpillar TR330B",
+      "category": "trencher",
+      "category_display": "trencher",
+      "class_slug": "trencher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_trencher_04",
+      "name": "Tesmec TRS1475",
+      "category": "trencher",
+      "category_display": "trencher",
+      "class_slug": "trencher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg",
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_trencher_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_articulated_hauler_01",
+      "name": "Volvo A40G",
+      "category": "articulated hauler",
+      "category_display": "articulated hauler",
+      "class_slug": "articulated_hauler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341129_press-13aug20-lowres.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_articulated_hauler_02",
+      "name": "Caterpillar 740",
+      "category": "articulated hauler",
+      "category_display": "articulated hauler",
+      "class_slug": "articulated_hauler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_articulated_hauler_03",
+      "name": "Bell B40E",
+      "category": "articulated hauler",
+      "category_display": "articulated hauler",
+      "class_slug": "articulated_hauler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942377195_press-13aug20-lowres.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_articulated_hauler_04",
+      "name": "Doosan DA40-5",
+      "category": "articulated hauler",
+      "category_display": "articulated hauler",
+      "class_slug": "articulated_hauler",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942377195_press-13aug20-lowres.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341129_press-13aug20-lowres.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_articulated_hauler_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_off_highway_truck_01",
+      "name": "Caterpillar 777G",
+      "category": "off highway truck",
+      "category_display": "off highway truck",
+      "class_slug": "off_highway_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_off_highway_truck_02",
+      "name": "Komatsu 930E",
+      "category": "off highway truck",
+      "category_display": "off highway truck",
+      "class_slug": "off_highway_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_off_highway_truck_03",
+      "name": "BelAZ 75131",
+      "category": "off highway truck",
+      "category_display": "off highway truck",
+      "class_slug": "off_highway_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_off_highway_truck_04",
+      "name": "Volvo A60H",
+      "category": "off highway truck",
+      "category_display": "off highway truck",
+      "class_slug": "off_highway_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg",
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_off_highway_truck_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_asphalt_paver_01",
+      "name": "Vögele Super 1800-3",
+      "category": "asphalt paver",
+      "category_display": "asphalt paver",
+      "class_slug": "asphalt_paver",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_asphalt_paver_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_asphalt_paver_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_cold_planer_01",
+      "name": "Wirtgen W 200i",
+      "category": "cold planer",
+      "category_display": "cold planer",
+      "class_slug": "cold_planer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_cold_planer_02",
+      "name": "Caterpillar PM622",
+      "category": "cold planer",
+      "category_display": "cold planer",
+      "class_slug": "cold_planer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_cold_planer_03",
+      "name": "Bomag BM 2000/60",
+      "category": "cold planer",
+      "category_display": "cold planer",
+      "class_slug": "cold_planer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/276024/pexels-photo-276024.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_cold_planer_04",
+      "name": "Roadtec RX-700e",
+      "category": "cold planer",
+      "category_display": "cold planer",
+      "class_slug": "cold_planer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276024/pexels-photo-276024.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_cold_planer_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compactor_01",
+      "name": "Bomag BW 211 D-50",
+      "category": "compactor",
+      "category_display": "compactor",
+      "class_slug": "compactor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compactor_02",
+      "name": "Caterpillar CS56B",
+      "category": "compactor",
+      "category_display": "compactor",
+      "class_slug": "compactor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compactor_03",
+      "name": "Dynapac CA2500D",
+      "category": "compactor",
+      "category_display": "compactor",
+      "class_slug": "compactor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compactor_04",
+      "name": "JCB VM 117",
+      "category": "compactor",
+      "category_display": "compactor",
+      "class_slug": "compactor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compactor_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drum_roller_01",
+      "name": "Bomag BW 161 AD-4",
+      "category": "drum roller",
+      "category_display": "drum roller",
+      "class_slug": "drum_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drum_roller_02",
+      "name": "Caterpillar CB10",
+      "category": "drum roller",
+      "category_display": "drum roller",
+      "class_slug": "drum_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drum_roller_03",
+      "name": "Dynapac CC2200",
+      "category": "drum roller",
+      "category_display": "drum roller",
+      "class_slug": "drum_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drum_roller_04",
+      "name": "JCB VMT 260",
+      "category": "drum roller",
+      "category_display": "drum roller",
+      "class_slug": "drum_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drum_roller_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_track_loader_01",
+      "name": "Bobcat T770",
+      "category": "compact track loader",
+      "category_display": "compact track loader",
+      "class_slug": "compact_track_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_track_loader_02",
+      "name": "Caterpillar 299D3",
+      "category": "compact track loader",
+      "category_display": "compact track loader",
+      "class_slug": "compact_track_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_track_loader_03",
+      "name": "ASV RT-135F",
+      "category": "compact track loader",
+      "category_display": "compact track loader",
+      "class_slug": "compact_track_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507376/dimitrisvetsikas1969-machine-3023906.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857303/productImages_1776857300241_backhoe_loader.png"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_03\\01.png"
+      ]
+    },
+    {
+      "machine_id": "seed_compact_track_loader_04",
+      "name": "Takeuchi TL12R2",
+      "category": "compact track loader",
+      "category_display": "compact track loader",
+      "class_slug": "compact_track_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857303/productImages_1776857300241_backhoe_loader.png",
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_04\\00.png",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_compact_track_loader_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_skidder_01",
+      "name": "John Deere 648L-II",
+      "category": "skidder",
+      "category_display": "skidder",
+      "class_slug": "skidder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_skidder_02",
+      "name": "Caterpillar 545",
+      "category": "skidder",
+      "category_display": "skidder",
+      "class_slug": "skidder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_skidder_03",
+      "name": "Tigercat 635G",
+      "category": "skidder",
+      "category_display": "skidder",
+      "class_slug": "skidder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_skidder_04",
+      "name": "Komatsu 855",
+      "category": "skidder",
+      "category_display": "skidder",
+      "class_slug": "skidder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_skidder_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forwarder_01",
+      "name": "Ponsse Buffalo",
+      "category": "forwarder",
+      "category_display": "forwarder",
+      "class_slug": "forwarder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forwarder_02",
+      "name": "John Deere 1910G",
+      "category": "forwarder",
+      "category_display": "forwarder",
+      "class_slug": "forwarder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forwarder_03",
+      "name": "Komatsu 865",
+      "category": "forwarder",
+      "category_display": "forwarder",
+      "class_slug": "forwarder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_forwarder_04",
+      "name": "Rottne F14",
+      "category": "forwarder",
+      "category_display": "forwarder",
+      "class_slug": "forwarder",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_forwarder_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_knuckleboom_loader_01",
+      "name": "Hiab X-HiPro 232",
+      "category": "knuckleboom loader",
+      "category_display": "knuckleboom loader",
+      "class_slug": "knuckleboom_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_knuckleboom_loader_02",
+      "name": "Palfinger PK 16502",
+      "category": "knuckleboom loader",
+      "category_display": "knuckleboom loader",
+      "class_slug": "knuckleboom_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_knuckleboom_loader_03",
+      "name": "Fassi F365A",
+      "category": "knuckleboom loader",
+      "category_display": "knuckleboom loader",
+      "class_slug": "knuckleboom_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_knuckleboom_loader_04",
+      "name": "Effer 955",
+      "category": "knuckleboom loader",
+      "category_display": "knuckleboom loader",
+      "class_slug": "knuckleboom_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_knuckleboom_loader_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_towable_light_tower_01",
+      "name": "Atlas Copco HiLight V5+",
+      "category": "towable light tower",
+      "category_display": "towable light tower",
+      "class_slug": "towable_light_tower",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg",
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_towable_light_tower_02",
+      "name": "Generac MLT6S",
+      "category": "towable light tower",
+      "category_display": "towable light tower",
+      "class_slug": "towable_light_tower",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg",
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_towable_light_tower_03",
+      "name": "Wacker Neuson LTN6L",
+      "category": "towable light tower",
+      "category_display": "towable light tower",
+      "class_slug": "towable_light_tower",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg",
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_towable_light_tower_04",
+      "name": "Allmand Maxi-Lite",
+      "category": "towable light tower",
+      "category_display": "towable light tower",
+      "class_slug": "towable_light_tower",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg",
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_towable_light_tower_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_carry_deck_crane_01",
+      "name": "Shuttlelift CD7750",
+      "category": "carry deck crane",
+      "category_display": "carry deck crane",
+      "class_slug": "carry_deck_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_carry_deck_crane_02",
+      "name": "Broderson IC-200",
+      "category": "carry deck crane",
+      "category_display": "carry deck crane",
+      "class_slug": "carry_deck_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_carry_deck_crane_03",
+      "name": "Maeda MC285C-2",
+      "category": "carry deck crane",
+      "category_display": "carry deck crane",
+      "class_slug": "carry_deck_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_carry_deck_crane_04",
+      "name": "Carrydeck IC-80",
+      "category": "carry deck crane",
+      "category_display": "carry deck crane",
+      "class_slug": "carry_deck_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_carry_deck_crane_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_concrete_mixer_truck_01",
+      "name": "Schwing Stetter AM 8",
+      "category": "concrete mixer truck",
+      "category_display": "concrete mixer truck",
+      "class_slug": "concrete_mixer_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341129_press-13aug20-lowres.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_concrete_mixer_truck_02",
+      "name": "Tata Signa Mixer",
+      "category": "concrete mixer truck",
+      "category_display": "concrete mixer truck",
+      "class_slug": "concrete_mixer_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_concrete_mixer_truck_03",
+      "name": "Ashok Leyland U-3123",
+      "category": "concrete mixer truck",
+      "category_display": "concrete mixer truck",
+      "class_slug": "concrete_mixer_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942377195_press-13aug20-lowres.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_concrete_mixer_truck_04",
+      "name": "Mahindra Blazo X Mixer",
+      "category": "concrete mixer truck",
+      "category_display": "concrete mixer truck",
+      "class_slug": "concrete_mixer_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942377195_press-13aug20-lowres.jpg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341129_press-13aug20-lowres.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_mixer_truck_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drill_rig_01",
+      "name": "EPIROC SmartROC T40",
+      "category": "drill rig",
+      "category_display": "drill rig",
+      "class_slug": "drill_rig",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507412/retinacreative-piling-rig-4429049.jpg.jpg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drill_rig_02",
+      "name": "Sandvik DL421",
+      "category": "drill rig",
+      "category_display": "drill rig",
+      "class_slug": "drill_rig",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drill_rig_03",
+      "name": "Atlas Copco ROC L8",
+      "category": "drill rig",
+      "category_display": "drill rig",
+      "class_slug": "drill_rig",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507461/ds_30-equipment-4840223.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_drill_rig_04",
+      "name": "Casagrande C6",
+      "category": "drill rig",
+      "category_display": "drill rig",
+      "class_slug": "drill_rig",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507461/ds_30-equipment-4840223.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507412/retinacreative-piling-rig-4429049.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_drill_rig_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_dump_truck_01",
+      "name": "Tata Signa 3525.TK",
+      "category": "dump truck",
+      "category_display": "dump truck",
+      "class_slug": "dump_truck",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341129_press-13aug20-lowres.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dump_truck_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dump_truck_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_utility_vehicle_01",
+      "name": "Polaris Ranger XP 1000",
+      "category": "utility vehicle",
+      "category_display": "utility vehicle",
+      "class_slug": "utility_vehicle",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg",
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_utility_vehicle_02",
+      "name": "John Deere Gator XUV835M",
+      "category": "utility vehicle",
+      "category_display": "utility vehicle",
+      "class_slug": "utility_vehicle",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg",
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_utility_vehicle_03",
+      "name": "Kubota RTV-XG850",
+      "category": "utility vehicle",
+      "category_display": "utility vehicle",
+      "class_slug": "utility_vehicle",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg",
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_utility_vehicle_04",
+      "name": "Mahindra Roxor",
+      "category": "utility vehicle",
+      "category_display": "utility vehicle",
+      "class_slug": "utility_vehicle",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg",
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_utility_vehicle_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_truck_mounted_crane_01",
+      "name": "ACE F150",
+      "category": "truck mounted crane",
+      "category_display": "truck mounted crane",
+      "class_slug": "truck_mounted_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_truck_mounted_crane_02",
+      "name": "Sany STC500",
+      "category": "truck mounted crane",
+      "category_display": "truck mounted crane",
+      "class_slug": "truck_mounted_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_truck_mounted_crane_03",
+      "name": "Liebherr LTM 1050",
+      "category": "truck mounted crane",
+      "category_display": "truck mounted crane",
+      "class_slug": "truck_mounted_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_truck_mounted_crane_04",
+      "name": "XCMG QY25K",
+      "category": "truck mounted crane",
+      "category_display": "truck mounted crane",
+      "class_slug": "truck_mounted_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_truck_mounted_crane_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_walkie_stacker_01",
+      "name": "Toyota 8BWS10",
+      "category": "walkie stacker",
+      "category_display": "walkie stacker",
+      "class_slug": "walkie_stacker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg",
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_walkie_stacker_02",
+      "name": "Crown WS 2000",
+      "category": "walkie stacker",
+      "category_display": "walkie stacker",
+      "class_slug": "walkie_stacker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg",
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_walkie_stacker_03",
+      "name": "Raymond RSS 40",
+      "category": "walkie stacker",
+      "category_display": "walkie stacker",
+      "class_slug": "walkie_stacker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg",
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_walkie_stacker_04",
+      "name": "Hyster W40Z",
+      "category": "walkie stacker",
+      "category_display": "walkie stacker",
+      "class_slug": "walkie_stacker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/16105409/pexels-photo-16105409.jpeg",
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_walkie_stacker_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_tunnel_boring_machine_01",
+      "name": "Herrenknecht Mixshield S-786",
+      "category": "tunnel boring machine",
+      "category_display": "tunnel boring machine",
+      "class_slug": "tunnel_boring_machine",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_tunnel_boring_machine_02",
+      "name": "Robbins Crossover TBM",
+      "category": "tunnel boring machine",
+      "category_display": "tunnel boring machine",
+      "class_slug": "tunnel_boring_machine",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_tunnel_boring_machine_03",
+      "name": "Caterpillar TBM 6.5m",
+      "category": "tunnel boring machine",
+      "category_display": "tunnel boring machine",
+      "class_slug": "tunnel_boring_machine",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_tunnel_boring_machine_04",
+      "name": "Terratec EPB 6.6m",
+      "category": "tunnel boring machine",
+      "category_display": "tunnel boring machine",
+      "class_slug": "tunnel_boring_machine",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg",
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_tunnel_boring_machine_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_rock_breaker_01",
+      "name": "Atlas Copco HB 7000",
+      "category": "rock breaker",
+      "category_display": "rock breaker",
+      "class_slug": "rock_breaker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_rock_breaker_02",
+      "name": "Rammer G100",
+      "category": "rock breaker",
+      "category_display": "rock breaker",
+      "class_slug": "rock_breaker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_rock_breaker_03",
+      "name": "Montabert V2500",
+      "category": "rock breaker",
+      "category_display": "rock breaker",
+      "class_slug": "rock_breaker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507335/pexels-digger-1867268.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_rock_breaker_04",
+      "name": "NPK GH-10",
+      "category": "rock breaker",
+      "category_display": "rock breaker",
+      "class_slug": "rock_breaker",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg",
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_rock_breaker_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_concrete_pump_01",
+      "name": "Schwing Stetter S 36 X",
+      "category": "concrete pump",
+      "category_display": "concrete pump",
+      "class_slug": "concrete_pump",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_pump_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_concrete_pump_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_pipe_layer_01",
+      "name": "Caterpillar PL83",
+      "category": "pipe layer",
+      "category_display": "pipe layer",
+      "class_slug": "pipe_layer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_pipe_layer_02",
+      "name": "Caterpillar PL87",
+      "category": "pipe layer",
+      "category_display": "pipe layer",
+      "class_slug": "pipe_layer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_pipe_layer_03",
+      "name": "Komatsu D155CX-8",
+      "category": "pipe layer",
+      "category_display": "pipe layer",
+      "class_slug": "pipe_layer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_pipe_layer_04",
+      "name": "Liebherr RL 64",
+      "category": "pipe layer",
+      "category_display": "pipe layer",
+      "class_slug": "pipe_layer",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_pipe_layer_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_dragline_excavator_01",
+      "name": "Bucyrus 8750",
+      "category": "dragline excavator",
+      "category_display": "dragline excavator",
+      "class_slug": "dragline_excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_dragline_excavator_02",
+      "name": "Caterpillar 795F AC",
+      "category": "dragline excavator",
+      "category_display": "dragline excavator",
+      "class_slug": "dragline_excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_dragline_excavator_03",
+      "name": "Liebherr HS 8300",
+      "category": "dragline excavator",
+      "category_display": "dragline excavator",
+      "class_slug": "dragline_excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_dragline_excavator_04",
+      "name": "P&H 4100XPC",
+      "category": "dragline excavator",
+      "category_display": "dragline excavator",
+      "class_slug": "dragline_excavator",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg",
+        "https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_dragline_excavator_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_backhoe_loader_01",
+      "name": "JCB 3DX",
+      "category": "backhoe loader",
+      "category_display": "backhoe loader",
+      "class_slug": "backhoe_loader",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1099198/pexels-photo-1099198.jpeg",
+        "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_backhoe_loader_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_backhoe_loader_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_crawler_drill_01",
+      "name": "EPIROC AIR ROC D-35",
+      "category": "crawler drill",
+      "category_display": "crawler drill",
+      "class_slug": "crawler_drill",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507412/retinacreative-piling-rig-4429049.jpg.jpg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crawler_drill_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crawler_drill_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_crawler_drill_02",
+      "name": "Sandvik DX800",
+      "category": "crawler drill",
+      "category_display": "crawler drill",
+      "class_slug": "crawler_drill",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crawler_drill_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crawler_drill_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_air_compressor_01",
+      "name": "Atlas Copco XAS 185",
+      "category": "air compressor",
+      "category_display": "air compressor",
+      "class_slug": "air_compressor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg",
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_air_compressor_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_air_compressor_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_air_compressor_02",
+      "name": "Ingersoll Rand P185",
+      "category": "air compressor",
+      "category_display": "air compressor",
+      "class_slug": "air_compressor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg",
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_air_compressor_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_air_compressor_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_air_compressor_03",
+      "name": "Kaeser M57",
+      "category": "air compressor",
+      "category_display": "air compressor",
+      "class_slug": "air_compressor",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/122164/pexels-photo-122164.jpeg",
+        "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779943190787_air-compressor-support-truck-1702019936-7199582.webp"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_air_compressor_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_air_compressor_03\\01.webp"
+      ]
+    },
+    {
+      "machine_id": "seed_mobile_crusher_01",
+      "name": "Powerscreen Chieftain 1400",
+      "category": "mobile crusher",
+      "category_display": "mobile crusher",
+      "class_slug": "mobile_crusher",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507333/dimitrisvetsikas1969-heavy-machinery-6761291.jpg.jpg",
+        "https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_mobile_crusher_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_mobile_crusher_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_road_roller_01",
+      "name": "JCB VM 117",
+      "category": "road roller",
+      "category_display": "road roller",
+      "class_slug": "road_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg",
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_road_roller_02",
+      "name": "Bomag BW 161",
+      "category": "road roller",
+      "category_display": "road roller",
+      "class_slug": "road_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg",
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_road_roller_03",
+      "name": "Ammann ASC 70",
+      "category": "road roller",
+      "category_display": "road roller",
+      "class_slug": "road_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_road_roller_04",
+      "name": "CASE SV212D",
+      "category": "road roller",
+      "category_display": "road roller",
+      "class_slug": "road_roller",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507294/katerwursty-road-roller-6564386.jpg.jpg",
+        "https://images.pexels.com/photos/333848/pexels-photo-333848.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_road_roller_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_hydra_crane_01",
+      "name": "ACE FX 150",
+      "category": "hydra crane",
+      "category_display": "hydra crane",
+      "class_slug": "hydra_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_hydra_crane_02",
+      "name": "Escorts F17",
+      "category": "hydra crane",
+      "category_display": "hydra crane",
+      "class_slug": "hydra_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_hydra_crane_03",
+      "name": "BharatBenz 3528R",
+      "category": "hydra crane",
+      "category_display": "hydra crane",
+      "class_slug": "hydra_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_03\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_hydra_crane_04",
+      "name": "TIL TIL 4210",
+      "category": "hydra crane",
+      "category_display": "hydra crane",
+      "class_slug": "hydra_crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg",
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_04\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_hydra_crane_04\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_crane_01",
+      "name": "Liebherr LTM 1100",
+      "category": "crane",
+      "category_display": "crane",
+      "class_slug": "crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg",
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crane_01\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crane_01\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_crane_02",
+      "name": "Sany SCC8000A",
+      "category": "crane",
+      "category_display": "crane",
+      "class_slug": "crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/256424/pexels-photo-256424.jpeg",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crane_02\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crane_02\\01.jpg"
+      ]
+    },
+    {
+      "machine_id": "seed_crane_03",
+      "name": "Terex RT 555-1",
+      "category": "crane",
+      "category_display": "crane",
+      "class_slug": "crane",
+      "source": "training_seed",
+      "status": "active",
+      "visibility": "public",
+      "image_urls": [
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+        "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507411/dimitrisvetsikas1969-crane-1842747.jpg.jpg"
+      ],
+      "local_files": [
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crane_03\\00.jpg",
+        "C:\\Users\\DHRUV SAXENA\\HG INTERN PROJECTS\\infraforge-ai-backend\\datasets\\infraforge_yolo\\images\\seed_crane_03\\01.jpg"
+      ]
+    }
+  ]
+}

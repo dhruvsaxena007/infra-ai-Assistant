@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "updated": "2026-06-18",
+  "strategy": "equipment_training_catalog Wikimedia Commons + InfraForge S3 listing photos",
+  "sources": [
+    {
+      "id": "equipment_training_catalog",
+      "path": "data/equipment_training_catalog.py",
+      "license": "Wikimedia Commons (per-file license on commons.wikimedia.org)",
+      "usage": "category_representative images for all 44 equipment types"
+    },
+    {
+      "id": "verified_training_images",
+      "path": "data/verified_training_images.py",
+      "license": "Delegates to equipment_training_catalog + InfraForge S3 extras",
+      "usage": "category_representative fallback resolver"
+    },
+    {
+      "id": "infraforge_s3",
+      "license": "InfraForge marketplace product images",
+      "usage": "listing-specific when validated"
+    },
+    {
+      "id": "frontend_local",
+      "path": "public/machine-placeholders/default-machine.svg",
+      "license": "InfraForge branded SVG",
+      "usage": "client-side error fallback only"
+    }
+  ],
+  "notes": [
+    "Representative images are not claimed as exact listed machines",
+    "No random-image APIs (Picsum/Lorem Flickr)",
+    "Genuine user uploads preserved by migrate_machine_images.py"
+  ]
+}

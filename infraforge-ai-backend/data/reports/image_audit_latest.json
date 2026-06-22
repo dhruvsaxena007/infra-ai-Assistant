@@ -1,0 +1,188 @@
+{
+  "generated_at": "2026-06-22T10:29:17.467088+00:00",
+  "total_listings": 545,
+  "genuine_listings": 19,
+  "demo_listings": 526,
+  "listings_with_images": 545,
+  "missing_images": 0,
+  "broken_urls": 0,
+  "unrelated_images": 18,
+  "duplicate_urls": 31,
+  "unstable_remote_urls": 0,
+  "classification": {
+    "unrelated": 18,
+    "category_representative": 505,
+    "exact_listing": 22
+  },
+  "exact_model_images": 22,
+  "category_representative_images": 505,
+  "generic_fallback_images": 0,
+  "records_requiring_repair": 18,
+  "repair_by_category": {
+    "(none)": 18
+  },
+  "repair_samples": [
+    {
+      "id": "6a16b76582b06050df8abd07",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779873636771_Screenshot__1_.png",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69b9261c1db81df5dfd658a5",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507423/memorycatcher-truck-417149.jpg.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69e9990530b50d855b54af20",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776916739/productImages_1776916737311_grader_motor.png",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69fc31ad12fc53b5c05aa59d",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942341126_eb786e8ae7.png",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a17c71c4c62630319f33954",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779943190787_air-compressor-support-truck-1702019936-7199582.webp",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a18fde1fe43a1b0c302f2ed",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1780022752197_motor_grader_front.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69b924311db81df5dfd6583c",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507461/ds_30-equipment-4840223.jpg.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69c24c9f3571674bda133434",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507295/652234-excavator-1174428.jpg.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a17d15582b06050df8ac284",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779945808513_scaled_truck.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a181da782b06050df8ac470",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779965351513_Login.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69b933348e02c415a7499977",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1774507333/elsemargriet-excavator-5907586.jpg.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a0af13ba16053e42c30d7c7",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779942377195_press-13aug20-lowres.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69e8b0de9ac521a4d0cb3231",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776857305/productImages_1776857300227_652234-excavator-1174428.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a154c05ce818f893c71d0f6",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779780612094_motor_grader_front.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69e5c4e24855d9498d4bb32b",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776668118/productImages_1776668115510_ralphs_fotos-excavator-5556325.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69e8726be77fb01021df59ac",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1776841481/productImages_1776841477692_dimitrisvetsikas1969-heavy-machinery-6761291.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "69fdbf95e5e6293ca9f7dd8c",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://res.cloudinary.com/dzjzxbebz/image/upload/v1778243542/productImages_1778243538897_serial.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    },
+    {
+      "id": "6a168587e338973bf96271cf",
+      "name": null,
+      "category": "",
+      "classification": "unrelated",
+      "image_url": "https://infraforge-docs.s3.ap-south-1.amazonaws.com/dev/uploads/productImages/productImages_1779860870596_motor_grader_back.jpg",
+      "is_demo": false,
+      "is_genuine": true
+    }
+  ]
+}
