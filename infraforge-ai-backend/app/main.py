@@ -56,16 +56,19 @@ app = FastAPI(
 )
 
 # ---------------------------------------------------------------------------
-# CORS — localhost for dev; set CORS_ORIGINS on deploy (comma-separated URLs).
+# CORS — localhost for dev; CORS_ORIGINS + Vercel regex on Render deploy.
 # ---------------------------------------------------------------------------
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.cors_origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+_cors_options: dict = {
+    "allow_origins": settings.cors_origins,
+    "allow_credentials": True,
+    "allow_methods": ["*"],
+    "allow_headers": ["*"],
+}
+if settings.cors_origin_regex:
+    _cors_options["allow_origin_regex"] = settings.cors_origin_regex
+
+app.add_middleware(CORSMiddleware, **_cors_options)
 
 
 @app.middleware("http")

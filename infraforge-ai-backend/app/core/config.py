@@ -48,6 +48,7 @@ class Settings:
 
     # Comma-separated production frontend URLs for CORS (e.g. https://app.vercel.app).
     CORS_ORIGINS = (os.getenv("CORS_ORIGINS") or "").strip()
+    CORS_ORIGIN_REGEX = (os.getenv("CORS_ORIGIN_REGEX") or "").strip()
 
     UPLOAD_DIR = os.getenv("UPLOAD_DIR", "uploads")
     AUDIO_UPLOAD_DIR = os.getenv("AUDIO_UPLOAD_DIR", "uploads/audio")
@@ -140,6 +141,15 @@ class Settings:
 
     # When broad search exceeds this count, ask user to refine instead of dumping all.
     TOO_MANY_RESULTS_THRESHOLD = int(os.getenv("TOO_MANY_RESULTS_THRESHOLD", "20"))
+
+    @property
+    def cors_origin_regex(self) -> str | None:
+        """On Render, allow all Vercel preview/production URLs unless overridden."""
+        if self.CORS_ORIGIN_REGEX:
+            return self.CORS_ORIGIN_REGEX
+        if os.getenv("RENDER") == "true":
+            return r"https://.*\.vercel\.app"
+        return None
 
     @property
     def low_memory_deploy(self) -> bool:
