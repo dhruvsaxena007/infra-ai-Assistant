@@ -1,0 +1,8 @@
+# Optional ML extras — install ONLY on Python 3.11 or 3.12 (not 3.14).
+# Usage: pip install -r requirements-ml-extras.txt
+#
+# Enables: TensorFlow MobileNet image fallback + YOLO classifier training/inference.
+
+tensorflow
+ultralytics
+opencv-python

@@ -1,0 +1,13 @@
+{
+  "name": "infraforge-promptfoo",
+  "private": true,
+  "scripts": {
+    "generate": "cd .. && python scripts/generate_eval_cases.py",
+    "eval": "promptfoo eval -c promptfoo.yaml",
+    "eval:native": "cd .. && python scripts/run_assistant_eval.py",
+    "view": "promptfoo view"
+  },
+  "devDependencies": {
+    "promptfoo": "^0.103.0"
+  }
+}

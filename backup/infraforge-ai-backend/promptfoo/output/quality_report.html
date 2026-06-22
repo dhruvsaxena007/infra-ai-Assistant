@@ -1,0 +1,3106 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Response Analysis — InfraForge Assistant</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Segoe UI,system-ui,sans-serif;margin:0;background:#0a0a0f;color:#e8e8ec}
+.header{background:linear-gradient(135deg,#1a1030,#0f0f18);padding:24px 32px;border-bottom:1px solid #333}
+h1{margin:0;color:#c4b5fd;font-size:22px}
+.sub{color:#9ca3af;font-size:13px;margin-top:8px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.stat{background:#1a1a28;padding:12px 18px;border-radius:10px;border:1px solid #2d2d3d}
+.stat b{display:block;font-size:22px;color:#fff}
+.stat span{font-size:11px;color:#9ca3af}
+.note{margin:20px 32px;padding:14px 18px;background:#1a1528;border-left:4px solid #a78bfa;border-radius:0 8px 8px 0;font-size:13px}
+.section{padding:16px 32px}
+h2{color:#a78bfa;font-size:16px;margin:24px 0 12px}
+.filter input{width:100%;max-width:400px;padding:10px 14px;background:#1a1a22;border:1px solid #444;color:#fff;border-radius:8px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#151520;padding:10px 8px;text-align:left;position:sticky;top:0;z-index:2;border-bottom:2px solid #a78bfa}
+td{padding:10px 8px;border-bottom:1px solid #222;vertical-align:top}
+td.query{font-weight:600;color:#f0f0ff;min-width:140px;max-width:180px}
+td.expected{color:#a5b4fc;font-size:12px;max-width:200px}
+td.output{background:#12121c;color:#e2e8f0;font-size:13px;min-width:320px;max-width:480px;white-space:pre-wrap;word-break:break-word;line-height:1.5;border-left:3px solid #6366f1;padding-left:12px}
+td.analysis{font-size:12px;color:#94a3b8;max-width:200px}
+td.fix{font-size:11px;color:#fbbf24}
+.badge{padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;color:#000}
+.priority-card{background:#1a1a22;border:1px solid #333;border-radius:10px;padding:14px;margin:10px 0}
+.priority-card .o{background:#12121c;padding:10px;margin:8px 0;border-radius:6px;border-left:3px solid #6366f1;white-space:pre-wrap}
+.wrap{overflow-x:auto}
+</style>
+<script>
+function filterRows(q) {
+  q = q.toLowerCase();
+  document.querySelectorAll('#main tbody tr').forEach(tr => {
+    tr.style.display = tr.innerText.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+function filterVerdict(v) {
+  document.querySelectorAll('#main tbody tr').forEach(tr => {
+    const badge = tr.querySelector('.badge');
+    tr.style.display = (!v || (badge && badge.innerText === v)) ? '' : 'none';
+  });
+}
+</script>
+</head><body>
+<div class="header">
+  <h1>Response Analysis Report</h1>
+  <div class="sub">Har query ka ACTUAL output + kya relevant/logical hai — 2026-06-09T09:40:02</div>
+  <div class="stats">
+    <div class="stat"><b>208</b><span>queries tested</span></div>
+    <div class="stat"><b style="color:#34d399">206</b><span>RELEVANT</span></div>
+    <div class="stat"><b style="color:#fbbf24">2</b><span>PARTIAL</span></div>
+    <div class="stat"><b style="color:#f87171">0</b><span>NEEDS FIX / WRONG</span></div>
+    <div class="stat"><b>94.0%</b><span>avg match score</span></div>
+  </div>
+</div>
+
+<div class="note">
+  <b>Yeh report kya dikhati hai:</b> Pehle wali report sirf PASS/FAIL thi. 
+  <b>Is report mein har row mein poora assistant reply dikhega</b> (OUTPUT column). 
+  <b>VERDICT</b> = query ke liye response relevant hai ya nahi. 
+  <b>LOGICAL</b> = backend ne sahi type ka jawab diya ya nahi. 
+  <b>FIX column</b> = kahan optimize karna hai.
+</div>
+
+<div class="section">
+  <h2>🔴 Priority — galat ya incomplete responses (optimize these first)</h2>
+  
+        <div class="priority-card">
+          <div class="q"><b>Query:</b> मेरा बजट 10,000 है</div>
+          <div class="e"><b>Should:</b> Logical, relevant reply matching user intent</div>
+          <div class="o"><b>Got:</b> क्षमा करें, आपके अनुरोध से मेल खाती कोई मशीन नहीं मिली। excavator, JCB, crane जैसी कोई श्रेणी या दूसरा शहर/बजट आज़माएँ।</div>
+          <div class="v" style="color:#fbbf24"><b>PARTIAL</b> — Mostly OK but missing detail in reply text</div>
+          <div class="a">Wording could better reflect parsed intent.</div>
+        </div>
+        <div class="priority-card">
+          <div class="q"><b>Query:</b> mining project ke liye machine?</div>
+          <div class="e"><b>Should:</b> Logical, relevant reply matching user intent</div>
+          <div class="o"><b>Got:</b> Road / construction project kis type ka hai? Choose one:
+1. Highway
+2. Urban road
+3. Earthwork
+4. Compaction
+5. Concrete road
+6. Material transport
+7. Lifting / crane work</div>
+          <div class="v" style="color:#fbbf24"><b>PARTIAL</b> — Mostly OK but missing detail in reply text</div>
+          <div class="a">Wording could better reflect parsed intent.</div>
+        </div>
+</div>
+
+<div class="section">
+  <h2>📋 Full catalog — har query ka output</h2>
+  <div class="filter">
+    <input placeholder="Search query ya output text…" oninput="filterRows(this.value)">
+    <button onclick="filterVerdict('')" style="margin-left:8px;padding:8px 12px;cursor:pointer">All</button>
+    <button onclick="filterVerdict('RELEVANT')" style="padding:8px 12px;cursor:pointer;background:#34d399;border:none;border-radius:6px">Relevant</button>
+    <button onclick="filterVerdict('PARTIAL')" style="padding:8px 12px;cursor:pointer;background:#fbbf24;border:none;border-radius:6px">Partial</button>
+    <button onclick="filterVerdict('NEEDS_FIX')" style="padding:8px 12px;cursor:pointer;background:#f87171;border:none;border-radius:6px">Needs Fix</button>
+    <button onclick="filterVerdict('WRONG')" style="padding:8px 12px;cursor:pointer;background:#ef4444;border:none;border-radius:6px;color:#fff">Wrong</button>
+  </div>
+  <div class="wrap">
+  <table id="main">
+    <thead><tr>
+      <th>#</th>
+      <th>USER QUERY</th>
+      <th>WHAT SHOULD HAPPEN</th>
+      <th>ACTUAL OUTPUT (poora reply)</th>
+      <th>Machines</th>
+      <th>VERDICT</th>
+      <th>LOGICAL?</th>
+      <th>ANALYSIS</th>
+      <th>SCORE</th>
+      <th>OPTIMIZE</th>
+    </tr></thead>
+    <tbody>
+        <tr style="background:#1a2218">
+          <td>1</td>
+          <td class="query">hi</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>2</td>
+          <td class="query">hello</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>91%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>3</td>
+          <td class="query">hey</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>4</td>
+          <td class="query">good morning</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>5</td>
+          <td class="query">namaste</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>6</td>
+          <td class="query">hello there</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>91%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>7</td>
+          <td class="query">hii</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>8</td>
+          <td class="query">helo</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>9</td>
+          <td class="query">hi there</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>10</td>
+          <td class="query">good evening</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>11</td>
+          <td class="query">hey there</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>12</td>
+          <td class="query">hola</td>
+          <td class="expected">Welcome user and ask machine type + city (no machine list)</td>
+          <td class="output">Hello! How can I help? Tell me the machine type and city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Welcome user and ask machine type + city (no machine list)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>13</td>
+          <td class="query">excavator in delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>14</td>
+          <td class="query">excavator in jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>15</td>
+          <td class="query">excavator in mumbai</td>
+          <td class="expected">Show relevant excavator machines in Mumbai with prices/details</td>
+          <td class="output">No exact Excavator found in Mumbai. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>16</td>
+          <td class="query">excavator in pune</td>
+          <td class="expected">Show relevant excavator machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Excavator in Pune:
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Komatsu PC210 (excavator) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Komatsu PC210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>17</td>
+          <td class="query">excavator in bangalore</td>
+          <td class="expected">Show relevant excavator machines in Bangalore with prices/details</td>
+          <td class="output">No exact Excavator found in Bangalore. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Bangalore with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>18</td>
+          <td class="query">excavator in chennai</td>
+          <td class="expected">Show relevant excavator machines in Chennai with prices/details</td>
+          <td class="output">Here is 1 Excavator in Chennai:
+
+1. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+Best match: Hyundai R210 (excavator) in Chennai — ₹12,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Hyundai R210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Hyundai R210 · Expected: Show relevant excavator machines in Chennai with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>19</td>
+          <td class="query">excavator in hyderabad</td>
+          <td class="expected">Show relevant excavator machines in Hyderabad with prices/details</td>
+          <td class="output">No exact Excavator found in Hyderabad. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Hyderabad with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>20</td>
+          <td class="query">excavator in kolkata</td>
+          <td class="expected">Show relevant excavator machines in Kolkata with prices/details</td>
+          <td class="output">No exact Excavator found in Kolkata. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Kolkata with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>21</td>
+          <td class="query">excavator in ahmedabad</td>
+          <td class="expected">Show relevant excavator machines in Ahmedabad with prices/details</td>
+          <td class="output">No exact Excavator found in Ahmedabad. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Ahmedabad with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>22</td>
+          <td class="query">crane in jaipur</td>
+          <td class="expected">Show relevant crane machines in Jaipur with prices/details</td>
+          <td class="output">No exact Crane found in Jaipur. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>23</td>
+          <td class="query">crane in delhi</td>
+          <td class="expected">Show relevant crane machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Crane in Delhi:
+
+1. Liebherr LTM 1100 (crane), Liebherr LTM 1100, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Liebherr LTM 1100 (crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Liebherr LTM 1100</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Liebherr LTM 1100 · Expected: Show relevant crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>24</td>
+          <td class="query">crane in mumbai</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>25</td>
+          <td class="query">hydra crane in delhi</td>
+          <td class="expected">Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Hydra Crane in Delhi:
+
+1. ACE FX 150 (hydra crane), ACE FX 150, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: ACE FX 150 (hydra crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: ACE FX 150</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): ACE FX 150 · Expected: Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>26</td>
+          <td class="query">hydra crane in jaipur</td>
+          <td class="expected">Show relevant hydra crane machines in Jaipur with prices/details</td>
+          <td class="output">No exact Hydra Crane found in Jaipur. Similar categories: Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant hydra crane machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>27</td>
+          <td class="query">road roller in jaipur</td>
+          <td class="expected">Show relevant road roller machines in Jaipur with prices/details</td>
+          <td class="output">No exact Road Roller found in Jaipur. No Road Roller in Jaipur. Showing similar machines available in Jaipur.
+
+1. CATERPILLAR 120K2 Heavy Duty (MOTOR GRADER), CATERPILLAR 120K2, — Jaipur, ₹500/hourly, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Road Roller. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: CATERPILLAR 120K2 Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): CATERPILLAR 120K2 Heavy Duty · Expected: Show relevant road roller machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>28</td>
+          <td class="query">road roller in pune</td>
+          <td class="expected">Show relevant road roller machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Road Roller in Pune:
+
+1. Bomag BW 161 (road roller), Bomag BW 161, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Bomag BW 161 (road roller) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Bomag BW 161</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Bomag BW 161 · Expected: Show relevant road roller machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>29</td>
+          <td class="query">road roller in delhi</td>
+          <td class="expected">Show relevant road roller machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Road Roller in Delhi:
+
+1. JCB VM 117 (road roller), JCB VM 117, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: JCB VM 117 (road roller) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: JCB VM 117</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB VM 117 · Expected: Show relevant road roller machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>30</td>
+          <td class="query">crawler drill in jaipur</td>
+          <td class="expected">Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td class="output">Here is 1 Crawler Drill in Jaipur:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+Best match: EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL) in Jaipur — ₹400/daily, available, used 2022, rating not available. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>31</td>
+          <td class="query">crawler drill in delhi</td>
+          <td class="expected">Show relevant crawler drill machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Crawler Drill in Delhi:
+
+1. EPIROC AIR ROC D-35 (crawler drill), EPIROC AIR ROC D-35, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: EPIROC AIR ROC D-35 (crawler drill) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35 · Expected: Show relevant crawler drill machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>32</td>
+          <td class="query">dump truck in mumbai</td>
+          <td class="expected">Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td class="output">No exact Dump Truck found in Mumbai. Similar categories: Tipper, Articulated Hauler. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>33</td>
+          <td class="query">dump truck in delhi</td>
+          <td class="expected">Show relevant dump truck machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Dump Truck in Delhi:
+
+1. Tata Signa 3525.TK (dump truck), Tata Signa 3525.TK, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Tata Signa 3525.TK (dump truck) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Tata Signa 3525.TK</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Tata Signa 3525.TK · Expected: Show relevant dump truck machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>34</td>
+          <td class="query">bulldozer in jaipur</td>
+          <td class="expected">Show relevant bulldozer machines in Jaipur with prices/details</td>
+          <td class="output">No exact Bulldozer found in Jaipur. No Bulldozer in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Bulldozer. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: JCB 432 ZX Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB 432 ZX Heavy Duty · Expected: Show relevant bulldozer machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>35</td>
+          <td class="query">wheel loader in delhi</td>
+          <td class="expected">Show relevant wheel loader machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Wheel Loader in Delhi:
+
+1. Caterpillar 950 GC (wheel loader), Caterpillar 950 GC, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 950 GC (wheel loader) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 950 GC</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 950 GC · Expected: Show relevant wheel loader machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>36</td>
+          <td class="query">concrete mixer in mumbai</td>
+          <td class="expected">Show relevant concrete mixer machines in Mumbai with prices/details</td>
+          <td class="output">No exact Concrete Mixer found in Mumbai. Similar categories: Concrete Mixer Truck, Concrete Pump. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant concrete mixer machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>37</td>
+          <td class="query">grader in jaipur</td>
+          <td class="expected">Show relevant motor grader machines in Jaipur with prices/details</td>
+          <td class="output">Here is 1 Motor Grader in Jaipur:
+
+1. CATERPILLAR 120K2 Heavy Duty (MOTOR GRADER), CATERPILLAR 120K2, — Jaipur, ₹500/hourly, available, used 2017, rating not available
+Best match: CATERPILLAR 120K2 Heavy Duty (MOTOR GRADER) in Jaipur — ₹500/hourly, available, used 2017, rating not available. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: CATERPILLAR 120K2 Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): CATERPILLAR 120K2 Heavy Duty · Expected: Show relevant motor grader machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>38</td>
+          <td class="query">jcb in jaipur</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>39</td>
+          <td class="query">JCB in Jaipur under 8000</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. Similar categories: Excavator, Wheel Loader, Compact Loader. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>40</td>
+          <td class="query">jcb in delhi</td>
+          <td class="expected">Show relevant backhoe loader machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 JCB / Backhoe Loader in Delhi:
+
+1. JCB 3DX (backhoe loader), JCB 3DX, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: JCB 3DX (backhoe loader) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Note: JCB / backhoe loader is not an excavator — compare loader class only. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: JCB 3DX</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB 3DX · Expected: Show relevant backhoe loader machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>41</td>
+          <td class="query">jcb 3dx in jaipur</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>42</td>
+          <td class="query">backhoe loader in jaipur</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>43</td>
+          <td class="query">CAT excavator Mumbai</td>
+          <td class="expected">Show relevant excavator machines in Mumbai with prices/details</td>
+          <td class="output">No exact Excavator found in Mumbai. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>44</td>
+          <td class="query">komatsu excavator delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">No Komatsu Excavator in Delhi. Showing other Excavator options in Delhi.
+
+Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>45</td>
+          <td class="query">volvo excavator pune</td>
+          <td class="expected">Show relevant excavator machines in Pune with prices/details</td>
+          <td class="output">No Volvo Excavator in Pune. Showing other Excavator options in Pune.
+
+Here is 1 Excavator in Pune:
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Komatsu PC210 (excavator) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Komatsu PC210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>46</td>
+          <td class="query">terex crane mumbai</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>47</td>
+          <td class="query">poclain in delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>48</td>
+          <td class="query">poclain in jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>49</td>
+          <td class="query">mobile crusher in delhi</td>
+          <td class="expected">Show relevant mobile crusher machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Mobile Crusher in Delhi:
+
+1. Powerscreen Chieftain 1400 (mobile crusher), Powerscreen Chieftain 1400, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Powerscreen Chieftain 1400 (mobile crusher) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Powerscreen Chieftain 1400</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Powerscreen Chieftain 1400 · Expected: Show relevant mobile crusher machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>50</td>
+          <td class="query">feller buncher in delhi</td>
+          <td class="expected">Show relevant feller buncher machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Feller Buncher in Delhi:
+
+1. Tigercat 845 (feller buncher), Tigercat 845, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Tigercat 845 (feller buncher) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Tigercat 845</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Tigercat 845 · Expected: Show relevant feller buncher machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>51</td>
+          <td class="query">excavator in jaipur under 8000</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>52</td>
+          <td class="query">crane in jaipur under 15000</td>
+          <td class="expected">Show relevant crane machines in Jaipur with prices/details</td>
+          <td class="output">No exact Crane found in Jaipur. Similar categories: Hydra Crane, Truck Mounted Crane. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Jaipur with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>53</td>
+          <td class="query">rent excavator in delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>54</td>
+          <td class="query">buy jcb in jaipur</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. Similar categories: Excavator, Wheel Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>55</td>
+          <td class="query">used excavator in mumbai</td>
+          <td class="expected">Show relevant excavator machines in Mumbai with prices/details</td>
+          <td class="output">No exact Excavator found in Mumbai. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>56</td>
+          <td class="query">new crane in delhi</td>
+          <td class="expected">Show relevant crane machines in Delhi with prices/details</td>
+          <td class="output">No new Crane in Delhi. Showing available Crane in Delhi.
+
+Here is 1 Crane in Delhi:
+
+1. Liebherr LTM 1100 (crane), Liebherr LTM 1100, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Liebherr LTM 1100 (crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Liebherr LTM 1100</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Liebherr LTM 1100 · Expected: Show relevant crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>57</td>
+          <td class="query">excavator for rent in pune</td>
+          <td class="expected">Show relevant excavator machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Excavator in Pune:
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Komatsu PC210 (excavator) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Komatsu PC210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>58</td>
+          <td class="query">dumper in jaipur</td>
+          <td class="expected">Show relevant dump truck machines in Jaipur with prices/details</td>
+          <td class="output">No exact Dump Truck found in Jaipur. No Dump Truck in Jaipur. Showing similar machines available in Jaipur.
+
+1. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+2. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+3. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Dump Truck. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic, JCB 432 ZX Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumati · Expected: Show relevant dump truck machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>59</td>
+          <td class="query">tipper in delhi</td>
+          <td class="expected">Show relevant dump truck machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Dump Truck in Delhi:
+
+1. Tata Signa 3525.TK (dump truck), Tata Signa 3525.TK, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Tata Signa 3525.TK (dump truck) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Tata Signa 3525.TK</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Tata Signa 3525.TK · Expected: Show relevant dump truck machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>60</td>
+          <td class="query">roller in jaipur</td>
+          <td class="expected">Show relevant road roller machines in Jaipur with prices/details</td>
+          <td class="output">No exact Road Roller found in Jaipur. No Road Roller in Jaipur. Showing similar machines available in Jaipur.
+
+1. CATERPILLAR 120K2 Heavy Duty (MOTOR GRADER), CATERPILLAR 120K2, — Jaipur, ₹500/hourly, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Road Roller. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: CATERPILLAR 120K2 Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): CATERPILLAR 120K2 Heavy Duty · Expected: Show relevant road roller machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>61</td>
+          <td class="query">dozer in delhi</td>
+          <td class="expected">Show relevant bulldozer machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Bulldozer in Delhi:
+
+1. Caterpillar D6 (bulldozer), Caterpillar D6, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar D6 (bulldozer) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar D6</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar D6 · Expected: Show relevant bulldozer machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>62</td>
+          <td class="query">loader in mumbai</td>
+          <td class="expected">Show relevant wheel loader machines in Mumbai with prices/details</td>
+          <td class="output">No exact Wheel Loader found in Mumbai. Similar categories: JCB / Backhoe Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant wheel loader machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>63</td>
+          <td class="query">mixer in jaipur</td>
+          <td class="expected">Show relevant concrete mixer machines in Jaipur with prices/details</td>
+          <td class="output">No exact Concrete Mixer found in Jaipur. No Concrete Mixer in Jaipur. Showing similar machines available in Jaipur.
+
+1. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Concrete Mixer. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: SCHWING STETTER BP 350 DXT Trailer Mounted</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): SCHWING STETTER BP 350 DXT Trailer Mounted · Expected: Show relevant concrete mixer machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>64</td>
+          <td class="query">drill in jaipur</td>
+          <td class="expected">Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td class="output">Here is 1 Crawler Drill in Jaipur:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+Best match: EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL) in Jaipur — ₹400/daily, available, used 2022, rating not available. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>65</td>
+          <td class="query">excavator jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>66</td>
+          <td class="query">jaipur me excavator</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>67</td>
+          <td class="query">delhi me crane chahiye</td>
+          <td class="expected">Show relevant crane machines in Delhi with prices/details</td>
+          <td class="output">Yahan Delhi me 1 Crane hai:
+
+1. Liebherr LTM 1100 (crane), Liebherr LTM 1100, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Liebherr LTM 1100 (crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Liebherr LTM 1100</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Liebherr LTM 1100 · Expected: Show relevant crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>68</td>
+          <td class="query">excvator in jaipir</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>69</td>
+          <td class="query">hydra crne in delih</td>
+          <td class="expected">Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Hydra Crane in Delhi:
+
+1. ACE FX 150 (hydra crane), ACE FX 150, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: ACE FX 150 (hydra crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: ACE FX 150</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): ACE FX 150 · Expected: Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>70</td>
+          <td class="query">road rolar in pune</td>
+          <td class="expected">Show relevant road roller machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Road Roller in Pune:
+
+1. Bomag BW 161 (road roller), Bomag BW 161, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Bomag BW 161 (road roller) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Bomag BW 161</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Bomag BW 161 · Expected: Show relevant road roller machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>71</td>
+          <td class="query">jcb chahiy</td>
+          <td class="expected">Search or ask city for backhoe loader</td>
+          <td class="output">JCB / Backhoe Loader kis city me chahiye? Aap budget aur rent/buy preference bhi bata sakte hain.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Search or ask city for backhoe loader</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>72</td>
+          <td class="query">dump truk mumbai</td>
+          <td class="expected">Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td class="output">No exact Dump Truck found in Mumbai. Similar categories: Tipper, Articulated Hauler. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>73</td>
+          <td class="query">crawlar dril jaipur</td>
+          <td class="expected">Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td class="output">Here is 1 Crawler Drill in Jaipur:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+Best match: EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL) in Jaipur — ₹400/daily, available, used 2022, rating not available. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>74</td>
+          <td class="query">exavator delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>75</td>
+          <td class="query">excavater in jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>76</td>
+          <td class="query">crain in mumbai</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>77</td>
+          <td class="query">buldozer jaipur</td>
+          <td class="expected">Show relevant bulldozer machines in Jaipur with prices/details</td>
+          <td class="output">No exact Bulldozer found in Jaipur. No Bulldozer in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Bulldozer. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: JCB 432 ZX Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB 432 ZX Heavy Duty · Expected: Show relevant bulldozer machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>78</td>
+          <td class="query">roler in delhi</td>
+          <td class="expected">Show relevant road roller machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Road Roller in Delhi:
+
+1. JCB VM 117 (road roller), JCB VM 117, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: JCB VM 117 (road roller) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: JCB VM 117</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB VM 117 · Expected: Show relevant road roller machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>79</td>
+          <td class="query">jcb in jaiur</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>80</td>
+          <td class="query">poclain in jaiur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>81</td>
+          <td class="query">excavator in nodia</td>
+          <td class="expected">Show relevant excavator machines in Noida with prices/details</td>
+          <td class="output">No exact Excavator found in Noida. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Noida with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>82</td>
+          <td class="query">crane in banglore</td>
+          <td class="expected">Show relevant crane machines in Bangalore with prices/details</td>
+          <td class="output">No exact Crane found in Bangalore. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Bangalore with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>83</td>
+          <td class="query">hydra crane in dilli</td>
+          <td class="expected">Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Hydra Crane in Delhi:
+
+1. ACE FX 150 (hydra crane), ACE FX 150, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: ACE FX 150 (hydra crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: ACE FX 150</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): ACE FX 150 · Expected: Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>84</td>
+          <td class="query">mujhe Crawlre Dril chaiye</td>
+          <td class="expected">Search or ask city for crawler drill</td>
+          <td class="output">Crawler Drill kis city me chahiye? Aap budget aur rent/buy preference bhi bata sakte hain.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Search or ask city for crawler drill</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>85</td>
+          <td class="query">excavtor mumbai</td>
+          <td class="expected">Show relevant excavator machines in Mumbai with prices/details</td>
+          <td class="output">No exact Excavator found in Mumbai. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>86</td>
+          <td class="query">dumper in mumabi</td>
+          <td class="expected">Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td class="output">No exact Dump Truck found in Mumbai. Similar categories: Tipper, Articulated Hauler. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>87</td>
+          <td class="query">grader in ahmdabad</td>
+          <td class="expected">Show relevant motor grader machines in Ahmedabad with prices/details</td>
+          <td class="output">No exact Motor Grader found in Ahmedabad. Similar categories: Road Roller, Compactor. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant motor grader machines in Ahmedabad with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>88</td>
+          <td class="query">mixer in chenai</td>
+          <td class="expected">Show relevant concrete mixer machines in Chennai with prices/details</td>
+          <td class="output">No exact Concrete Mixer found in Chennai. No Concrete Mixer in Chennai. Showing similar machines available in Chennai.
+
+1. Mahindra Blazo X Mixer (concrete mixer truck), Mahindra Blazo X Mixer, — Chennai, ₹12,000/day, available, rating 4.0/5
+2. Zoomlion HBT60 (concrete pump), Zoomlion HBT60, — Chennai, ₹12,000/day, available, rating 4.0/5
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Concrete Mixer. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>2 found: Mahindra Blazo X Mixer, Zoomlion HBT60</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 2 machine(s): Mahindra Blazo X Mixer, Zoomlion HBT60 · Expected: Show relevant concrete mixer machines in Chennai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>89</td>
+          <td class="query">loader in hydrabad</td>
+          <td class="expected">Show relevant wheel loader machines in Hyderabad with prices/details</td>
+          <td class="output">No exact Wheel Loader found in Hyderabad. Similar categories: JCB / Backhoe Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant wheel loader machines in Hyderabad with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>90</td>
+          <td class="query">excavator in kolkatta</td>
+          <td class="expected">Show relevant excavator machines in Kolkata with prices/details</td>
+          <td class="output">No exact Excavator found in Kolkata. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Kolkata with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>91</td>
+          <td class="query">crane in puna</td>
+          <td class="expected">Show relevant crane machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Crane in Pune:
+
+1. Sany SCC8000A (crane), Sany SCC8000A, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Sany SCC8000A (crane) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Sany SCC8000A</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Sany SCC8000A · Expected: Show relevant crane machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>92</td>
+          <td class="query">jcb in ahemdabad</td>
+          <td class="expected">Show relevant backhoe loader machines in Ahmedabad with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Ahmedabad. Similar categories: Excavator, Wheel Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant backhoe loader machines in Ahmedabad with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>93</td>
+          <td class="query">road roller in japur</td>
+          <td class="expected">Show relevant road roller machines in Jaipur with prices/details</td>
+          <td class="output">No exact Road Roller found in Jaipur. No Road Roller in Jaipur. Showing similar machines available in Jaipur.
+
+1. CATERPILLAR 120K2 Heavy Duty (MOTOR GRADER), CATERPILLAR 120K2, — Jaipur, ₹500/hourly, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Road Roller. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: CATERPILLAR 120K2 Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): CATERPILLAR 120K2 Heavy Duty · Expected: Show relevant road roller machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>94</td>
+          <td class="query">drill in jaypur</td>
+          <td class="expected">Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td class="output">Here is 1 Crawler Drill in Jaipur:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+Best match: EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL) in Jaipur — ₹400/daily, available, used 2022, rating not available. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>95</td>
+          <td class="query">nodia</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">No machine listings are available in Noida right now. Try another city or tell me which machine you need.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Logical, relevant reply matching user intent</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>96</td>
+          <td class="query">mujhe jaipur ke andar excavator chahiye</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>97</td>
+          <td class="query">mujhe jaipur ke andar jcb chahiye</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>98</td>
+          <td class="query">mujhe delhi me crane chahiye</td>
+          <td class="expected">Show relevant crane machines in Delhi with prices/details</td>
+          <td class="output">Yahan Delhi me 1 Crane hai:
+
+1. Liebherr LTM 1100 (crane), Liebherr LTM 1100, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Liebherr LTM 1100 (crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Liebherr LTM 1100</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Liebherr LTM 1100 · Expected: Show relevant crane machines in Delhi with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>99</td>
+          <td class="query">mujhe pune me road roller chahiye</td>
+          <td class="expected">Show relevant road roller machines in Pune with prices/details</td>
+          <td class="output">Yahan Pune me 1 Road Roller hai:
+
+1. Bomag BW 161 (road roller), Bomag BW 161, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Bomag BW 161 (road roller) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Bomag BW 161</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Bomag BW 161 · Expected: Show relevant road roller machines in Pune with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>100</td>
+          <td class="query">mujhe mumbai me dump truck chahiye</td>
+          <td class="expected">Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td class="output">No exact Dump Truck found in Mumbai. Similar categories: Tipper, Articulated Hauler. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant dump truck machines in Mumbai with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>101</td>
+          <td class="query">मुझे जयपुर में एक मशीन चाहिए</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Jaipur में ये मशीनें उपलब्ध हैं। आपको कौन सी चाहिए?
+Asphalt Paver, Concrete Pump, Crawler Drill, Mobile Crusher, Motor Grader, Wheel Loader</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Logical, relevant reply matching user intent</td>
+          <td>98%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>102</td>
+          <td class="query">मुझे दिल्ली में एक्सकेवेटर चाहिए</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">यहाँ Delhi में 1 Excavator है:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>103</td>
+          <td class="query">मुझे जयपुर में जेसीबी चाहिए</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+ये विकल्प हैं, आपके अनुरोध से सटीक मेल नहीं।
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>104</td>
+          <td class="query">i want a machine in jaipur</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Jaipur has these machines available. Which one do you need?
+Asphalt Paver, Concrete Pump, Crawler Drill, Mobile Crusher, Motor Grader, Wheel Loader</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Logical, relevant reply matching user intent</td>
+          <td>98%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>105</td>
+          <td class="query">mujhe sasta excavator chahiye jaipur me</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>106</td>
+          <td class="query">mujhe jaipur me excavator chahiye</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>107</td>
+          <td class="query">excavator chahiye delhi me</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Yahan Delhi me 1 Excavator hai:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>108</td>
+          <td class="query">jcb chaiye jaipur</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. No JCB / Backhoe Loader in Jaipur. Showing similar machines available in Jaipur.
+
+1. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+2. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+3. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested JCB / Backhoe Loader. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): JCB 432 ZX Heavy Duty, SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR RO · Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>109</td>
+          <td class="query">crane chaiye mumbai</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>110</td>
+          <td class="query">road roller chaiye</td>
+          <td class="expected">Ask which CITY for road roller (do not guess city)</td>
+          <td class="output">Road Roller kis city me chahiye? Aap budget aur rent/buy preference bhi bata sakte hain.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for road roller (do not guess city)</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>111</td>
+          <td class="query">mujhe bulldozer chahiye delhi me</td>
+          <td class="expected">Show relevant bulldozer machines in Delhi with prices/details</td>
+          <td class="output">Yahan Delhi me 1 Bulldozer hai:
+
+1. Caterpillar D6 (bulldozer), Caterpillar D6, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar D6 (bulldozer) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar D6</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar D6 · Expected: Show relevant bulldozer machines in Delhi with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>112</td>
+          <td class="query">kya jaipur me excavator available hai</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>113</td>
+          <td class="query">delhi me koi crane hai kya</td>
+          <td class="expected">Show relevant crane machines in Delhi with prices/details</td>
+          <td class="output">Yahan Delhi me 1 Crane hai:
+
+1. Liebherr LTM 1100 (crane), Liebherr LTM 1100, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Liebherr LTM 1100 (crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Liebherr LTM 1100</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Liebherr LTM 1100 · Expected: Show relevant crane machines in Delhi with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#221f14">
+          <td>114</td>
+          <td class="query">मेरा बजट 10,000 है</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">क्षमा करें, आपके अनुरोध से मेल खाती कोई मशीन नहीं मिली। excavator, JCB, crane जैसी कोई श्रेणी या दूसरा शहर/बजट आज़माएँ।</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#fbbf24">PARTIAL</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Wording could better reflect parsed intent.</td>
+          <td>87%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>115</td>
+          <td class="query">mujhe 8000 ke andar excavator chahiye jaipur me</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>116</td>
+          <td class="query">rent pe excavator chahiye delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Yahan Delhi me 1 Excavator hai:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>117</td>
+          <td class="query">khareedna hai jcb jaipur me</td>
+          <td class="expected">Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Jaipur. Similar categories: Excavator, Wheel Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant backhoe loader machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>118</td>
+          <td class="query">मुझे मुंबई में क्रेन चाहिए</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>119</td>
+          <td class="query">mujhe hyderabad me loader chahiye</td>
+          <td class="expected">Show relevant wheel loader machines in Hyderabad with prices/details</td>
+          <td class="output">No exact Wheel Loader found in Hyderabad. Similar categories: JCB / Backhoe Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant wheel loader machines in Hyderabad with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>120</td>
+          <td class="query">pune me mixer chahiye</td>
+          <td class="expected">Show relevant concrete mixer machines in Pune with prices/details</td>
+          <td class="output">No exact Concrete Mixer found in Pune. No Concrete Mixer in Pune. Showing similar machines available in Pune.
+
+1. Tata Signa Mixer (concrete mixer truck), Tata Signa Mixer, — Pune, ₹24,000/day, available, rating 4.0/5
+2. Putzmeister M 36-4 (concrete pump), Putzmeister M 36-4, — Pune, ₹24,000/day, available, rating 4.0/5
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Concrete Mixer. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>2 found: Tata Signa Mixer, Putzmeister M 36-4</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 2 machine(s): Tata Signa Mixer, Putzmeister M 36-4 · Expected: Show relevant concrete mixer machines in Pune with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>121</td>
+          <td class="query">jaipur</td>
+          <td class="expected">Ask which MACHINE TYPE in Jaipur</td>
+          <td class="output">Jaipur has these machines available. Which one do you need?
+Asphalt Paver, Concrete Pump, Crawler Drill, Mobile Crusher, Motor Grader, Wheel Loader</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which MACHINE TYPE in Jaipur</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>122</td>
+          <td class="query">delhi</td>
+          <td class="expected">Ask missing detail (city or machine type) before searching</td>
+          <td class="output">Delhi has these machines available. Which one do you need?
+Air Compressor, Articulated Hauler, Asphalt Paver, JCB / Backhoe Loader, Boom Lift, Bulldozer, Carry Deck Crane, Cold Planer, Compact Loader, Compact Track Loader (+34 more)</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask missing detail (city or machine type) before searching</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>123</td>
+          <td class="query">mumbai</td>
+          <td class="expected">Ask which MACHINE TYPE in Mumbai</td>
+          <td class="output">No machine listings are available in Mumbai right now. Try another city or tell me which machine you need.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which MACHINE TYPE in Mumbai</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>124</td>
+          <td class="query">pune</td>
+          <td class="expected">Ask which MACHINE TYPE in Pune</td>
+          <td class="output">Pune has these machines available. Which one do you need?
+Air Compressor, Articulated Hauler, Asphalt Paver, JCB / Backhoe Loader, Boom Lift, Bulldozer, Carry Deck Crane, Cold Planer, Compact Loader, Compact Track Loader (+34 more)</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which MACHINE TYPE in Pune</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>125</td>
+          <td class="query">excavator under 10000</td>
+          <td class="expected">Ask which CITY for excavator (do not guess city)</td>
+          <td class="output">Which city do you need the Excavator in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for excavator (do not guess city)</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>126</td>
+          <td class="query">crane under 15000</td>
+          <td class="expected">Ask which CITY for crane (do not guess city)</td>
+          <td class="output">Which city do you need the Crane in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for crane (do not guess city)</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>127</td>
+          <td class="query">jcb chahiye</td>
+          <td class="expected">Ask which CITY for backhoe loader (do not guess city)</td>
+          <td class="output">JCB / Backhoe Loader kis city me chahiye? Aap budget aur rent/buy preference bhi bata sakte hain.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for backhoe loader (do not guess city)</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>128</td>
+          <td class="query">road roller chaiye</td>
+          <td class="expected">Ask which CITY for road roller (do not guess city)</td>
+          <td class="output">Road Roller kis city me chahiye? Aap budget aur rent/buy preference bhi bata sakte hain.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for road roller (do not guess city)</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>129</td>
+          <td class="query">crawler drill</td>
+          <td class="expected">Ask which CITY for crawler drill (do not guess city)</td>
+          <td class="output">Which city do you need the Crawler Drill in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for crawler drill (do not guess city)</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>130</td>
+          <td class="query">hydra crane</td>
+          <td class="expected">Ask which CITY for hydra crane (do not guess city)</td>
+          <td class="output">Which city do you need the Hydra Crane in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for hydra crane (do not guess city)</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>131</td>
+          <td class="query">dump truck</td>
+          <td class="expected">Ask which CITY for dump truck (do not guess city)</td>
+          <td class="output">Which city do you need the Dump Truck in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for dump truck (do not guess city)</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>132</td>
+          <td class="query">bulldozer</td>
+          <td class="expected">Ask which CITY for bulldozer (do not guess city)</td>
+          <td class="output">Which city do you need the Bulldozer in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for bulldozer (do not guess city)</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>133</td>
+          <td class="query">wheel loader</td>
+          <td class="expected">Ask which CITY for wheel loader (do not guess city)</td>
+          <td class="output">Which city do you need the Wheel Loader in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for wheel loader (do not guess city)</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>134</td>
+          <td class="query">concrete mixer</td>
+          <td class="expected">Ask which CITY for concrete mixer (do not guess city)</td>
+          <td class="output">Which city do you need the Concrete Mixer in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for concrete mixer (do not guess city)</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>135</td>
+          <td class="query">grader</td>
+          <td class="expected">Ask which CITY for motor grader (do not guess city)</td>
+          <td class="output">Which city do you need the Motor Grader in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask which CITY for motor grader (do not guess city)</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>136</td>
+          <td class="query">what is the weather today</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>137</td>
+          <td class="query">best action movie in 2026</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>91%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>138</td>
+          <td class="query">who won the cricket match</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>139</td>
+          <td class="query">tell me a joke</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>140</td>
+          <td class="query">what is python programming</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>141</td>
+          <td class="query">bitcoin price today</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>142</td>
+          <td class="query">recipe for biryani</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>143</td>
+          <td class="query">latest news headlines</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>144</td>
+          <td class="query">chutiya hai kya</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">Main aapko construction machines dhoondhne mein professionally madad karta hoon. Baatcheet respectful rakhein.
+
+Machine search, rent/buy, image/voice search, price filter, project recommendation — sab mein madad kar sakta hoon. Kaunsi machine chahiye?</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>145</td>
+          <td class="query">stock market tips</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>146</td>
+          <td class="query">how to lose weight</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>147</td>
+          <td class="query">best netflix series</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>91%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>148</td>
+          <td class="query">can i get excavator for free of cost</td>
+          <td class="expected">Reply must explain: free machines are not available</td>
+          <td class="output">Free machines are not available in the marketplace. Here are the lowest-priced Excavator instead:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+2. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+3. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+4. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>4 found: Caterpillar 320D, Hyundai R210, Komatsu PC210, Hitachi ZX210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 4 machine(s): Caterpillar 320D, Hyundai R210, Komatsu PC210, Hitachi ZX210 · Expected: Reply must explain: free machines are not available</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>149</td>
+          <td class="query">free jcb in jaipur</td>
+          <td class="expected">Reply must explain: free</td>
+          <td class="output">Free JCB / Backhoe Loader are not available in Jaipur. Tell me another category or city and I will show the lowest-priced options.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Reply must explain: free</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>150</td>
+          <td class="query">excavator for 0 rupees</td>
+          <td class="expected">Should NOT run a blind machine search — clarify or redirect</td>
+          <td class="output">Which city do you need the Excavator in? You can also specify budget and rent/buy preference.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Should NOT run a blind machine search — clarify or redirect</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>151</td>
+          <td class="query">what about excavator in delhi list all the machines</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>152</td>
+          <td class="query">show cheaper options</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Many machines are available. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Logical, relevant reply matching user intent</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>153</td>
+          <td class="query">excavator under 5000 jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>154</td>
+          <td class="query">crane under 20000 mumbai</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>155</td>
+          <td class="query">excavator on rent delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>156</td>
+          <td class="query">buy excavator jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>157</td>
+          <td class="query">used jcb delhi</td>
+          <td class="expected">Show relevant backhoe loader machines in Delhi with prices/details</td>
+          <td class="output">No JCB JCB / Backhoe Loader in Delhi. Showing other JCB / Backhoe Loader options in Delhi.
+
+Here is 1 JCB / Backhoe Loader in Delhi:
+
+1. JCB 3DX (backhoe loader), JCB 3DX, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: JCB 3DX (backhoe loader) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Note: JCB / backhoe loader is not an excavator — compare loader class only. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: JCB 3DX</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB 3DX · Expected: Show relevant backhoe loader machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>158</td>
+          <td class="query">new crane mumbai</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>159</td>
+          <td class="query">machine in 302026</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Many machines are available. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Logical, relevant reply matching user intent</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>160</td>
+          <td class="query">same in delhi</td>
+          <td class="expected">Show relevant crawler drill machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Crawler Drill in Delhi:
+
+1. EPIROC AIR ROC D-35 (crawler drill), EPIROC AIR ROC D-35, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: EPIROC AIR ROC D-35 (crawler drill) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35 · Expected: Show relevant crawler drill machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>161</td>
+          <td class="query">same in delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">No exact Excavator found in Delhi. No Excavator found in Delhi under ₹8000. Showing nearest options above your budget.
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>162</td>
+          <td class="query">what about mumbai</td>
+          <td class="expected">Show relevant excavator machines in Mumbai with prices/details</td>
+          <td class="output">No exact Excavator found in Mumbai. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Mumbai with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>163</td>
+          <td class="query">want a JCB 3DX instead of excavator</td>
+          <td class="expected">Search or ask city for backhoe loader</td>
+          <td class="output">Here is 1 JCB / Backhoe Loader:
+
+1. JCB 3DX (backhoe loader), JCB 3DX, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: JCB 3DX (backhoe loader) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Note: JCB / backhoe loader is not an excavator — compare loader class only. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: JCB 3DX</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB 3DX · Expected: Search or ask city for backhoe loader</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>164</td>
+          <td class="query">pune</td>
+          <td class="expected">Show relevant road roller machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Road Roller in Pune:
+
+1. Bomag BW 161 (road roller), Bomag BW 161, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Bomag BW 161 (road roller) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Bomag BW 161</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Bomag BW 161 · Expected: Show relevant road roller machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>165</td>
+          <td class="query">excavator in delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>166</td>
+          <td class="query">JCB in Ahmedabad</td>
+          <td class="expected">Show relevant backhoe loader machines in Ahmedabad with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Ahmedabad. Similar categories: Excavator, Wheel Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant backhoe loader machines in Ahmedabad with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>167</td>
+          <td class="query">in jaipur</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>168</td>
+          <td class="query">mujhe Crawlre Dril chaiye</td>
+          <td class="expected">Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td class="output">Yahan Jaipur me 1 Crawler Drill hai:
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+Best match: EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL) in Jaipur — ₹400/daily, available, used 2022, rating not available. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Show relevant crawler drill machines in Jaipur with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>169</td>
+          <td class="query">Feller Buncher</td>
+          <td class="expected">Show relevant feller buncher machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Feller Buncher in Delhi:
+
+1. Tigercat 845 (feller buncher), Tigercat 845, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Tigercat 845 (feller buncher) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Tigercat 845</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Tigercat 845 · Expected: Show relevant feller buncher machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>170</td>
+          <td class="query">delhi</td>
+          <td class="expected">Ask missing detail (city or machine type) before searching</td>
+          <td class="output">Delhi has these machines available. Which one do you need?
+Air Compressor, Articulated Hauler, Asphalt Paver, JCB / Backhoe Loader, Boom Lift, Bulldozer, Carry Deck Crane, Cold Planer, Compact Loader, Compact Track Loader (+34 more)</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Ask missing detail (city or machine type) before searching</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>171</td>
+          <td class="query">मेरा बजट 10,000 है</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">No exact Crawler Drill found in Jaipur. No Crawler Drill found in Jaipur under ₹10. Showing nearest options above your budget.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+ये विकल्प हैं, आपके अनुरोध से सटीक मेल नहीं।
+I could not find the exact requested Crawler Drill. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Logical, relevant reply matching user intent</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>172</td>
+          <td class="query">no</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Logical, relevant reply matching user intent</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>173</td>
+          <td class="query">in pune</td>
+          <td class="expected">Show relevant excavator machines in Pune with prices/details</td>
+          <td class="output">Here is 1 Excavator in Pune:
+
+1. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Komatsu PC210 (excavator) in Pune — ₹24,000/day, available, condition n/a , rating 4.0/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Komatsu PC210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Komatsu PC210 · Expected: Show relevant excavator machines in Pune with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>174</td>
+          <td class="query">show cheaper options</td>
+          <td class="expected">Show relevant excavator machines in Jaipur with prices/details</td>
+          <td class="output">No exact Excavator found in Jaipur. Similar categories: JCB / Backhoe Loader, Crawler Drill, Bulldozer. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant excavator machines in Jaipur with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>175</td>
+          <td class="query">delhi me bhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>176</td>
+          <td class="query">also in delhi</td>
+          <td class="expected">Show relevant backhoe loader machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 JCB / Backhoe Loader in Delhi:
+
+1. JCB 3DX (backhoe loader), JCB 3DX, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: JCB 3DX (backhoe loader) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: JCB 3DX</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): JCB 3DX · Expected: Show relevant backhoe loader machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>177</td>
+          <td class="query">under 12000</td>
+          <td class="expected">Show relevant crane machines in Mumbai with prices/details</td>
+          <td class="output">No exact Crane found in Mumbai. Similar categories: Hydra Crane, Truck Mounted Crane. I could not find close alternatives either.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant crane machines in Mumbai with prices/details</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>178</td>
+          <td class="query">komatsu excavator delhi</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">No Komatsu Excavator in Delhi. Showing other Excavator options in Delhi.
+
+Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>179</td>
+          <td class="query">on rent only</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>180</td>
+          <td class="query">dump truck in jaipur</td>
+          <td class="expected">Show relevant dump truck machines in Jaipur with prices/details</td>
+          <td class="output">No exact Dump Truck found in Jaipur. No Dump Truck in Jaipur. Showing similar machines available in Jaipur.
+
+1. SCHWING STETTER BP 350 DXT Trailer Mounted (CONCRETE PUMP), SCHWING STETTER BP 350 DXT, — Jaipur, ₹199/hourly, available, used 2017, rating 5.0/5
+2. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+3. JCB 432 ZX Heavy Duty (WHEEL LOADER 3 T), JCB 432 ZX, — Jaipur, ₹500/daily, available, used 2017, rating not available
+
+These are alternatives, not exact matches for your request.
+I could not find the exact requested Dump Truck. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>3 found: SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumatic, JCB 432 ZX Heavy Duty</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 3 machine(s): SCHWING STETTER BP 350 DXT Trailer Mounted, EPIROC AIR ROC D-35(LM-100) Pneumati · Expected: Show relevant dump truck machines in Jaipur with prices/details</td>
+          <td>97%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>181</td>
+          <td class="query">list all machines</td>
+          <td class="expected">Show relevant excavator machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Excavator in Delhi:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: Caterpillar 320D</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): Caterpillar 320D · Expected: Show relevant excavator machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>182</td>
+          <td class="query">mumbai me bhi</td>
+          <td class="expected">Show relevant backhoe loader machines in Mumbai with prices/details</td>
+          <td class="output">No exact JCB / Backhoe Loader found in Mumbai. Similar categories: Excavator, Wheel Loader, Compact Loader. Tell me what work you need it for, or try another machine type in the same city.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Show relevant backhoe loader machines in Mumbai with prices/details</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>183</td>
+          <td class="query">cheaper options</td>
+          <td class="expected">Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td class="output">Here is 1 Hydra Crane in Delhi:
+
+1. ACE FX 150 (hydra crane), ACE FX 150, — Delhi, ₹12,000/day, available, rating 4.5/5
+Best match: ACE FX 150 (hydra crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>1 found: ACE FX 150</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): ACE FX 150 · Expected: Show relevant hydra crane machines in Delhi with prices/details</td>
+          <td>95%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>184</td>
+          <td class="query">chutiya hai kya</td>
+          <td class="expected">Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td class="output">Main aapko construction machines dhoondhne mein professionally madad karta hoon. Baatcheet respectful rakhein.
+
+Machine search, rent/buy, image/voice search, price filter, project recommendation — sab mein madad kar sakta hoon. Kaunsi machine chahiye?</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politely refuse — redirect user to construction machines (no search, no machines)</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>185</td>
+          <td class="query">abcxyz</td>
+          <td class="expected">Nonsense — should NOT return random machines</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Nonsense — should NOT return random machines</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>186</td>
+          <td class="query">asdfghjkl</td>
+          <td class="expected">Keyboard mash — clarify or redirect</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Keyboard mash — clarify or redirect</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>187</td>
+          <td class="query">???</td>
+          <td class="expected">Punctuation only — ask what user needs</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Punctuation only — ask what user needs</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>188</td>
+          <td class="query">12345</td>
+          <td class="expected">Numbers only — ask machine + city</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Numbers only — ask machine + city</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>189</td>
+          <td class="query">machine</td>
+          <td class="expected">Too vague — ask city and type</td>
+          <td class="output">Many machines are available. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Too vague — ask city and type</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>190</td>
+          <td class="query">what is 2+2</td>
+          <td class="expected">Math off-topic — redirect to machines</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Math off-topic — redirect to machines</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>191</td>
+          <td class="query">sell my house in jaipur</td>
+          <td class="expected">Real estate — off-topic block</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Real estate — off-topic block</td>
+          <td>91%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>192</td>
+          <td class="query">order pizza mumbai</td>
+          <td class="expected">Food delivery — off-topic block</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Food delivery — off-topic block</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>193</td>
+          <td class="query">book flight to delhi</td>
+          <td class="expected">Travel — off-topic block</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Travel — off-topic block</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>194</td>
+          <td class="query">who is the prime minister</td>
+          <td class="expected">Politics — off-topic block</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Politics — off-topic block</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>195</td>
+          <td class="query">write python code for me</td>
+          <td class="expected">Coding help — off-topic block</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Coding help — off-topic block</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>196</td>
+          <td class="query">random gibberish query test</td>
+          <td class="expected">Gibberish — no machine search</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Gibberish — no machine search</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>197</td>
+          <td class="query">xyz machine in abc city</td>
+          <td class="expected">Invalid entities — clarify or honest no-result</td>
+          <td class="output">Many machines are available. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Invalid entities — clarify or honest no-result</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>198</td>
+          <td class="query">jaipur mai excavator chaiye</td>
+          <td class="expected">Valid Hinglish — excavator results in Jaipur</td>
+          <td class="output">No exact Excavator found in Jaipur. No Excavator in Jaipur. Showing similar machines available in Jaipur.
+
+1. EPIROC AIR ROC D-35(LM-100) Pneumatic (CRAWLER DRILL), EPIROC AIR ROC D-35(LM-100), — Jaipur, ₹400/daily, available, used 2022, rating not available
+
+Ye alternatives hain, exact match nahi hain.
+I could not find the exact requested Excavator. The machines shown are the closest alternatives — compare price, availability, condition, year, and city before deciding.</td>
+          <td>1 found: EPIROC AIR ROC D-35(LM-100) Pneumatic</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 1 machine(s): EPIROC AIR ROC D-35(LM-100) Pneumatic · Expected: Valid Hinglish — excavator results in Jaipur</td>
+          <td>96%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>199</td>
+          <td class="query">mujhe kuch bhi machine dedo</td>
+          <td class="expected">Vague Hindi — ask city/category</td>
+          <td class="output">Bahut saari machines available hain. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Vague Hindi — ask city/category</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>200</td>
+          <td class="query">cheapest thing available</td>
+          <td class="expected">Vague budget — ask category + city</td>
+          <td class="output">Many machines are available. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Vague budget — ask category + city</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>201</td>
+          <td class="query">show me everything</td>
+          <td class="expected">Too broad — ask city or category</td>
+          <td class="output">Many machines are available. Please refine:
+1. Machine type
+2. City
+3. Rent or buy
+4. Budget
+5. Brand preference</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Asked for clarification (correct) · Expected: Too broad — ask city or category</td>
+          <td>92%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>202</td>
+          <td class="query">tell me about quantum physics</td>
+          <td class="expected">Science off-topic — redirect</td>
+          <td class="output">I specialize in InfraForge construction equipment — machine search, rentals, purchases, and project recommendations across India.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, or &#x27;best machine for road project&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Science off-topic — redirect</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>203</td>
+          <td class="query">dhoni ka score kya hai</td>
+          <td class="expected">Cricket off-topic — redirect</td>
+          <td class="output">Main InfraForge construction equipment services mein specialize karta hoon — machine search, rentals, purchases, project recommendations.
+
+Try: &#x27;JCB in Jaipur under 8000&#x27;, &#x27;dump truck in Pune&#x27;, ya &#x27;road project ke liye best machine&#x27;.</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Blocked off-topic correctly · Expected: Cricket off-topic — redirect</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>204</td>
+          <td class="query">road project ke liye best machine kaunsi hai?</td>
+          <td class="expected">Ask project type (road, earthwork, etc.) before recommending</td>
+          <td class="output">Road / construction project kis type ka hai? Choose one:
+1. Highway
+2. Urban road
+3. Earthwork
+4. Compaction
+5. Concrete road
+6. Material transport
+7. Lifting / crane work</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Expected: Ask project type (road, earthwork, etc.) before recommending</td>
+          <td>90%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>205</td>
+          <td class="query">earthwork ke liye best machine?</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Yahan 4 Excavator hain:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+2. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5
+3. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+4. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Alternative: Hitachi ZX210 at ₹45,000/day in Gurgaon. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>4 found: Caterpillar 320D, Hitachi ZX210, Hyundai R210, Komatsu PC210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 4 machine(s): Caterpillar 320D, Hitachi ZX210, Hyundai R210, Komatsu PC210 · Expected: Logical, relevant reply matching user intent</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#221f14">
+          <td>206</td>
+          <td class="query">mining project ke liye machine?</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Road / construction project kis type ka hai? Choose one:
+1. Highway
+2. Urban road
+3. Earthwork
+4. Compaction
+5. Concrete road
+6. Material transport
+7. Lifting / crane work</td>
+          <td>—</td>
+          <td><span class="badge" style="background:#fbbf24">PARTIAL</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Wording could better reflect parsed intent.</td>
+          <td>88%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>207</td>
+          <td class="query">building construction ke liye best machine?</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Yahan 4 Crane hain:
+
+1. Liebherr LTM 1100 (crane), Liebherr LTM 1100, — Delhi, ₹12,000/day, available, rating 4.5/5
+2. Terex RT 555-1 (crane), Terex RT 555-1, — Gurgaon, ₹45,000/day, available, rating 4.5/5
+3. Grove GMK4100 (crane), Grove GMK4100, — Chennai, ₹12,000/day, available, rating 4.0/5
+4. Sany SCC8000A (crane), Sany SCC8000A, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Liebherr LTM 1100 (crane) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Alternative: Terex RT 555-1 at ₹45,000/day in Gurgaon. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>4 found: Liebherr LTM 1100, Terex RT 555-1, Grove GMK4100, Sany SCC8000A</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 4 machine(s): Liebherr LTM 1100, Terex RT 555-1, Grove GMK4100, Sany SCC8000A · Expected: Logical, relevant reply matching user intent</td>
+          <td>94%</td>
+          <td class="fix">—</td>
+        </tr>
+        <tr style="background:#1a2218">
+          <td>208</td>
+          <td class="query">demolition ke liye machine chahiye</td>
+          <td class="expected">Logical, relevant reply matching user intent</td>
+          <td class="output">Yahan 4 Excavator hain:
+
+1. Caterpillar 320D (excavator), Caterpillar 320D, — Delhi, ₹12,000/day, available, rating 4.5/5
+2. Hitachi ZX210 (excavator), Hitachi ZX210, — Gurgaon, ₹45,000/day, available, rating 4.5/5
+3. Hyundai R210 (excavator), Hyundai R210, — Chennai, ₹12,000/day, available, rating 4.0/5
+4. Komatsu PC210 (excavator), Komatsu PC210, — Pune, ₹24,000/day, available, rating 4.0/5
+Best match: Caterpillar 320D (excavator) in Delhi — ₹12,000/day, available, condition n/a , rating 4.5/5. Alternative: Hitachi ZX210 at ₹45,000/day in Gurgaon. Compare availability, condition, manufacturing year, and deposit before booking.</td>
+          <td>4 found: Caterpillar 320D, Hitachi ZX210, Hyundai R210, Komatsu PC210</td>
+          <td><span class="badge" style="background:#34d399">RELEVANT</span></td>
+          <td>✓ Yes</td>
+          <td class="analysis">Returned 4 machine(s): Caterpillar 320D, Hitachi ZX210, Hyundai R210, Komatsu PC210 · Expected: Logical, relevant reply matching user intent</td>
+          <td>93%</td>
+          <td class="fix">—</td>
+        </tr></tbody>
+  </table>
+  </div>
+</div>
+</body></html>

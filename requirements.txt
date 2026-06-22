@@ -1,0 +1,56 @@
+# Web framework
+fastapi
+uvicorn
+python-multipart
+
+# Database
+motor
+pymongo
+
+# Config / env
+python-dotenv
+pydantic
+
+# AI / LLM clients
+groq
+openai
+
+# Embeddings / ML
+sentence-transformers
+numpy
+
+# Image processing / classification
+opencv-python
+tensorflow
+
+# PDF processing (RAG)
+pypdf
+
+
+# Web framework
+fastapi==0.136.1
+uvicorn==0.47.0
+python-multipart==0.0.29
+
+# Database
+motor==3.7.1
+pymongo==4.17.0
+
+# Config / env
+python-dotenv==1.2.2
+pydantic==2.13.4
+
+# AI / LLM clients
+groq==1.4.0
+openai==2.38.0
+
+# Embeddings / ML
+sentence-transformers==5.5.1
+numpy==1.26.4
+
+# Image processing / classification
+opencv-python==4.11.0.86
+tensorflow==2.21.0
+
+# PDF processing (RAG)
+pypdf==6.12.2

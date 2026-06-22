@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+motor
+redis
+langchain
+openai

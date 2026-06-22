@@ -1,0 +1,21 @@
+Total machines: 19
+With at least one image URL: 19
+
+By status (raw):
+  active: 10
+  pending: 6
+  available: 3
+
+By category:
+  unknown: 5
+  TIPPER: 2
+  BACKHOE LOADER: 2
+  MOTOR GRADER: 2
+  CRAWLER CRANE(65-80 TON): 1
+  WHEEL LOADER 3 T: 1
+  KERB PAVER: 1
+  AIR COMPRESSOR: 1
+  CRAWLER DRILL: 1
+  CONCRETE PUMP: 1
+  MOBILE CRUSHER SCREEN CROWLER TYPE: 1
+  WHEEL LOADER: 1
