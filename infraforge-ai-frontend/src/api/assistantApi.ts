@@ -66,9 +66,14 @@ async function request<T>(
 
 // --- Health -----------------------------------------------------------------
 
-export function checkHealth(): Promise<ApiResponse<{ status: string; database: string }>> {
-  return request<{ status: string; database: string }>("/health");
+export function checkHealth(
+  init?: RequestInit,
+): Promise<ApiResponse<{ status: string; database: string }>> {
+  return request<{ status: string; database: string }>("/health", init);
 }
+
+/** Health probe timeout — Render free tier may cold-start for 30–60s. */
+export const HEALTH_CHECK_TIMEOUT_MS = 20_000;
 
 // --- Text chat --------------------------------------------------------------
 

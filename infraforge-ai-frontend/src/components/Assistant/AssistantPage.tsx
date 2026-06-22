@@ -27,6 +27,7 @@ import {
   API_BASE_URL,
   BackendUnreachableError,
   checkHealth,
+  HEALTH_CHECK_TIMEOUT_MS,
   IMAGE_SEARCH_LIMIT_PER_SESSION,
   resetAssistantSession,
   sendChatMessage,
@@ -191,20 +192,47 @@ export default function AssistantPage() {
   }, [sessionId]);
 
   // --- Backend health -------------------------------------------------------
-  const runHealthCheck = useCallback(async () => {
-    setBackendStatus("checking");
-    try {
-      const res = await checkHealth();
-      setBackendStatus(res.success ? "connected" : "disconnected");
-    } catch {
-      setBackendStatus("disconnected");
-    }
+  const markBackendConnected = useCallback(() => {
+    setBackendStatus("connected");
+    setError(null);
   }, []);
 
+  const runHealthCheck = useCallback(async (options?: { silent?: boolean }) => {
+    if (!options?.silent) {
+      setBackendStatus("checking");
+    }
+
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(
+          () => controller.abort(),
+          HEALTH_CHECK_TIMEOUT_MS,
+        );
+        const res = await checkHealth({ signal: controller.signal });
+        window.clearTimeout(timeoutId);
+
+        if (res.success) {
+          markBackendConnected();
+          return;
+        }
+      } catch {
+        /* retry — Render cold start or transient network blip */
+      }
+      if (attempt < 2) {
+        await new Promise((resolve) => window.setTimeout(resolve, 2500));
+      }
+    }
+
+    setBackendStatus((prev) => (prev === "connected" ? "connected" : "disconnected"));
+  }, [markBackendConnected]);
+
   useEffect(() => {
-    runHealthCheck();
-    const id = setInterval(runHealthCheck, 30000);
-    return () => clearInterval(id);
+    void runHealthCheck();
+    const id = window.setInterval(() => {
+      void runHealthCheck({ silent: true });
+    }, 30000);
+    return () => window.clearInterval(id);
   }, [runHealthCheck]);
 
   // --- Helpers --------------------------------------------------------------
@@ -327,6 +355,7 @@ export default function AssistantPage() {
     options?: { meta?: string; clearMachinesOnClarification?: boolean },
   ) => {
     if (res.success) {
+      markBackendConnected();
       const data = res.data ?? {};
       syncSessionUsage(data.session_usage as SessionUsage | undefined);
       const mode = (data.context?.assistant_mode ?? data.assistant_mode) as string | undefined;
@@ -729,6 +758,13 @@ export default function AssistantPage() {
     onContactOwner: (m: Machine) => setModal({ type: "contact", machine: m }),
   };
 
+  const isLocalApi =
+    API_BASE_URL.includes("127.0.0.1") || API_BASE_URL.includes("localhost");
+
+  const disconnectedBannerMessage = isLocalApi
+    ? `Backend not reachable at ${API_BASE_URL}. Start it with: uvicorn app.main:app --reload`
+    : `Backend is waking up at ${API_BASE_URL}. Wait 30 seconds, then click the status badge to retry. Chat may still work once the server is live.`;
+
   const statusBadge = (
     <button
       type="button"
@@ -803,8 +839,8 @@ export default function AssistantPage() {
       {backendStatus === "disconnected" && (
         <div className="flex-shrink-0 px-4 md:px-8 pt-2 pb-1">
           <ErrorBanner
-            message={`Backend not reachable at ${API_BASE_URL}. Start it with: uvicorn app.main:app --reload`}
-            onDismiss={() => setError(null)}
+            message={disconnectedBannerMessage}
+            onDismiss={() => markBackendConnected()}
           />
         </div>
       )}
