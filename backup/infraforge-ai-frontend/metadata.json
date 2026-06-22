@@ -1,6 +1,0 @@
-{
-  "name": "Infra AI-Assistant for Marketplace",
-  "description": "AI-powered construction equipment marketplace assistant with search, compare, and smart recommendations.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
