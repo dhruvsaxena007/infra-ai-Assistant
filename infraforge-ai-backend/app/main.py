@@ -27,16 +27,22 @@ from app.utils.response import success_response
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    if settings.WARMUP_EMBEDDING_ON_STARTUP:
+    # Render free tier has 512MB RAM — loading CLIP + embeddings + YOLO together causes OOM.
+    if settings.WARMUP_EMBEDDING_ON_STARTUP and not settings.low_memory_deploy:
         warmup_embeddings_background()
         warmup_clip_background()
-    warmup_yolo_background()
+        warmup_yolo_background()
+    elif settings.low_memory_deploy:
+        print("[startup] Low-memory deploy: ML warm-up skipped (models load on first use)")
     try:
         ensure_session_indexes()
         rag_n = await hydrate_rag_from_mongo(database)
         if rag_n:
             print(f"[rag] Loaded {rag_n} persisted chunks from MongoDB")
-        n = await warm_session_cache_async(database)
+        n = await warm_session_cache_async(
+            database,
+            limit=settings.session_cache_warmup_limit,
+        )
         print(f"[sessions] Warmed {n} assistant sessions from MongoDB")
     except Exception as exc:
         print(f"[persist] Startup hydrate skipped: {exc}")

@@ -18,8 +18,12 @@ services:
       - key: MONGODB_URL
         sync: false
       - key: DATABASE_NAME
-        value: infraforge_marketplace
+        value: infraforge_ai
       - key: GROQ_API_KEY
         sync: false
       - key: CORS_ORIGINS
         sync: false
+      - key: WARMUP_EMBEDDING_ON_STARTUP
+        value: "false"
+      - key: IMAGE_CLASSIFIER
+        value: opencv

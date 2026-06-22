@@ -115,9 +115,14 @@ class Settings:
         "1", "true", "yes",
     )
     # Preload embeddings in a background thread so first /chat search is fast.
+    # Set false on Render free tier (512MB RAM) to avoid OOM at startup.
     WARMUP_EMBEDDING_ON_STARTUP = os.getenv(
         "WARMUP_EMBEDDING_ON_STARTUP", "true"
     ).lower() in ("1", "true", "yes")
+
+    # auto = enable on Render (RENDER=true) and other low-RAM hosts unless overridden.
+    LOW_MEMORY_MODE = (os.getenv("LOW_MEMORY_MODE") or "auto").strip().lower()
+    SESSION_CACHE_WARMUP_LIMIT = int(os.getenv("SESSION_CACHE_WARMUP_LIMIT", "500"))
 
     # Image search: auto = YOLO if weights exist, else MobileNet+OpenCV
     IMAGE_CLASSIFIER = os.getenv("IMAGE_CLASSIFIER", "auto").lower()
@@ -135,6 +140,22 @@ class Settings:
 
     # When broad search exceeds this count, ask user to refine instead of dumping all.
     TOO_MANY_RESULTS_THRESHOLD = int(os.getenv("TOO_MANY_RESULTS_THRESHOLD", "20"))
+
+    @property
+    def low_memory_deploy(self) -> bool:
+        """True on Render free tier and when LOW_MEMORY_MODE is forced on."""
+        if self.LOW_MEMORY_MODE in ("1", "true", "yes", "on"):
+            return True
+        if self.LOW_MEMORY_MODE in ("0", "false", "no", "off"):
+            return False
+        # Render sets RENDER=true automatically on their platform.
+        return os.getenv("RENDER") == "true"
+
+    @property
+    def session_cache_warmup_limit(self) -> int:
+        if self.low_memory_deploy:
+            return min(self.SESSION_CACHE_WARMUP_LIMIT, 50)
+        return self.SESSION_CACHE_WARMUP_LIMIT
 
     @property
     def cors_origins(self) -> list[str]:
