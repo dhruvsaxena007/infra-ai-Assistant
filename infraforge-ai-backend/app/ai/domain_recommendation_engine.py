@@ -180,8 +180,21 @@ def build_recommendation_context(
 
 def is_domain_recommendation_query(message: str, *, parsed: dict | None = None) -> bool:
     """True when message is an in-domain advisory/recommendation request."""
+    from app.ai.machine_spec_service import detect_machine_knowledge_query
+    from app.ai.purpose_intent_engine import is_purpose_based_machine_need
+
     parsed = parsed or parse_query(message or "")
+
+    # Spec/detail/advisory queries about a named machine — knowledge, not recommendation
+    if detect_machine_knowledge_query(message, parsed):
+        return False
+
     signals = detect_work_signals(message)
+
+    # Purpose/work-goal with explicit need/want -> machine search, not advisory
+    if is_purpose_based_machine_need(message):
+        if not signals.get("is_recommendation_request"):
+            return False
 
     # Complete search (category + city) without explicit recommend → machine search
     if parsed.get("category") and parsed.get("city") and not signals.get("is_recommendation_request"):
@@ -195,7 +208,7 @@ def is_domain_recommendation_query(message: str, *, parsed: dict | None = None) 
         return True
     from app.chatbot.assistant_intelligence import is_recommendation_query
 
-    return bool(is_recommendation_query(message) or parsed.get("purpose_key"))
+    return bool(is_recommendation_query(message))
 
 
 def build_recommendation_advisory_draft(plan: dict[str, Any], *, lang: str = "english") -> dict[str, Any]:

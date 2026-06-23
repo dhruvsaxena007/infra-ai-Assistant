@@ -18,6 +18,7 @@ PURPOSE_TO_CATEGORIES: dict[str, list[str]] = {
     "transport": ["dump truck", "tipper"],
     "drilling": ["crawler drill"],
     "concrete": ["concrete mixer", "concrete pump", "concrete mixer truck"],
+    "demolition": ["excavator", "mobile crusher", "backhoe loader"],
 }
 
 

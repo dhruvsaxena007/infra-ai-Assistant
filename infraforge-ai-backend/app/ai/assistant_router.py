@@ -1424,21 +1424,31 @@ async def _support_response(
         if extra.get("selected_action"):
             tool_payload["selected_action"] = extra["selected_action"]
 
-    final = await finalize_assistant_reply(
-        draft_message=reply,
-        intent=intent,
-        assistant_mode=assistant_mode,
-        response_goal=goal,
-        entities=entities,
-        missing_fields=(classification or {}).get("missing_fields"),
-        tool_result=tool_payload,
-        session_context={**session_ctx, "session_id": session_id},
-        language=reply_lang,
-        sentiment=(classification or {}).get("user_sentiment") or "neutral",
-        session_id=session_id,
-        user_query=user_message,
-        classification=classification,
-    )
+    try:
+        final = await finalize_assistant_reply(
+            draft_message=reply,
+            intent=intent,
+            assistant_mode=assistant_mode,
+            response_goal=goal,
+            entities=entities,
+            missing_fields=(classification or {}).get("missing_fields"),
+            tool_result=tool_payload,
+            session_context={**session_ctx, "session_id": session_id},
+            language=reply_lang,
+            sentiment=(classification or {}).get("user_sentiment") or "neutral",
+            session_id=session_id,
+            user_query=user_message,
+            classification=classification,
+        )
+    except Exception as exc:
+        print(f"[support_response] finalize_failed -> draft: {exc}")
+        final = {
+            "message": reply,
+            "suggestions": suggestions or [],
+            "fallback_used": True,
+            "llm_generated": False,
+        }
+
     reply = final["message"]
     suggestions = final.get("suggestions") or suggestions
     final_extra.update({
@@ -1680,6 +1690,27 @@ async def handle_assistant_message(
     if conv_state is None:
         conv_state = begin_turn(session_id)
     parsed_msg = parse_query(working_message)
+
+    # --- Suggestion chip → executable message (context-aware) -----------------
+    from app.ai.suggestion_action_resolver import is_suggestion_chip, resolve_suggestion_chip
+
+    chip_route: dict[str, Any] | None = None
+    if is_suggestion_chip(working_message):
+        chip_ctx = {
+            **session_ctx,
+            "conversation_state": conv_state,
+            "last_search_filters": last_filters,
+        }
+        chip_route = resolve_suggestion_chip(working_message, session_ctx=chip_ctx)
+        if chip_route.get("action") == "send_message" and chip_route.get("message"):
+            working_message = chip_route["message"]
+            input_meta["suggestion_chip"] = chip_route.get("chip")
+            input_meta["from_suggestion_chip"] = True
+            if chip_route.get("intent_hint"):
+                input_meta["intent_hint"] = chip_route["intent_hint"]
+            parsed_msg = parse_query(working_message)
+            reply_lang = detect_query_language(working_message)
+
     active_flow = (conv_state or {}).get("active_flow")
     classification: dict = {}
 
@@ -2047,6 +2078,9 @@ async def handle_assistant_message(
         )
         reply = final["message"]
         save_conversation(session_id, user_message, reply)
+        if conv_state is not None:
+            from app.ai.suggestion_action_resolver import save_knowledge_context
+            save_knowledge_context(conv_state, universal)
         return success_response(
             message=reply,
             data=_assistant_payload(

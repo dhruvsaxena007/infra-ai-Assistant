@@ -134,7 +134,7 @@ async def try_semantic_orchestrated_route(
 
     # --- Frustration recovery -------------------------------------------------
     if intent == "frustration" or mode == "frustration_recovery":
-        from app.ai.assistant_brain import build_response
+        from app.ai.support_response_service import build_response
 
         resp = build_response("frustration", lang=reply_lang, message=working_message)
         return await assistant_router_module._support_response(
@@ -151,7 +151,7 @@ async def try_semantic_orchestrated_route(
 
     # --- Support --------------------------------------------------------------
     if intent == "support" or mode == "support" or mode_decision.get("force_support"):
-        from app.ai.assistant_brain import build_response
+        from app.ai.support_response_service import build_response
 
         resp = build_response("support_request", lang=reply_lang, message=working_message)
         return await assistant_router_module._support_response(
@@ -190,6 +190,9 @@ async def try_semantic_orchestrated_route(
             )
             reply = final["message"]
             save_conversation(session_id, user_message, reply)
+            if conv_state is not None:
+                from app.ai.suggestion_action_resolver import save_knowledge_context
+                save_knowledge_context(conv_state, kq)
             return success_response(
                 message=reply,
                 data=_assistant_payload(

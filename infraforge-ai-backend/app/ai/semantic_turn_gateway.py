@@ -100,9 +100,59 @@ _FRAGMENT_BEST_AMONG_RE = re.compile(
 _COMPARISON_RE = re.compile(
     r"\b(?:vs\.?|versus|compare|comparison|difference\s+between)\b"
     r"|(?:better|best|behtar|acch[ae]|badiya).{0,40}\b(?:or|ya|aur)\b"
-    r"|\b(?:or|ya|aur)\b.{0,40}\b(?:better|best|behtar)\b",
+    r"|\b(?:or|ya|aur)\b.{0,40}\b(?:better|best|behtar)\b"
+    r"|\b(?:kese|kaise)\s+(?:badiya|behtar|acch[ae])\b"
+    r"|\bbaki\s+(?:machines?|dusre|models?)\s+se\b"
+    r"|\bbetter\s+than\s+(?:other|others|rest|baki)\b",
     re.I,
 )
+
+
+def _merge_rules_authority(
+    llm: SemanticTurnUnderstanding,
+    rules: SemanticTurnUnderstanding,
+) -> SemanticTurnUnderstanding:
+    """Rules win for structurally detected intents — prevents Groq misclassification."""
+    if rules.primary_intent == "domain_knowledge" and rules.should_answer_knowledge:
+        llm.primary_intent = "domain_knowledge"
+        llm.response_mode = "domain_knowledge"
+        llm.should_answer_knowledge = True
+        llm.should_search = False
+        llm.should_recommend = False
+        llm.should_compare = False
+        llm.context_reference = {**llm.context_reference, **rules.context_reference}
+        llm.entities = {**llm.entities, **{k: v for k, v in rules.entities.items() if v is not None}}
+        llm.confidence = max(llm.confidence, 0.91)
+        llm.reason = f"rules_authority:{rules.reason}"
+        return llm
+
+    if rules.primary_intent == "comparison" and rules.should_compare:
+        llm.primary_intent = "comparison"
+        llm.response_mode = "comparison"
+        llm.should_compare = True
+        llm.should_search = False
+        llm.context_reference = {**llm.context_reference, **rules.context_reference}
+        llm.confidence = max(llm.confidence, 0.88)
+        llm.reason = f"rules_authority:{rules.reason}"
+        return llm
+
+    if (
+        rules.primary_intent == "machine_search"
+        and rules.should_search
+        and rules.reason in ("purpose_machine_need", "machine_search_signal", "purpose_machine_need")
+        and (rules.entities.get("purpose_key") or rules.entities.get("category"))
+    ):
+        llm.primary_intent = "machine_search"
+        llm.response_mode = "machine_search"
+        llm.should_search = True
+        llm.should_answer_knowledge = False
+        llm.entities = {**llm.entities, **{k: v for k, v in rules.entities.items() if v is not None}}
+        llm.context_reference = {**llm.context_reference, **rules.context_reference}
+        llm.confidence = max(llm.confidence, 0.88)
+        llm.reason = rules.reason
+        return llm
+
+    return llm
 
 _RECOMMENDATION_RE = re.compile(
     r"\b(?:recommend|suggest|best\s+machine|which\s+machine|what\s+machine|"
@@ -114,7 +164,8 @@ _SUPPORT_RE = re.compile(
     r"\b(?:refund|payment\s+(?:issue|failed|stuck)|booking\s+(?:issue|problem)|"
     r"order\s+(?:issue|problem)|complaint|transaction|invoice|receipt|"
     r"cancel|money\s+back|not\s+working|broken|support|help\s+with\s+my|"
-    r"double\s+charged?|delivery\s+delayed?|deposit\s+issue)\b",
+    r"double\s+charged?|delivery\s+delayed?|deposit\s+issue|"
+    r"contact\s+support|need\s+support|want\s+support|talk\s+to\s+support)\b",
     re.I,
 )
 
@@ -382,6 +433,18 @@ def _rules_understand(
         return understanding
 
     if _COMPARISON_RE.search(text) or len(parsed.get("brands") or []) >= 2:
+        from app.ai.machine_spec_service import detect_machine_advisory_query
+
+        advisory = detect_machine_advisory_query(text, parsed)
+        if advisory:
+            understanding.primary_intent = "domain_knowledge"
+            understanding.response_mode = "domain_knowledge"
+            understanding.should_answer_knowledge = True
+            understanding.confidence = 0.9
+            understanding.reason = advisory.get("reason") or "machine_advisory_signal"
+            understanding.context_reference = {"knowledge": advisory}
+            return understanding
+
         understanding.primary_intent = "comparison"
         understanding.response_mode = "comparison"
         understanding.should_compare = True
@@ -390,6 +453,26 @@ def _rules_understand(
         return understanding
 
     from app.ai.domain_recommendation_engine import is_domain_recommendation_query
+    from app.ai.purpose_intent_engine import is_purpose_based_machine_need
+
+    has_search_entities = bool(
+        parsed.get("category")
+        or parsed.get("city")
+        or parsed.get("brand")
+        or parsed.get("max_price")
+        or parsed.get("purpose_key")
+    )
+
+    # Purpose/work-goal machine need -> search (before generic recommendation routing)
+    if is_purpose_based_machine_need(text):
+        understanding.primary_intent = "machine_search"
+        understanding.response_mode = "machine_search"
+        understanding.should_search = True
+        understanding.confidence = 0.88
+        understanding.reason = "purpose_machine_need"
+        if parsed.get("purpose_key"):
+            understanding.context_reference = {"purpose_key": parsed["purpose_key"]}
+        return understanding
 
     if is_domain_recommendation_query(text, parsed=parsed):
         understanding.primary_intent = "recommendation"
@@ -401,10 +484,18 @@ def _rules_understand(
 
     from app.ai.capability_registry import has_marketplace_action_signal
     from app.ai.social_turn_detector import detect_social_turn
+    from app.ai.machine_spec_service import detect_machine_knowledge_query
 
-    has_search_entities = bool(
-        parsed.get("category") or parsed.get("city") or parsed.get("brand") or parsed.get("max_price")
-    )
+    mk = detect_machine_knowledge_query(text, parsed, session_ctx=ctx)
+    if mk:
+        understanding.primary_intent = "domain_knowledge"
+        understanding.response_mode = "domain_knowledge"
+        understanding.should_answer_knowledge = True
+        understanding.confidence = 0.91
+        understanding.reason = mk.get("reason") or "machine_knowledge_signal"
+        understanding.context_reference = {"knowledge": mk}
+        return understanding
+
     if has_search_entities or has_marketplace_action_signal(text):
         understanding.primary_intent = "machine_search"
         understanding.response_mode = "machine_search"
@@ -508,6 +599,8 @@ Return ONLY JSON:
 RULES:
 - support/refund/payment/booking issues → support (NOT unsupported listing)
 - brand comparisons (JCB vs Komatsu) → comparison
+- machine specs/details/features/engine/fuel/mileage/about named model → domain_knowledge should_answer_knowledge true, should_search false
+- "how is X better than others" / "kese badiya hai" about one machine → domain_knowledge NOT machine_search
 - best machine for digging/road project → recommendation in_domain
 - "how can you help" → meta_help NOT wellbeing
 - "what is my name" → memory_question
@@ -568,7 +661,7 @@ RULES:
             f"mode={result.response_mode}",
             f"conf={result.confidence}",
         )
-        return result
+        return _merge_rules_authority(result, rules_result)
     except Exception as exc:
         print(f"[semantic_gateway] llm_failed -> rules_fallback: {exc}")
         return rules_result

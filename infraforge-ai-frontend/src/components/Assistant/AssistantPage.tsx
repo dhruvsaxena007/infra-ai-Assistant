@@ -118,19 +118,53 @@ type ActiveModal =
   | null;
 
 const SUGGESTION_PROMPTS: Record<string, string> = {
+  "Search Machine": "excavator in jaipur",
   "Search machine": "excavator in jaipur",
+  "Search this machine": "Search this machine",
   "Upload image": "",
   "Voice search": "",
-  "Ask recommendation": "road project ke liye best machine kaunsi hai?",
-  "Talk to support": "I need help from support",
-  "Order issue": "I ordered a machine and I have a problem",
-  "Booking issue": "booking me issue hai",
-  "Refund/Return": "I want refund",
-  "Payment issue": "payment failed amount deducted",
-  "Contact support": "I need help from support",
+  "Ask recommendation": "Ask recommendation",
+  "Talk to support": "Talk to support",
+  "Order issue": "Order issue",
+  "Booking issue": "Booking issue",
+  "Refund/Return": "Refund/Return",
+  "Payment issue": "Payment issue",
+  "Contact support": "Contact support",
   "Upload document": "",
-  "Share order ID": "My order ID is ",
-  "Booking policy": "What is the rental cancellation policy?",
+  "Share order ID": "Share order ID",
+  "Share booking ID": "Share booking ID",
+  "Share transaction ID": "Share transaction ID",
+  "Booking policy": "Booking policy",
+  "Compare brands": "Compare brands",
+  "Compare machines": "Compare machines",
+  "Show cheaper options": "Show cheaper options",
+  "Rent only": "Rent only",
+  "Contact owner": "Contact owner",
+  "Search nearby cities": "Search nearby cities",
+  "Try similar machines": "Try similar machines",
+  "Increase budget": "Increase budget",
+  "Show other brands": "Show other brands",
+  "Tell city for listings": "Tell city for listings",
+  "Digging": "Digging",
+  "Lifting": "Lifting",
+  "Compaction": "Compaction",
+  "Loading": "Loading",
+  "Transport": "Transport",
+  "Road work": "Road work",
+  "Building": "Building",
+  "Earthwork": "Earthwork",
+  "Jaipur": "Jaipur",
+  "Delhi": "Delhi",
+  "Mumbai": "Mumbai",
+  "Pune": "Pune",
+  "Excavator": "Excavator",
+  "Road Roller": "Road Roller",
+  "Crane": "Crane",
+  "Backhoe Loader": "Backhoe Loader",
+  "Raise request": "",
+  "Raise Request": "",
+  "Call support": "Call support",
+  "WhatsApp": "WhatsApp",
 };
 
 export default function AssistantPage() {
@@ -665,13 +699,17 @@ export default function AssistantPage() {
 
   const handleSuggestionClick = (chip: string) => {
     if (isSuggestionActionChip(chip)) {
-      if (chip === "Upload image") {
+      if (chip === "Upload image" || chip === "Upload clearer image") {
         setOpenImagePickerSignal((n) => n + 1);
       } else if (chip === "Voice search") {
         setStartVoiceSignal((n) => n + 1);
-      } else if (chip === "Document Q&A" || chip === "Upload document") {
+      } else if (chip === "Document Q&A" || chip === "Upload document" || chip === "Upload PDF") {
         setOpenDocumentSignal((n) => n + 1);
       }
+      return;
+    }
+    if (chip === "Raise request" || chip === "Raise Request" || chip === "Call support" || chip === "WhatsApp") {
+      handleRaiseSupportRequest();
       return;
     }
     if (IMAGE_CLARIFICATION_CHIPS.has(chip)) {
@@ -679,9 +717,7 @@ export default function AssistantPage() {
       return;
     }
     const draft = resolveSuggestionDraftText(chip, SUGGESTION_PROMPTS);
-    if (draft) {
-      chatInputRef.current?.insertDraft(draft, { replace: !chip.includes("order ID") });
-    }
+    void handleSendText(draft || chip);
   };
 
   // --- Session controls -----------------------------------------------------

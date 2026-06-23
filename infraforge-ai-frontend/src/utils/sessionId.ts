@@ -1,7 +1,7 @@
-/** Browser session key — per-tab only (never localStorage: Chrome sync shares that across devices). */
+/** Browser session key â€” per-tab only (never localStorage: Chrome sync shares that across devices). */
 export const SESSION_STORAGE_KEY = "infraforge_session_id";
 
-/** Legacy key — removed on load so synced browsers stop sharing one session. */
+/** Legacy key â€” removed on load so synced browsers stop sharing one session. */
 const LEGACY_LOCAL_KEY = "infraforge_session_id";
 
 export function createSessionId(): string {

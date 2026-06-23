@@ -41,6 +41,10 @@ _FACTUAL_DRAFT_GOALS = frozenset({
     "respond_flow_ack",
     "domain_knowledge_answer",
     "assistant_identity",
+    "meta_help",
+    "memory_answer",
+    "support_guidance",
+    "offer_handover",
 })
 
 _EMPATHY_PREFIX: dict[str, str] = {
@@ -299,6 +303,24 @@ _VARIANTS: dict[str, list[Variant]] = {
         {"id": "unk_c", "style": "helpful", "use_name": False,
          "english": "{draft}", "hinglish": "{draft}"},
     ],
+    "meta_help": [
+        {"id": "mh_a", "style": "helpful", "use_name": False,
+         "english": "{draft}", "hinglish": "{draft}"},
+    ],
+    "memory_answer": [
+        {"id": "mem_a", "style": "warm", "use_name": False,
+         "english": "{draft}", "hinglish": "{draft}"},
+    ],
+    "support_guidance": [
+        {"id": "sg_a", "style": "professional", "use_name": False,
+         "english": "{draft}", "hinglish": "{draft}"},
+        {"id": "sg_b", "style": "empathetic", "use_name": True,
+         "english": "{draft}", "hinglish": "{draft}"},
+    ],
+    "offer_handover": [
+        {"id": "oh_a", "style": "professional", "use_name": False,
+         "english": "{draft}", "hinglish": "{draft}"},
+    ],
     "explain_security_deposit": [
         {"id": "dep_a", "style": "professional", "use_name": False,
          "english": "{draft}", "hinglish": "{draft}"},
@@ -329,7 +351,13 @@ def _pick_variant(
     language: str = "english",
     name: str | None = None,
 ) -> Variant:
-    variants = _VARIANTS.get(response_goal) or _VARIANTS["continue_followup"]
+    variants = _VARIANTS.get(response_goal)
+    if not variants:
+        if draft.strip():
+            variants = [{"id": "draft_fallback", "style": "helpful", "use_name": False,
+                         "english": "{draft}", "hinglish": "{draft}"}]
+        else:
+            variants = _VARIANTS["clarify_unknown"]
     recent_ids: list[str] = list(session_context.get("recent_variant_ids") or [])[-3:]
     recent_sigs: list[str] = list(
         session_context.get("recent_response_signatures")

@@ -238,6 +238,10 @@ CATEGORY_SYNONYMS = {
     ],
 }
 
+from app.ai.industry_lexicon import merge_category_synonyms
+
+CATEGORY_SYNONYMS = merge_category_synonyms(CATEGORY_SYNONYMS)
+
 # Model / product-line phrases that imply category ONLY when no explicit category is present.
 MODEL_CATEGORY_SYNONYMS = {
     "backhoe loader": [
@@ -876,7 +880,13 @@ def detect_model(text: str):
         r"\blm[- ]?100\b",
         r"\b3dx\b",
         r"\b4dx\b",
+        r"\b2dx\b",
         r"\b120k2\b",
+        r"\b320d\b",
+        r"\bpc[- ]?\d{3}\b",
+        r"\bzaxis\s*\d+\b",
+        r"\br\d{3}[a-z-]*\b",
+        r"\bec\d{3}\b",
         r"\bxa[- ]?157\b",
         r"\bscs800a\b",
         r"\bbp\s*350\b",

@@ -17,6 +17,7 @@ import re
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
+from app.ai.industry_lexicon import COMMON_PHRASE_TYPOS, COMMON_TYPOS
 from app.core.config import settings
 
 # Structural fixes — shape-based, not example sentences.
@@ -35,16 +36,8 @@ _STRUCTURAL: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bacche\s+hote\s+hai\s+ya\b", re.I), "acche hote hain ya"),
 ]
 
-# Multi-word typo fixes (marketplace search phrases).
-_PHRASE_FIXES: list[tuple[re.Pattern, str]] = [
-    (re.compile(r"\bhydra\s+crne\b", re.I), "hydra crane"),
-    (re.compile(r"\bhydra\s+crain\b", re.I), "hydra crane"),
-    (re.compile(r"\broad\s+rolar\b", re.I), "road roller"),
-    (re.compile(r"\bdump\s+truk\b", re.I), "dump truck"),
-    (re.compile(r"\bcrawlar\s+dril\b", re.I), "crawler drill"),
-    (re.compile(r"\bcrawler\s+dril\b", re.I), "crawler drill"),
-    (re.compile(r"\bbackhoe\s+loadr\b", re.I), "backhoe loader"),
-]
+# Multi-word typo fixes (marketplace search phrases + industry_lexicon).
+_PHRASE_FIXES: list[tuple[re.Pattern, str]] = list(COMMON_PHRASE_TYPOS)
 
 # Single-token replacements (word-boundary safe).
 _TOKEN_FIXES: dict[str, str] = {
@@ -64,10 +57,13 @@ _TOKEN_FIXES: dict[str, str] = {
     "delih": "delhi",
     "dehli": "delhi",
     "mumabi": "mumbai",
-    # Categories
+    # Categories (base set; industry_lexicon COMMON_TYPOS merged below)
     "exavator": "excavator",
     "excvator": "excavator",
     "excavtor": "excavator",
+    "excavtion": "excavation",
+    "excavatoin": "excavation",
+    "excavater": "excavator",
     "rolar": "roller",
     "rolle": "roller",
     "truk": "truck",
@@ -81,6 +77,13 @@ _TOKEN_FIXES: dict[str, str] = {
     "waisa": "waise",
     "specifcation": "specification",
     "specifictions": "specifications",
+    "specifcations": "specifications",
+    "especifications": "specifications",
+    "especification": "specification",
+    "specfications": "specifications",
+    "specfication": "specification",
+    "geive": "give",
+    "gve": "give",
     "consumtion": "consumption",
     # Hinglish normalize (helps downstream token match)
     "chaiye": "chahiye",
@@ -90,6 +93,10 @@ _TOKEN_FIXES: dict[str, str] = {
     "accha": "achha",
     "theek": "thik",
 }
+# Industry-specific typos from centralized lexicon (later keys do not override above).
+_TOKEN_FIXES.update(
+    {k: v for k, v in COMMON_TYPOS.items() if k not in _TOKEN_FIXES}
+)
 
 # Never replace these tokens even if fuzzy-close.
 _PROTECTED = frozenset({

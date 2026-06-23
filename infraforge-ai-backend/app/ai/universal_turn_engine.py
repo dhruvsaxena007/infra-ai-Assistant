@@ -581,6 +581,10 @@ def analyze_universal_turn(
             "kind": knowledge.get("kind"),
             "subject": knowledge.get("subject"),
             "subject_type": knowledge.get("subject_type"),
+            "brand": knowledge.get("brand"),
+            "model": knowledge.get("model"),
+            "category": knowledge.get("category"),
+            "display_name": knowledge.get("display_name"),
         }
 
     # Selected / referenced machine — book or contact owner (never fresh search)

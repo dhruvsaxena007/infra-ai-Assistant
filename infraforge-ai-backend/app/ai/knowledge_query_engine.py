@@ -133,7 +133,18 @@ def detect_knowledge_query(
     Structural detection — not example phrase lists.
     """
     text = (message or "").strip()
-    if not text or _is_marketplace_action(text):
+    if not text:
+        return None
+
+    parsed = parsed or parse_query(text)
+
+    from app.ai.machine_spec_service import detect_machine_knowledge_query
+
+    machine_knowledge = detect_machine_knowledge_query(text, parsed, session_ctx=session_ctx)
+    if machine_knowledge:
+        return machine_knowledge
+
+    if _is_marketplace_action(text):
         return None
 
     parsed = parsed or parse_query(text)
@@ -281,6 +292,16 @@ async def build_knowledge_answer(
             "assistant_mode": tool["assistant_mode"],
             "suggestions": tool.get("suggestions") or [],
         }
+    elif kind == "machine_specification":
+        from app.ai.machine_spec_service import build_machine_spec_draft
+
+        draft = build_machine_spec_draft(turn, lang=lang)
+        goal = "domain_knowledge_answer"
+    elif kind == "machine_advisory":
+        from app.ai.machine_spec_service import build_machine_advisory_draft
+
+        draft = build_machine_advisory_draft(turn, lang=lang)
+        goal = "domain_knowledge_answer"
     else:
         subject = turn.get("subject") or "this"
         subject_type = turn.get("subject_type") or "concept"
@@ -302,14 +323,20 @@ async def build_knowledge_answer(
                 "You are InfraForge AI — a construction and heavy-equipment marketplace assistant for India. "
                 "Answer the user's question directly and helpfully in 2-4 short paragraphs max. "
                 "RULES: Do NOT invent live listing prices, availability, owner contacts, or booking status. "
-                "You MAY explain brands, machine types, applications, and how to search on InfraForge. "
+                "You MAY use well-known public manufacturer specifications (engine HP/kW, operating weight, "
+                "bucket/drum capacity, fuel type, typical applications, fuel consumption ranges) for construction equipment. "
+                "If exact variant is unclear, give typical range and note it may vary by year/variant. "
                 "Match user language (English/Hindi/Hinglish). Be specific — answer what they asked."
             )
+            subject = turn.get("display_name") or turn.get("subject") or "assistant"
             user_block = (
                 f"User question: {user_message}\n"
                 f"Knowledge kind: {kind}\n"
-                f"Subject: {turn.get('subject') or 'assistant'}\n"
-                f"Draft facts (use as base, improve clarity): {draft}\n"
+                f"Machine/Subject: {subject}\n"
+                f"Brand: {turn.get('brand') or 'unknown'}\n"
+                f"Model: {turn.get('model') or 'unknown'}\n"
+                f"Category: {turn.get('category') or 'unknown'}\n"
+                f"Draft facts (use as base, enrich with public manufacturer knowledge): {draft}\n"
                 f"Capabilities: {capability_summary_for_prompt()}"
             )
             resp = groq_chat_completion(
@@ -328,11 +355,14 @@ async def build_knowledge_answer(
         except Exception as exc:
             print(f"[knowledge_query] llm_failed: {exc}")
 
-    suggestions = (
-        ["Search Machine", "Compare machines", "Contact support"]
-        if kind == "assistant_identity"
-        else ["Search this machine", "Compare brands", "Ask recommendation"]
-    )
+    if kind == "assistant_identity":
+        suggestions = ["Search Machine", "Compare machines", "Contact support"]
+    elif kind == "machine_specification":
+        suggestions = ["Search this machine", "Compare brands", "Ask recommendation"]
+    elif kind == "machine_advisory":
+        suggestions = ["Compare brands", "Search this machine", "Ask recommendation"]
+    else:
+        suggestions = ["Search this machine", "Compare brands", "Ask recommendation"]
     return {
         "message": draft,
         "assistant_mode": "advisory" if kind != "assistant_identity" else "conversational",

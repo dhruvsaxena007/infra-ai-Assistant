@@ -49,9 +49,11 @@ export function focusInputWithCaret(
 /** Action chips that open pickers — never populate draft text. */
 export const SUGGESTION_ACTION_CHIPS = new Set([
   "Upload image",
+  "Upload clearer image",
   "Voice search",
   "Document Q&A",
   "Upload document",
+  "Upload PDF",
 ]);
 
 export function isSuggestionActionChip(chip: string): boolean {

@@ -87,36 +87,6 @@ def fallback_message_for_stage(
     )
 
 
-def build_safe_error_response(
-    *,
-    stage: str,
-    exc: Exception | None = None,
-    intent: str | None = None,
-    user_message: str = "",
-    lang: str = "english",
-    request_id: str | None = None,
-) -> dict[str, Any]:
-    """Structured error response for API — no raw exception in user message."""
-    rid = request_id or _request_id()
-    log_safe_error(
-        request_id=rid,
-        stage=stage,
-        intent=intent,
-        exc=exc,
-        message=user_message,
-    )
-    msg = fallback_message_for_stage(stage, lang=lang, user_message=user_message)
-    return error_response(
-        message=msg,
-        error={
-            "request_id": rid,
-            "stage": stage,
-            "intent": intent,
-            "recoverable": True,
-        },
-    )
-
-
 def build_safe_fallback_success(
     *,
     stage: str,
@@ -143,5 +113,163 @@ def build_safe_fallback_success(
                 "stage": stage,
             },
             "suggestions": suggestions or ["Search Machine", "Contact support", "Ask recommendation"],
+        },
+    )
+
+
+def _is_database_failure(exc: Exception | None) -> bool:
+    if not exc:
+        return False
+    err = str(exc).lower()
+    needles = (
+        "nonetype", "equipmentcategories", "mongodb", "connection",
+        "server selection", "timeout", "econnrefused", "network",
+    )
+    return any(n in err for n in needles)
+
+
+def infer_recoverable_stage(
+    user_message: str,
+    exc: Exception | None = None,
+) -> tuple[str, str]:
+    """Map failed turn to a recoverable pipeline stage + intent."""
+    text = (user_message or "").strip()
+
+    try:
+        from app.ai.suggestion_action_resolver import is_suggestion_chip, resolve_suggestion_chip
+
+        if is_suggestion_chip(text):
+            hint = (resolve_suggestion_chip(text) or {}).get("intent_hint")
+            if hint == "support":
+                return "support", "support_request"
+            if hint == "machine_search":
+                return "machine_search", "machine_search"
+            if hint == "recommendation":
+                return "recommendation", "machine_recommendation"
+            if hint == "comparison":
+                return "comparison", "comparison_request"
+    except Exception:
+        pass
+
+    try:
+        from app.ai.capability_registry import (
+            has_marketplace_action_signal,
+            has_support_action_signal,
+        )
+        from app.ai.query_parser import parse_query
+
+        if has_support_action_signal(text):
+            return "support", "support_request"
+        parsed = parse_query(text)
+        if has_marketplace_action_signal(text) or parsed.get("category") or parsed.get("city"):
+            return "machine_search", "machine_search"
+    except Exception:
+        pass
+
+    try:
+        from app.ai.semantic_turn_gateway import _SUPPORT_RE, _RECOMMENDATION_RE
+
+        if _SUPPORT_RE.search(text):
+            return "support", "support_request"
+        if _RECOMMENDATION_RE.search(text):
+            return "recommendation", "machine_recommendation"
+    except Exception:
+        pass
+
+    if _is_database_failure(exc):
+        return "machine_search", "machine_search"
+
+    return "unknown", "unknown"
+
+
+def build_recoverable_exception_response(
+    *,
+    user_message: str,
+    exc: Exception | None = None,
+    lang: str = "english",
+    request_id: str | None = None,
+) -> dict[str, Any]:
+    """Success envelope with useful reply when the pipeline threw."""
+    rid = request_id or _request_id()
+    stage, intent = infer_recoverable_stage(user_message, exc)
+    log_safe_error(
+        request_id=rid,
+        stage=stage,
+        intent=intent,
+        exc=exc,
+        message=user_message,
+    )
+
+    if stage == "support":
+        from app.ai.support_response_service import build_response
+
+        resp = build_response("support_request", lang=lang, message=user_message)
+        return success_response(
+            message=resp["message"],
+            data={
+                "machines": [],
+                "assistant_mode": resp.get("assistant_mode", "support"),
+                "suggestions": resp.get("suggestions") or ["Contact support", "Raise Request"],
+                "handover": resp.get("handover"),
+                "context": {
+                    "intent": "support_request",
+                    "response_mode": "safe_recoverable_fallback",
+                    "request_id": rid,
+                    "stage": stage,
+                    "recoverable": True,
+                },
+            },
+        )
+
+    return build_safe_fallback_success(
+        stage=stage,
+        intent=intent,
+        assistant_mode=(
+            "machine_search" if stage == "machine_search" else "clarification"
+        ),
+        user_message=user_message,
+        lang=lang,
+        request_id=rid,
+    )
+
+
+def build_safe_error_response(
+    *,
+    stage: str,
+    exc: Exception | None = None,
+    intent: str | None = None,
+    user_message: str = "",
+    lang: str = "english",
+    request_id: str | None = None,
+) -> dict[str, Any]:
+    """Structured API response — recoverable intents return success, not red errors."""
+    rid = request_id or _request_id()
+    inferred_stage, inferred_intent = infer_recoverable_stage(user_message, exc)
+    use_stage = stage if stage and stage != "assistant_router" else inferred_stage
+    use_intent = intent or inferred_intent
+
+    if use_stage in ("support", "machine_search", "recommendation", "comparison"):
+        return build_recoverable_exception_response(
+            user_message=user_message,
+            exc=exc,
+            lang=lang,
+            request_id=rid,
+        )
+
+    log_safe_error(
+        request_id=rid,
+        stage=use_stage,
+        intent=use_intent,
+        exc=exc,
+        message=user_message,
+    )
+    msg = fallback_message_for_stage(use_stage, lang=lang, user_message=user_message)
+    return error_response(
+        message=msg,
+        error={
+            "request_id": rid,
+            "stage": use_stage,
+            "intent": use_intent,
+            "recoverable": True,
         },
     )

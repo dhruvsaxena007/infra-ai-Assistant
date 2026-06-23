@@ -37,6 +37,10 @@ class ReferenceCache:
     async def load(self, database: AsyncIOMotorDatabase) -> None:
         if self.loaded:
             return
+        if database is None:
+            print("[reference_cache] database unavailable — using empty cache")
+            self.loaded = True
+            return
 
         async for doc in database.equipmentcategories.find({}):
             cat_id = str(doc["_id"])

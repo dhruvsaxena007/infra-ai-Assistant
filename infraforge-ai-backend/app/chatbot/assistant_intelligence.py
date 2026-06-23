@@ -206,60 +206,18 @@ PURPOSE_TO_MACHINE: dict[str, list[str]] = {
     "transport": ["dump truck", "tipper"],
     "drilling": ["crawler drill"],
     "concrete": ["concrete mixer", "concrete pump", "concrete mixer truck"],
+    "demolition": ["excavator", "mobile crusher", "backhoe loader"],
 }
 
-# Alias map — spoken terms → canonical purpose key
-PURPOSE_ALIASES: dict[str, str] = {
-    "digging": "digging",
-    "excavation": "digging",
-    "excavate": "digging",
-    "earthwork": "digging",
-    "khudai": "digging",
-    "khodna": "digging",
-    "khodni": "digging",
-    "loading": "loading",
-    "material handling": "loading",
-    "lifting": "lifting",
-    "height": "lifting",
-    "erection": "lifting",
-    "compaction": "compaction",
-    "compact": "compaction",
-    "compacting": "compaction",
-    "dabana": "compaction",
-    "road work": "compaction",
-    "road leveling": "leveling",
-    "road levelling": "leveling",
-    "leveling": "leveling",
-    "levelling": "leveling",
-    "grading": "leveling",
-    "transport": "transport",
-    "saman le jana": "transport",
-    "material shifting": "transport",
-    "hauling": "transport",
-    "haulage": "transport",
-    "drilling": "drilling",
-    "boring": "drilling",
-    "upar uthana": "lifting",
-    "crane work": "lifting",
-    "concrete": "concrete",
-}
+from app.ai.industry_lexicon import build_purpose_aliases, build_purpose_signal_patterns
+
+# Alias map — spoken terms → canonical purpose key (from industry_lexicon)
+PURPOSE_ALIASES: dict[str, str] = build_purpose_aliases()
 
 _PURPOSE_CATEGORIES = PURPOSE_TO_MACHINE  # backward compat
 
-# Ordered patterns — first match per purpose key only once.
-_PURPOSE_SIGNAL_PATTERNS: list[tuple[str, str]] = [
-    (r"\b(?:mitti\s+khod|khodni|khodna|trench(?:ing)?)\b", "digging"),
-    (r"\b(?:road\s+dig(?:ging)?|digging\s+road|for\s+digging)\b", "digging"),
-    (r"\b(?:digging|excavation|excavate|khudai|earthwork)\b", "digging"),
-    (r"\b(?:level(?:ing|ling)\s+(?:the\s+)?road|road\s+level(?:ing|ling)|grading)\b", "leveling"),
-    (r"\b(?:dabana|compact(?:ion|ing)?|compactor|compacting|roller)\b", "compaction"),
-    (r"\bconcrete\b", "concrete"),
-    (r"\b(?:upar\s+utha|crane\s+work|lifting|erection|height\s+work)\b", "lifting"),
-    (r"\b(?:drilling|boring)\b", "drilling"),
-    (r"\b(?:saman\s+le\s+jana|material\s+shift(?:ing)?|transport|hauling|haulage)\b", "transport"),
-    (r"\b(?:loading|material\s+handling|unload(?:ing)?)\b", "loading"),
-    (r"\b(?:road\s+work|highway|paving)\b", "compaction"),
-]
+# Ordered patterns — first match per purpose key only once (from industry_lexicon).
+_PURPOSE_SIGNAL_PATTERNS: list[tuple[str, str]] = build_purpose_signal_patterns()
 
 _VAGUE_QUERY_RE = re.compile(
     r"^(?:"
@@ -816,6 +774,8 @@ def resolve_purpose_key(message: str) -> Optional[str]:
     text = (message or "").strip().lower()
     if not text:
         return None
+    if re.fullmatch(r"[\d\s.,]+(?:k|lakh|lac|cr)?", text.replace(" ", "")):
+        return None
     if text in PURPOSE_ALIASES:
         return PURPOSE_ALIASES[text]
     for label, key in PURPOSE_ALIASES.items():
@@ -836,11 +796,12 @@ def resolve_purpose_key(message: str) -> Optional[str]:
         try:
             from rapidfuzz import process
 
-            choices = list(
-                dict.fromkeys(
+            choices = [
+                c for c in dict.fromkeys(
                     list(PURPOSE_ALIASES.keys()) + list(_PURPOSE_OPTIONS.keys()),
                 )
-            )
+                if not (len(c) <= 2 and c.isdigit())
+            ]
             match = process.extractOne(text, choices, score_cutoff=82)
             if match:
                 hit = match[0]

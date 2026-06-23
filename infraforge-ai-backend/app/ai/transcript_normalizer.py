@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import re
 
+from app.ai.industry_lexicon import COMMON_TYPOS
+
 _DEV_DIGITS = {
     "०": "0", "१": "1", "२": "2", "३": "3", "४": "4",
     "५": "5", "६": "6", "७": "7", "८": "8", "९": "9",
@@ -40,8 +42,13 @@ _NORMALIZE_MAP = {
 }
 
 _LATIN_FIXES = {
-    "excavater": "excavator", "excavetor": "excavator", "excevator": "excavator",
-    "exavator": "excavator", "jsb": "jcb",
+    **COMMON_TYPOS,
+    "jsb": "jcb",
+    "specifcation": "specification", "specifcations": "specifications",
+    "specifictions": "specifications", "especifications": "specifications",
+    "geive": "give", "gve": "give",
+    "patthar": "pathar", "chaiye": "chahiye",
+    "seedhi": "leveling", "sidha": "leveling",
     "andar": "in", "ander": "in", "andr": "in", "mein": "in", "mai": "in",
     "jaypur": "jaipur", "jeysibi": "jcb", "jaisibi": "jcb",
     "sasta": "cheap", "sasti": "cheap", "muft": "free",

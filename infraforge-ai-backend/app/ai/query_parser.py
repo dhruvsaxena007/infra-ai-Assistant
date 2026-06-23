@@ -36,6 +36,7 @@ from app.ai.category_mapping import (
 )
 from app.ai.numeric_normalizer import expand_numeric_shorthand
 from app.ai.transcript_normalizer import normalize_transcribed_text
+from app.ai.purpose_intent_engine import enrich_parsed_with_purpose
 
 
 def _normalize_query_text(query: str) -> str:
@@ -64,7 +65,7 @@ def parse_query(query: str):
         "rent_type": detect_rent_type(normalized),
     }
     result["validation_notes"] = detect_entity_validation_notes(normalized, result)
-    return result
+    return enrich_parsed_with_purpose(result, normalized)
 
 
 

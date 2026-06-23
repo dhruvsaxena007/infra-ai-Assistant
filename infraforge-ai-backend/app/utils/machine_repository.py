@@ -18,11 +18,17 @@ from app.utils.machine_normalizer import finalize_normalized_machine, normalize_
 from app.utils.reference_cache import get_reference_cache
 
 
+def _database_unavailable(database) -> bool:
+    return database is None
+
+
 async def detect_schema_mode(database) -> str:
     """
     Detect how machines are stored. Returns 'mixed' when both marketplace
     listings and seed/training documents coexist (common after seed_training_machines).
     """
+    if _database_unavailable(database):
+        return "seed"
     marketplace_count = await database.machines.count_documents(
         {
             "$or": [
@@ -312,6 +318,10 @@ async def search_by_filters(
     filters: dict | None = None,
 ) -> list:
     """Deterministic filter search returning normalized machines."""
+    if _database_unavailable(database):
+        print("[machine_repository] search skipped — database unavailable")
+        return []
+
     merged = dict(filters or {})
     merged.update(
         {

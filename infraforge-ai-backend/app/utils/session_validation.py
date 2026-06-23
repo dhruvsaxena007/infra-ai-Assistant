@@ -1,4 +1,4 @@
-"""Session id validation — prevent shared fallback ids from merging user state."""
+"""Session id validation - prevent shared fallback ids from merging user state."""
 
 from __future__ import annotations
 
