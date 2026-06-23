@@ -58,8 +58,7 @@ import {
   isSuggestionActionChip,
   resolveSuggestionDraftText,
 } from "../../utils/suggestionDraft";
-
-const SESSION_KEY = "infraforge_session_id";
+import { createSessionId, loadSessionId, persistSessionId } from "../../utils/sessionId";
 
 const IMAGE_CLARIFICATION_CHIPS = new Set([
   "Exact same machine",
@@ -82,22 +81,6 @@ type LimitModalState = {
   used: number;
   limit: number;
 } | null;
-
-function loadSessionId(): string {
-  try {
-    const existing = localStorage.getItem(SESSION_KEY);
-    if (existing) return existing;
-  } catch {
-    /* localStorage may be unavailable */
-  }
-  const fresh = `frontend_${Math.random().toString(36).slice(2, 10)}`;
-  try {
-    localStorage.setItem(SESSION_KEY, fresh);
-  } catch {
-    /* ignore */
-  }
-  return fresh;
-}
 
 const SELECTED_MACHINE_KEY = "infra_assistant_selected_machine";
 
@@ -730,12 +713,8 @@ export default function AssistantPage() {
     cancelVoiceRequest();
     const previous = sessionId;
     void resetBackendSession(previous);
-    const fresh = `frontend_${Math.random().toString(36).slice(2, 10)}`;
-    try {
-      localStorage.setItem(SESSION_KEY, fresh);
-    } catch {
-      /* ignore */
-    }
+    const fresh = createSessionId();
+    persistSessionId(fresh);
     setSessionId(fresh);
     setSelectedMachineId(null);
     saveSelectedMachineId(fresh, null);

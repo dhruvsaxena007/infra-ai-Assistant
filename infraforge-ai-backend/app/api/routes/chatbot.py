@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from app.chatbot.chatbot_service import chatbot_response
 from app.database.mongodb import database
 from app.utils.response import error_response
+from app.utils.session_validation import is_valid_session_id, normalize_session_id, session_id_validation_error
 
 router = APIRouter()
 
@@ -24,11 +25,12 @@ async def reset_session(request: SessionResetRequest):
     from app.ai.conversation_state_manager import reset_conversation_session
     from app.utils.response import success_response
 
-    session_id = (request.session_id or "").strip()
-    if not session_id:
+    session_id = normalize_session_id(request.session_id)
+    err = session_id_validation_error(session_id)
+    if err:
         return error_response(
-            message="session_id is required",
-            error={"stage": "validation", "field": "session_id"},
+            message="A valid session_id is required",
+            error=err,
         )
 
     state = reset_conversation_session(session_id)
@@ -42,11 +44,12 @@ async def reset_session(request: SessionResetRequest):
 async def chat(request: ChatRequest):
     """AI chatbot — thin route; all routing in assistant_router."""
 
-    session_id = (request.session_id or "").strip()
-    if not session_id:
+    session_id = normalize_session_id(request.session_id)
+    err = session_id_validation_error(session_id)
+    if err:
         return error_response(
-            message="session_id is required",
-            error={"stage": "validation", "field": "session_id"},
+            message="A valid session_id is required",
+            error=err,
         )
 
     message = (request.message or "").strip()
