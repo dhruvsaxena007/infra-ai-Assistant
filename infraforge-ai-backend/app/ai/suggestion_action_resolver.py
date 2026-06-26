@@ -11,6 +11,7 @@ import re
 from typing import Any, Optional
 
 from app.ai.response_plan import GOAL_SUGGESTIONS
+from app.ai.image_turn_models import all_image_clarification_chips, image_chip_to_intent
 
 # Chips that open UI affordances instead of sending chat text
 UI_ACTION_CHIPS: dict[str, str] = {
@@ -86,6 +87,8 @@ for chip in _STATIC_CHIP_MESSAGES:
     _CHIP_ALIASES.setdefault(_normalize_chip_key(chip), chip)
 for chip in UI_ACTION_CHIPS:
     _CHIP_ALIASES.setdefault(_normalize_chip_key(chip), chip)
+for chip in all_image_clarification_chips():
+    _CHIP_ALIASES.setdefault(_normalize_chip_key(chip), chip)
 
 
 def all_known_chips() -> list[str]:
@@ -137,18 +140,50 @@ def _machine_label(knowledge: dict[str, Any]) -> str:
     return str(cat or "this machine")
 
 
+def _last_image_context(session_ctx: dict[str, Any]) -> dict[str, Any]:
+    conv = session_ctx.get("conversation_state") or session_ctx.get("_conversation_state") or {}
+    img = conv.get("last_image_context") or session_ctx.get("last_image_context") or {}
+    if img:
+        return img
+    session_id = (session_ctx.get("session_id") or "").strip()
+    if session_id:
+        from app.chatbot.image_context_memory import get_image_context
+        return get_image_context(session_id) or {}
+    return {}
+
+
 def _contextual_message(chip_key: str, session_ctx: dict[str, Any]) -> Optional[str]:
     knowledge = _last_knowledge_context(session_ctx)
     filters = _last_search_filters(session_ctx)
+    image_ctx = _last_image_context(session_ctx)
     machine = _machine_label(knowledge) if knowledge else ""
-    city = filters.get("city") or knowledge.get("city") or ""
+    city = filters.get("city") or knowledge.get("city") or image_ctx.get("user_city") or ""
     category = (
         filters.get("category")
         or knowledge.get("category")
         or knowledge.get("subject")
+        or image_ctx.get("detected_category")
         or ""
     )
-    brand = knowledge.get("brand") or filters.get("brand") or ""
+    brand = knowledge.get("brand") or filters.get("brand") or image_ctx.get("detected_brand") or ""
+
+    chip_intent = image_chip_to_intent(chip_key) or image_chip_to_intent(
+        _CHIP_ALIASES.get(chip_key, chip_key)
+    )
+    if chip_intent and image_ctx.get("detected_category"):
+        parts = []
+        if chip_intent == "similar_category":
+            parts.append("similar")
+        elif chip_intent == "exact_match":
+            parts.append("exact same")
+        elif chip_intent == "identify_only":
+            return "which machine is this"
+        if brand:
+            parts.append(brand)
+        parts.append(image_ctx.get("detected_category") or category)
+        if city:
+            parts.append(f"in {city}")
+        return " ".join(p for p in parts if p).strip()
 
     if chip_key == _normalize_chip_key("Search this machine"):
         if machine:

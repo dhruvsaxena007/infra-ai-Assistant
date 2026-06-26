@@ -7,8 +7,10 @@ import React, {
 } from "react";
 import { SendHorizonal, X, ImageIcon, FileText } from "lucide-react";
 import VoiceRecorder from "./VoiceRecorder";
-import ImagePicker, { type ImageSource } from "./ImagePicker";
-import DocumentPicker from "./DocumentPicker";
+import ImagePicker, { type ImagePickerHandle, type ImageSource } from "./ImagePicker";
+import DocumentPicker, { type DocumentPickerHandle } from "./DocumentPicker";
+import ChatInputActionMenu from "./ChatInputActionMenu";
+import DocumentUploadGuide from "./DocumentUploadGuide";
 import {
   buildDraftAfterInsert,
   focusInputWithCaret,
@@ -53,7 +55,12 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
 ) {
   const [value, setValue] = useState("");
   const [recording, setRecording] = useState(false);
+  const [actionMenuOpen, setActionMenuOpen] = useState(false);
+  const [documentGuideOpen, setDocumentGuideOpen] = useState(false);
+
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const imagePickerRef = useRef<ImagePickerHandle>(null);
+  const documentPickerRef = useRef<DocumentPickerHandle>(null);
   const prevDisabledRef = useRef(disabled);
 
   useImperativeHandle(ref, () => ({
@@ -90,7 +97,6 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
   const [pendingImageFile, setPendingImageFile] = useState<File | null>(null);
   const [pendingImagePreviewUrl, setPendingImagePreviewUrl] = useState<string | null>(null);
   const [pendingImageSource, setPendingImageSource] = useState<ImageSource>("upload");
-
   const [pendingDocumentFile, setPendingDocumentFile] = useState<File | null>(null);
 
   useEffect(() => {
@@ -98,6 +104,20 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
       if (pendingImagePreviewUrl) URL.revokeObjectURL(pendingImagePreviewUrl);
     };
   }, [pendingImagePreviewUrl]);
+
+  useEffect(() => {
+    if (openImagePickerSignal) {
+      setActionMenuOpen(false);
+      imagePickerRef.current?.openMenu();
+    }
+  }, [openImagePickerSignal]);
+
+  useEffect(() => {
+    if (openDocumentSignal) {
+      setActionMenuOpen(false);
+      setDocumentGuideOpen(true);
+    }
+  }, [openDocumentSignal]);
 
   const handlePickImage = (file: File, source: ImageSource) => {
     if (!file.type.startsWith("image/")) {
@@ -113,6 +133,7 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
     setPendingImageFile(file);
     setPendingImagePreviewUrl(URL.createObjectURL(file));
     setPendingImageSource(source);
+    inputRef.current?.focus();
   };
 
   const handlePickDocument = (file: File) => {
@@ -129,6 +150,8 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
     }
     clearPendingImage();
     setPendingDocumentFile(file);
+    setDocumentGuideOpen(false);
+    inputRef.current?.focus();
   };
 
   const clearPendingImage = () => {
@@ -173,17 +196,22 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
     !uploading &&
     (!!pendingImageFile || !!value.trim() || (!!pendingDocumentFile && !!value.trim()));
 
-  const iconBtn =
-    "h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center rounded-xl bg-surface-container-high/80 border border-border-subtle text-on-surface-variant hover:text-on-surface hover:border-primary/30 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary/40 disabled:opacity-40";
-
   const placeholder = pendingDocumentFile
     ? "Ask about this document…"
     : pendingImageFile
       ? "Ask about this image…"
       : "Ask about machines… e.g. excavator in jaipur";
 
+  const requestDocumentUpload = () => setDocumentGuideOpen(true);
+
   return (
     <div className="chat-input-bar flex flex-col gap-2">
+      <DocumentUploadGuide
+        open={documentGuideOpen}
+        onClose={() => setDocumentGuideOpen(false)}
+        onContinue={() => documentPickerRef.current?.openPicker()}
+      />
+
       {!recording && pendingImagePreviewUrl && (
         <div className="flex items-center gap-3 self-start image-preview-chip max-w-full message-enter">
           <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 border border-primary/20">
@@ -237,50 +265,71 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
       )}
 
       <div className="flex items-end gap-1.5 sm:gap-2">
-        {!recording && (
-          <textarea
-            ref={inputRef}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                submit();
-              }
-            }}
-            rows={1}
+        {recording ? (
+          <VoiceRecorder
             disabled={disabled}
-            placeholder={placeholder}
-            aria-label="Chat message"
-            className="chat-textarea flex-1 resize-none max-h-28 min-h-[44px] rounded-xl px-3.5 py-2.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none disabled:opacity-50 scrollbar-hide"
+            onRecorded={onSendVoice}
+            onError={onError}
+            onRecordingChange={setRecording}
+            startSignal={startVoiceSignal}
           />
-        )}
-
-        <VoiceRecorder
-          disabled={disabled}
-          onRecorded={onSendVoice}
-          onError={onError}
-          onRecordingChange={setRecording}
-          startSignal={startVoiceSignal}
-        />
-
-        {!recording && (
+        ) : (
           <>
-            <ImagePicker
-              disabled={disabled}
-              onPick={handlePickImage}
-              openSignal={openImagePickerSignal}
-            />
+            <div className="chat-input-composite flex flex-1 items-end min-w-0 gap-0.5 sm:gap-1">
+              <ChatInputActionMenu
+                disabled={disabled}
+                open={actionMenuOpen}
+                onOpenChange={setActionMenuOpen}
+                onImageAction={() => imagePickerRef.current?.openMenu()}
+                onDocumentAction={requestDocumentUpload}
+              />
+
+              <ImagePicker
+                ref={imagePickerRef}
+                disabled={disabled}
+                onPick={handlePickImage}
+                hideTrigger
+              />
+
+              <textarea
+                ref={inputRef}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    submit();
+                  }
+                }}
+                rows={1}
+                disabled={disabled}
+                placeholder={placeholder}
+                aria-label="Chat message"
+                className="chat-textarea-inner flex-1 resize-none max-h-28 min-h-[40px] py-2.5 px-1 sm:px-1.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 bg-transparent border-0 focus:outline-none disabled:opacity-50 scrollbar-hide"
+              />
+
+              <VoiceRecorder
+                disabled={disabled}
+                onRecorded={onSendVoice}
+                onError={onError}
+                onRecordingChange={setRecording}
+                startSignal={startVoiceSignal}
+                variant="inline"
+              />
+            </div>
+
             <DocumentPicker
+              ref={documentPickerRef}
               disabled={disabled}
               onPick={handlePickDocument}
-              openSignal={openDocumentSignal}
+              hideTrigger
             />
+
             <button
               type="button"
               onClick={submit}
               disabled={!canSend}
-              className="send-btn h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center rounded-xl gradient-orange text-on-primary disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all duration-150 active:scale-95 focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="send-btn h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center rounded-xl gradient-orange text-on-primary disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-all duration-150 active:scale-95 focus-visible:ring-2 focus-visible:ring-primary/50 flex-shrink-0"
               title="Send message"
               aria-label="Send message"
             >

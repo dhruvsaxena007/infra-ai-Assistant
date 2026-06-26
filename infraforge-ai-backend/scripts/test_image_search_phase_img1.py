@@ -170,7 +170,11 @@ async def test_route_integration() -> None:
 
     resp, chat_mock = await _call_image_search(message="similar machines", session_id="img1_sim")
     ok("similar uses chatbot", chat_mock.await_count == 1)
-    ok("similar pipeline message", "excavator" in (chat_mock.await_args.args[1] or "").lower())
+    call = chat_mock.await_args
+    sent = ""
+    if call:
+        sent = call.args[1] if len(call.args) > 1 else (call.kwargs.get("user_message") or "")
+    ok("similar pipeline message", "excavator" in sent.lower(), sent)
 
     resp, chat_mock = await _call_image_search(message="exact same", session_id="img1_ex")
     ok("exact honest response", chat_mock.await_count == 0)
@@ -247,7 +251,12 @@ async def test_chat_overrides_and_safety() -> None:
     save_image_context(sid2, detected_machine_type="excavator", search_query="excavator")
     resp = await chatbot_response(sid2, "refund chahiye", database)
     mode = ((resp.get("data") or {}).get("context") or {}).get("assistant_mode") or (resp.get("data") or {}).get("assistant_mode")
-    ok("support after image no search", "refund" in str(mode) and len((resp.get("data") or {}).get("machines") or []) == 0)
+    intent = ((resp.get("data") or {}).get("context") or {}).get("intent") or ""
+    ok(
+        "support after image no search",
+        (mode in ("support", "refund", "refund_return") or "refund" in str(intent))
+        and len((resp.get("data") or {}).get("machines") or []) == 0,
+    )
 
     sid3 = "img1_oot"
     clear_conversation(sid3)

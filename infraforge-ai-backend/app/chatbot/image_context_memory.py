@@ -11,6 +11,7 @@ from datetime import datetime, timedelta, timezone
 
 from app.core.config import settings
 from app.database.persistent_store import load_session_doc, persist_session_fields
+from app.ai.image_turn_models import is_image_clarification_chip
 
 _STRONG_REFERENCE_TRIGGERS = [
     "this type", "this machine", "this one", "is this", "this",
@@ -72,18 +73,56 @@ def has_weak_image_reference(text: str) -> bool:
     return any(_matches_word(lowered, w) for w in _WEAK_REFERENCE_TRIGGERS)
 
 
-def mentions_explicit_machine(text: str) -> bool:
+def mentions_explicit_machine(text: str, *, image_ctx: dict | None = None) -> bool:
+    """True when user names a machine type (not image-reference chips)."""
+    if is_image_clarification_chip(text):
+        return False
     lowered = (text or "").lower()
-    return any(_matches_word(lowered, w) for w in _EXPLICIT_MACHINE_WORDS)
+    if not any(_matches_word(lowered, w) for w in _EXPLICIT_MACHINE_WORDS):
+        return False
+    if not image_ctx:
+        return True
+    from app.ai.category_mapping import canonicalize_category
+    from app.ai.query_parser import parse_query
+
+    parsed = parse_query(text)
+    new_cat = canonicalize_category(parsed.get("category") or "")
+    img_cat = canonicalize_category(
+        image_ctx.get("detected_category") or image_ctx.get("detected_machine_type") or "",
+    )
+    if new_cat and img_cat and new_cat != img_cat:
+        return True
+    # Reference phrasing with same category — not a pivot to a new machine search.
+    if has_strong_image_reference(text) or has_weak_image_reference(text):
+        return False
+    return not img_cat
 
 
 def is_image_follow_up(text: str, session_id: str) -> bool:
+    return is_image_flow_continuation(text, session_id)
+
+
+def is_image_flow_continuation(text: str, session_id: str) -> bool:
+    """Image session continuation: chips, references, city/budget follow-ups."""
     if not text:
         return False
     ctx = get_image_context(session_id)
     if not ctx:
         return False
-    if mentions_explicit_machine(text):
+
+    if is_image_clarification_chip(text):
+        return True
+
+    if ctx.get("awaiting_image_choice") or ctx.get("pending_image_intent"):
+        from app.ai.query_parser import parse_query
+
+        parsed = parse_query(text)
+        if parsed.get("city") or parsed.get("max_price") or parsed.get("listing_type"):
+            return not mentions_explicit_machine(text, image_ctx=ctx)
+        if len(text.split()) <= 4:
+            return not mentions_explicit_machine(text, image_ctx=ctx)
+
+    if mentions_explicit_machine(text, image_ctx=ctx):
         return False
     if has_strong_image_reference(text):
         return True
@@ -170,6 +209,9 @@ def save_image_context(
 
     now = _utcnow()
     ctx.setdefault("created_at", now.isoformat())
+    ctx.setdefault("awaiting_image_choice", bool(ctx.get("image_intent") == "unclear"))
+    if ctx.get("image_intent") == "unclear" and not ctx.get("pending_image_intent"):
+        ctx["pending_image_intent"] = "similar_category"
     ctx["expires_at"] = (
         now + timedelta(seconds=settings.IMAGE_CONTEXT_TTL_SECONDS)
     ).isoformat()

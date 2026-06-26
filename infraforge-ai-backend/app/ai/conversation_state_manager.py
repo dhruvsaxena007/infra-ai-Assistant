@@ -593,6 +593,18 @@ def establish_requirement_collection(
     message: str = "",
 ) -> bool:
     """Set active_flow and pending_fields when city-only or category-only is detected."""
+    from app.chatbot.image_context_memory import get_image_context
+
+    sid = (state.get("session_id") or "").strip()
+    if sid:
+        img = get_image_context(sid)
+        if img and (
+            img.get("awaiting_image_choice")
+            or img.get("pending_image_intent")
+            or img.get("awaiting_image_field")
+        ):
+            return False
+
     from app.ai.context_routing_gate import get_current_gate
 
     gate = get_current_gate() or {}

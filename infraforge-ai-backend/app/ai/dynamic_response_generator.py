@@ -179,10 +179,10 @@ async def _call_llm_generator(
     user_message: str,
     previous_responses: Optional[list[dict]] = None,
 ) -> Optional[dict[str, Any]]:
-    if not settings.GROQ_API_KEY:
+    if not settings.GROQ_API_KEY and not settings.openai_usable:
         return None
     if settings.openai_usable and settings.AI_PROVIDER == "openai":
-        return None  # Groq primary unless OpenAI explicitly enabled later
+        pass  # OpenAI path handled by ai_chat_completion below
 
     from app.core.groq_client import groq_chat_completion
 

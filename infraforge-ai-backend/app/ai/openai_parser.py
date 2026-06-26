@@ -32,7 +32,7 @@ DEFAULT_INTENT: dict[str, Any] = {
     "rent_type": "",
 }
 
-OPENAI_MODEL = __import__("os").getenv("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_MODEL = settings.OPENAI_CHAT_MODEL
 
 _client: Optional[Any] = None
 

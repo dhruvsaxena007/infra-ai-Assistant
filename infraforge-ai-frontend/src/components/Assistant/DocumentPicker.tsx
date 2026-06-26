@@ -1,19 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { FileText } from "lucide-react";
+
+export interface DocumentPickerHandle {
+  openPicker: () => void;
+}
 
 interface Props {
   disabled: boolean;
-  /** Called when user picks a PDF or document — parent holds pending until send. */
   onPick: (file: File) => void;
-  /** Increment to open the file picker from outside (e.g. suggestion chips). */
   openSignal?: number;
+  hideTrigger?: boolean;
 }
 
 const ACCEPT = ".pdf,.doc,.docx,.txt,application/pdf,text/plain";
 
-/** Opens native file picker for documents — no modal; attach then ask in chat. */
-export default function DocumentPicker({ disabled, onPick, openSignal }: Props) {
+const DocumentPicker = forwardRef<DocumentPickerHandle, Props>(function DocumentPicker(
+  { disabled, onPick, openSignal, hideTrigger = false },
+  ref,
+) {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    openPicker: () => inputRef.current?.click(),
+  }));
 
   useEffect(() => {
     if (openSignal) inputRef.current?.click();
@@ -34,15 +43,19 @@ export default function DocumentPicker({ disabled, onPick, openSignal }: Props) 
         className="hidden"
         onChange={handleFile}
       />
-      <button
-        type="button"
-        onClick={() => inputRef.current?.click()}
-        disabled={disabled}
-        title="Attach document"
-        className="h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center rounded-xl bg-surface-container-high/80 border border-border-subtle text-on-surface-variant hover:text-primary hover:border-primary/40 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
-      >
-        <FileText className="w-4 h-4" />
-      </button>
+      {!hideTrigger && (
+        <button
+          type="button"
+          onClick={() => inputRef.current?.click()}
+          disabled={disabled}
+          title="Attach document"
+          className="h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center rounded-xl bg-surface-container-high/80 border border-border-subtle text-on-surface-variant hover:text-primary hover:border-primary/40 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
+        >
+          <FileText className="w-4 h-4" />
+        </button>
+      )}
     </>
   );
-}
+});
+
+export default DocumentPicker;

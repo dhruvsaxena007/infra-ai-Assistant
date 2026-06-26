@@ -24,9 +24,15 @@ async def health():
                 "status": "healthy",
                 "database": "connected",
                 "ai": {
-                    "mode": "local-first",
+                    "mode": "openai" if settings.openai_usable else "local-first",
                     "provider": settings.AI_PROVIDER,
                     "openai_enabled": settings.openai_usable,
+                    "openai_models": {
+                        "chat": settings.OPENAI_CHAT_MODEL,
+                        "vision": settings.OPENAI_VISION_MODEL,
+                        "whisper": settings.OPENAI_WHISPER_MODEL,
+                    } if settings.openai_usable else None,
+                    "use_openai_vision": settings.USE_OPENAI_VISION,
                     "embedding_model": "ready" if is_model_ready() else "warming_or_lazy",
                     "tensorflow_image": "lazy",
                     "yolo_image": (
@@ -38,6 +44,7 @@ async def health():
                     "yolo_model_path": resolve_yolo_model_path() or None,
                     "image_classifier_mode": settings.IMAGE_CLASSIFIER,
                     "groq_whisper": bool(settings.GROQ_API_KEY),
+                    "openai_whisper": settings.openai_usable,
                     "persistence": {
                         "rag_chunks_memory": len(document_chunks),
                         "rag_chunks_mongo": await count_rag_chunks_async(database),
@@ -46,6 +53,7 @@ async def health():
                     "flags": {
                         "AI_PROVIDER": settings.AI_PROVIDER,
                         "ENABLE_OPENAI": settings.ENABLE_OPENAI,
+                        "USE_OPENAI_VISION": settings.USE_OPENAI_VISION,
                         "USE_GROQ_TEXT_UNDERSTANDING": settings.USE_GROQ_TEXT_UNDERSTANDING,
                         "USE_GROQ_ADVISOR": settings.USE_GROQ_ADVISOR,
                         "USE_GROQ_RAG_ANSWER": settings.USE_GROQ_RAG_ANSWER,

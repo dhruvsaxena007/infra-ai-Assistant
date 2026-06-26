@@ -10,7 +10,7 @@ import re
 import uuid
 from typing import Any
 
-from app.ai.category_mapping import category_label
+from app.ai.category_mapping import category_label, detect_brand, detect_model
 from app.ai.query_parser import parse_query
 from app.ai.image_turn_models import (
     IMAGE_INTENT_CLARIFICATION_CHIPS,
@@ -40,9 +40,17 @@ _RE_SIMILAR = re.compile(
 
 _RE_IDENTIFY = re.compile(
     r"(?i)\b("
-    r"what\s+is\s+this|identify|ye\s+kya|yeh\s+kya|kya\s+machine|"
+    r"what\s+is\s+this|which\s+machine|which\s+.+\s+machine|identify|"
+    r"ye\s+kya|yeh\s+kya|kya\s+machine|"
     r"kya\s+hai|batado|batao|bata\s+do|machine\s+kya\s+hai|"
     r"ye\s+konsi|yeh\s+konsi|konsi\s+machine"
+    r")\b",
+)
+
+_RE_BRAND_AVAIL = re.compile(
+    r"(?i)\b("
+    r"this\s+brand|is\s+this\s+brand|brand\s+excavator|brand\s+machine|"
+    r"ye\s+brand|yeh\s+brand|isi\s+brand"
     r")\b",
 )
 
@@ -113,11 +121,7 @@ def _detect_text_intent(user_text: str) -> str | None:
         return "exact_match"
     if _RE_SIMILAR.search(text):
         return "similar_category"
-    if _RE_AVAILABILITY.search(text):
-        return "availability_search"
-    # Bare city or budget follow-ups without explicit intent → availability/search continuation
-    parsed = parse_query(text)
-    if parsed.get("city") or parsed.get("max_price") or parsed.get("listing_type"):
+    if _RE_BRAND_AVAIL.search(text) or _RE_AVAILABILITY.search(text):
         return "availability_search"
     return None
 
@@ -170,23 +174,26 @@ def build_image_followup_reply(
             "suggestions": _clarification_chips(lang),
             "should_search": False,
         }
-    return None
-    text = (user_text or "").strip()
-    if not text:
+    if intent in ("similar_category", "availability_search"):
         return None
-    if _RE_IDENTIFY.search(text):
-        return "identify_only"
-    if _RE_EXACT.search(text):
-        return "exact_match"
-    if _RE_SIMILAR.search(text):
-        return "similar_category"
-    if _RE_AVAILABILITY.search(text):
-        return "availability_search"
-    # Bare city or budget follow-ups without explicit intent → availability/search continuation
-    parsed = parse_query(text)
-    if parsed.get("city") or parsed.get("max_price") or parsed.get("listing_type"):
-        return "availability_search"
     return None
+
+
+def _extract_visual_entities(
+    user_text: str,
+    intent: dict,
+) -> tuple[str | None, str | None]:
+    brand = detect_brand(user_text or "") or intent.get("detected_brand")
+    model = detect_model(user_text or "") or intent.get("detected_model")
+    display = str(intent.get("display_label") or "")
+    if not brand and display:
+        brand = detect_brand(display)
+    if not model and display:
+        model = detect_model(display)
+    return (
+        str(brand).strip() if brand else None,
+        str(model).strip() if model else None,
+    )
 
 
 def _clarification_question(category: str, lang_hint: str = "en") -> str:
@@ -243,6 +250,43 @@ def _build_search_message(
         if "similar" not in user_text.lower():
             return f"similar {display} {' '.join(parts[1:])}".strip()
     return " ".join(parts)
+
+
+def build_search_message_for_image_intent(
+    *,
+    image_intent: str,
+    entities: dict[str, Any],
+    user_text: str,
+) -> str:
+    category = entities.get("category") or "machine"
+    brand = entities.get("brand") or ""
+    model = entities.get("model") or ""
+    city = entities.get("city") or ""
+    parts: list[str] = []
+
+    if image_intent == "similar_category":
+        parts.append("similar")
+    elif image_intent == "exact_match":
+        parts.append("exact")
+    elif image_intent == "availability_search":
+        parts.append("available")
+
+    if brand:
+        parts.append(str(brand))
+    if model:
+        parts.append(str(model))
+    parts.append(str(category))
+    if city:
+        parts.append(f"in {city}")
+    if entities.get("max_price"):
+        parts.append(f"under {int(entities['max_price'])}")
+    if entities.get("listing_type"):
+        parts.append(str(entities["listing_type"]))
+
+    built = " ".join(p for p in parts if p).strip()
+    if built:
+        return built
+    return _build_search_message(category, image_intent=image_intent, user_text=user_text)
 
 
 def _exact_match_message(category: str, lang: str) -> str:
@@ -340,8 +384,9 @@ def resolve_image_turn(
             metadata=meta,
         )
 
-    # Low confidence --------------------------------------------------------
-    if _is_low_confidence(intent, confidence):
+    # Low confidence — allow identify; block blind search -------------------
+    text_intent_early = _detect_text_intent(user_text)
+    if _is_low_confidence(intent, confidence) and text_intent_early != "identify_only":
         msg = (
             "Image clear nahi hai, isliye main wrong machine search nahi karunga. "
             "Please clearer photo upload karein ya machine type bata dein."
@@ -352,7 +397,7 @@ def resolve_image_turn(
             )
         )
         return ImageTurnResult(
-            **{**base, "detected_category": None},
+            **{**base, "detected_category": category if text_intent_early == "identify_only" else None},
             image_intent="low_confidence",
             needs_clarification=True,
             clarification_question=msg,
@@ -362,14 +407,16 @@ def resolve_image_turn(
             metadata=meta,
         )
 
-    text_intent = _detect_text_intent(user_text)
-    image_intent = text_intent or "unclear"
+    text_intent = text_intent_early or "unclear"
+    image_intent = text_intent
+    brand, model = _extract_visual_entities(user_text, intent)
+    base_brand_model = {**base, "detected_brand": brand, "detected_model": model}
 
     # Image only — category confident, intent unclear -----------------------
     if not user_text and category and settings.IMAGE_SEARCH_REQUIRE_CLARIFICATION_FOR_UNCLEAR_INTENT:
         q = _clarification_question(category, lang)
         return ImageTurnResult(
-            **base,
+            **base_brand_model,
             image_intent="unclear",
             needs_clarification=True,
             clarification_question=q,
@@ -384,7 +431,7 @@ def resolve_image_turn(
         msg = _exact_match_message(category or "machine", lang)
         chips = _clarification_chips(lang)
         return ImageTurnResult(
-            **base,
+            **base_brand_model,
             image_intent="exact_match",
             needs_clarification=True,
             clarification_question=msg,
@@ -396,10 +443,11 @@ def resolve_image_turn(
 
     # Identify only ---------------------------------------------------------
     if image_intent == "identify_only":
-        display = category_label(category) if category else "machine"
-        conf_word = "high" if confidence >= 0.55 else "medium"
+        label_bits = [b for b in (brand, model, category_label(category) if category else "machine") if b]
+        display = " ".join(dict.fromkeys(label_bits))
+        conf_word = "high" if confidence >= 0.55 else "medium" if confidence >= 0.35 else "moderate"
         msg = (
-            f"Is image me machine {display} jaisi lag rahi hai. Confidence {conf_word} hai. "
+            f"Is image me {display} jaisi machine lag rahi hai. Confidence {conf_word} hai. "
             "Agar chaho to main similar machines search kar sakta hoon."
             if lang == "hi"
             else (
@@ -408,7 +456,7 @@ def resolve_image_turn(
             )
         )
         return ImageTurnResult(
-            **base,
+            **base_brand_model,
             image_intent="identify_only",
             needs_clarification=False,
             clarification_question=None,
@@ -437,9 +485,14 @@ def resolve_image_turn(
         search_mode = (
             "similar_category" if image_intent == "similar_category" else "category_search"
         )
-        search_msg = _build_search_message(
-            category or "",
+        search_msg = build_search_message_for_image_intent(
             image_intent=image_intent,
+            entities={
+                "category": category,
+                "brand": brand,
+                "model": model,
+                **parse_query(user_text or ""),
+            },
             user_text=user_text,
         )
         if image_intent == "similar_category":
@@ -452,7 +505,7 @@ def resolve_image_turn(
             lead = search_msg
 
         return ImageTurnResult(
-            **base,
+            **base_brand_model,
             image_intent=image_intent,
             needs_clarification=False,
             clarification_question=None,

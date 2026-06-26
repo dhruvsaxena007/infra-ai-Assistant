@@ -1698,6 +1698,7 @@ async def handle_assistant_message(
     if is_suggestion_chip(working_message):
         chip_ctx = {
             **session_ctx,
+            "session_id": session_id,
             "conversation_state": conv_state,
             "last_search_filters": last_filters,
         }
@@ -1710,6 +1711,35 @@ async def handle_assistant_message(
                 input_meta["intent_hint"] = chip_route["intent_hint"]
             parsed_msg = parse_query(working_message)
             reply_lang = detect_query_language(working_message)
+
+    # --- Image context follow-up (chips, city, availability) before domain gateway ---
+    from app.ai.image_chat_followup import try_image_chat_followup
+
+    img_followup = await try_image_chat_followup(
+        session_id=session_id,
+        user_message=user_message,
+        working_message=working_message,
+        database=database,
+        reply_lang=reply_lang,
+        session_ctx=session_ctx,
+        conv_state=conv_state,
+        input_meta=input_meta,
+        assistant_router_module=sys.modules[__name__],
+    )
+    if img_followup is not None:
+        from app.chatbot.memory import save_conversation
+        from app.ai.conversation_state_manager import apply_turn_result, save_conversation_state
+
+        save_conversation(session_id, user_message, img_followup.get("message") or "")
+        if conv_state:
+            apply_turn_result(
+                conv_state,
+                user_message=user_message,
+                response=img_followup,
+                intent=((img_followup.get("data") or {}).get("context") or {}).get("intent"),
+            )
+            save_conversation_state(conv_state)
+        return img_followup
 
     active_flow = (conv_state or {}).get("active_flow")
     classification: dict = {}

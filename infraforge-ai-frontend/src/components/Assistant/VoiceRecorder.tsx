@@ -32,15 +32,13 @@ export function selectRecordingMimeType(): { mimeType: string; extension: string
 
 interface Props {
   disabled: boolean;
-  /** Called with the recorded audio when the user stops (and doesn't cancel). */
   onRecorded: (file: File) => void;
-  /** Surface a human-readable error to the parent (shown in ErrorBanner). */
   onError: (message: string) => void;
-  /** Notify the parent when recording starts/stops so it can adjust the bar. */
   onRecordingChange?: (recording: boolean) => void;
-  /** Increment to start recording from outside (e.g. suggestion chips). */
   startSignal?: number;
   maxDurationSeconds?: number;
+  /** Compact mic button for inside the chat input bar. */
+  variant?: "default" | "inline";
 }
 
 /** Detect browser support for in-app recording. */
@@ -72,6 +70,7 @@ export default function VoiceRecorder({
   onRecordingChange,
   startSignal,
   maxDurationSeconds = VOICE_MAX_RECORDING_SECONDS,
+  variant = "default",
 }: Props) {
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -247,6 +246,11 @@ export default function VoiceRecorder({
     );
   }
 
+  const micButtonClass =
+    variant === "inline"
+      ? "h-9 w-9 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest/80 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-primary/40 flex-shrink-0"
+      : "h-11 w-11 flex items-center justify-center rounded-xl bg-surface-container-high border border-border-subtle text-on-surface-variant hover:text-primary hover:border-primary/40 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors";
+
   return (
     <>
       <input
@@ -271,7 +275,8 @@ export default function VoiceRecorder({
         onClick={startRecording}
         disabled={disabled}
         title={supported ? "Record voice" : "Upload audio file"}
-        className="h-11 w-11 flex items-center justify-center rounded-xl bg-surface-container-high border border-border-subtle text-on-surface-variant hover:text-primary hover:border-primary/40 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
+        aria-label={supported ? "Record voice message" : "Upload audio file"}
+        className={micButtonClass}
       >
         <Mic className="w-4 h-4" />
       </button>

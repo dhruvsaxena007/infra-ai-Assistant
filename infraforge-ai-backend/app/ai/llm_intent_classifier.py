@@ -167,15 +167,43 @@ class OpenAIIntentProvider:
         if not settings.openai_usable:
             return None
         try:
-            from openai import OpenAI
-            client = OpenAI(api_key=settings.OPENAI_API_KEY)
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[{"role": "user", "content": f"Classify InfraForge intent as JSON only.\n{message}"}],
+            from app.core.ai_client import ai_chat_completion
+
+            ctx = context or {}
+            session_bits = []
+            if ctx.get("user_name"):
+                session_bits.append(f"Known user name: {ctx['user_name']}")
+            if ctx.get("pending"):
+                session_bits.append(f"Pending clarification: {json.dumps(ctx['pending'])[:200]}")
+            if ctx.get("has_session_documents"):
+                session_bits.append("User has uploaded session documents.")
+            if ctx.get("has_image_context"):
+                session_bits.append("User has recent image machine context.")
+
+            allowed = ", ".join(sorted(LLM_INTENTS))
+            prompt = f"""You are an intent and entity classifier for InfraForge marketplace assistant.
+Return ONLY valid JSON. No markdown. No explanation.
+
+Allowed intents: {allowed}
+
+Session context:
+{chr(10).join(session_bits) if session_bits else "None"}
+
+User message: {message}
+
+Required JSON schema:
+{_RICH_PROMPT_SCHEMA}
+"""
+            response = ai_chat_completion(
+                messages=[{"role": "user", "content": prompt}],
                 temperature=0,
-                max_tokens=800,
+                tag="llm_intent_openai",
+                max_tokens=1200,
             )
-            data = extract_json_from_text((response.choices[0].message.content or "").strip())
+            if not response:
+                return None
+            content = (response.choices[0].message.content or "").strip()
+            data = extract_json_from_text(content)
             out = _normalize_rich_payload(data, message)
             if out:
                 out["layer"] = "openai"

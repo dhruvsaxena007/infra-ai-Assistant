@@ -13,7 +13,6 @@ from typing import Any, Optional
 
 from app.ai.voice_input import build_transcription_prompt, build_voice_input_result
 from app.core.config import settings
-from app.core.groq_client import client
 
 logger = logging.getLogger(__name__)
 
@@ -40,26 +39,13 @@ def _redact_for_log(text: str, max_len: int = 24) -> str:
 
 def _sync_transcribe(audio_file_path: str, *, language_hint: Optional[str]) -> dict[str, Any]:
     """Blocking Whisper call — run only inside asyncio.to_thread."""
-    kwargs: dict[str, Any] = {
-        "model": "whisper-large-v3",
-        "prompt": build_transcription_prompt(),
-        "temperature": 0,
-    }
-    if language_hint:
-        kwargs["language"] = language_hint
+    from app.core.ai_client import ai_transcribe_audio
 
-    with open(audio_file_path, "rb") as audio_file:
-        transcription = client.audio.transcriptions.create(
-            file=audio_file,
-            **kwargs,
-        )
-
-    original_text = (transcription.text or "").strip()
-    return {
-        "success": True,
-        "original_text": original_text,
-        "text": original_text,
-    }
+    return ai_transcribe_audio(
+        audio_file_path,
+        language_hint=language_hint,
+        prompt=build_transcription_prompt(),
+    )
 
 
 def _legacy_sync_transcribe(audio_file_path: str) -> dict[str, Any]:

@@ -185,6 +185,21 @@ def _success_payload(
 
 
 def classify_marketplace_image(image_path: str) -> dict[str, Any]:
+    if settings.openai_usable and settings.USE_OPENAI_VISION:
+        from app.core.ai_client import ai_vision_classify_machine
+
+        vision = ai_vision_classify_machine(image_path)
+        category = vision.get("machine_type") if vision else None
+        if vision and is_valid_machine_category(category):
+            return _success_payload(
+                stage="openai_vision",
+                intent=vision,
+                classification={
+                    "provider": "openai_vision",
+                    "predictions": vision.get("predictions", []),
+                },
+            )
+
     use_yolo = settings.IMAGE_CLASSIFIER in ("auto", "yolo")
     use_mobilenet = settings.IMAGE_CLASSIFIER in ("auto", "mobilenet")
     tf_ok = _tensorflow_available()

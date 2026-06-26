@@ -21,6 +21,28 @@ services:
         value: infraforge_ai
       - key: GROQ_API_KEY
         sync: false
+      - key: AI_PROVIDER
+        value: groq
+      - key: ENABLE_OPENAI
+        value: "false"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_VISION_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_WHISPER_MODEL
+        value: whisper-1
+      - key: USE_OPENAI_VISION
+        value: "false"
+      - key: USE_OPENAI_INTENT_PARSER
+        value: "false"
+      - key: AI_INTENT_MODE
+        value: llm_first
+      - key: USE_LLM_RESPONSE_GENERATION
+        value: "true"
+      - key: VOICE_PIPELINE_V2
+        value: "true"
       - key: CORS_ORIGINS
         value: https://infra-ai-assistant.vercel.app
       - key: WARMUP_EMBEDDING_ON_STARTUP

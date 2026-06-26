@@ -15,6 +15,12 @@ class Settings:
 
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     OPENAI_API_KEY = (os.getenv("OPENAI_API_KEY") or "").strip() or None
+    OPENAI_CHAT_MODEL = (os.getenv("OPENAI_CHAT_MODEL") or "gpt-4o-mini").strip()
+    OPENAI_VISION_MODEL = (os.getenv("OPENAI_VISION_MODEL") or "gpt-4o-mini").strip()
+    OPENAI_WHISPER_MODEL = (os.getenv("OPENAI_WHISPER_MODEL") or "whisper-1").strip()
+    USE_OPENAI_VISION = os.getenv("USE_OPENAI_VISION", "false").lower() in (
+        "1", "true", "yes",
+    )
 
     # Primary AI routing — Groq/local default; OpenAI optional and off by default.
     AI_PROVIDER = (os.getenv("AI_PROVIDER") or "groq").strip().lower()
@@ -200,16 +206,18 @@ class Settings:
     @property
     def groq_universal_enabled(self) -> bool:
         """
-        Groq semantic turn classifier for ANY phrasing (not example regex).
-        auto (default): enabled when GROQ_API_KEY is set.
+        Semantic turn classifier for ANY phrasing (not example regex).
+        auto (default): enabled when provider key exists.
         """
         if self.DISABLE_GROQ_SEMANTIC:
             return False
         if self._GROQ_UNIVERSAL_RAW in ("0", "false", "no", "off"):
             return False
         if self._GROQ_UNIVERSAL_RAW in ("1", "true", "yes", "on"):
-            return bool(self.GROQ_API_KEY)
+            return bool(self.GROQ_API_KEY or self.openai_usable)
         # auto
+        if self.openai_usable:
+            return True
         return bool(self.GROQ_API_KEY) and self.AI_PROVIDER in ("groq", "local", "")
 
     @property

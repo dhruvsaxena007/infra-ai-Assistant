@@ -25,3 +25,4 @@ uploads/
 Thumbs.db
 .idea/
 .vscode/
+.cursor/

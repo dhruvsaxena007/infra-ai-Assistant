@@ -17,19 +17,14 @@ def groq_chat_completion(
     tag: str = "groq",
 ) -> Optional[Any]:
     """
-    Safe Groq chat call — returns None on failure (rate limit, timeout, etc.).
-    Callers must fall back to rules/local logic.
+    Safe chat call — OpenAI when AI_PROVIDER=openai, else Groq.
+    Returns None on failure (rate limit, timeout, etc.).
     """
-    if not settings.GROQ_API_KEY:
-        return None
-    try:
-        timeout = max(5.0, float(settings.GROQ_TIMEOUT_SECONDS or 20))
-        return client.chat.completions.create(
-            model=model,
-            messages=messages,
-            temperature=temperature,
-            timeout=timeout,
-        )
-    except Exception as exc:
-        print(f"[{tag}] groq failed: {exc}")
-        return None
+    from app.core.ai_client import ai_chat_completion
+
+    return ai_chat_completion(
+        messages=messages,
+        model=model,
+        temperature=temperature,
+        tag=tag,
+    )

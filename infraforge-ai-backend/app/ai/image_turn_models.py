@@ -4,6 +4,7 @@ Image turn result models for IMG-1 pipeline integration.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
@@ -39,6 +40,33 @@ IMAGE_INTENT_CLARIFICATION_CHIPS_HI = [
     "Bas identify karo",
 ]
 
+_CHIP_INTENT_MAP: dict[str, str] = {}
+for _chip, _intent in (
+    ("Exact same machine", "exact_match"),
+    ("Similar machines", "similar_category"),
+    ("Just identify this machine", "identify_only"),
+    ("Bilkul same machine", "exact_match"),
+    ("Similar machines dikhao", "similar_category"),
+    ("Bas identify karo", "identify_only"),
+):
+    _CHIP_INTENT_MAP[re.sub(r"\s+", " ", _chip.strip().lower())] = _intent
+
+
+def normalize_image_chip_label(text: str) -> str:
+    return re.sub(r"\s+", " ", (text or "").strip().lower())
+
+
+def is_image_clarification_chip(text: str) -> bool:
+    return normalize_image_chip_label(text) in _CHIP_INTENT_MAP
+
+
+def image_chip_to_intent(text: str) -> str | None:
+    return _CHIP_INTENT_MAP.get(normalize_image_chip_label(text))
+
+
+def all_image_clarification_chips() -> list[str]:
+    return list(IMAGE_INTENT_CLARIFICATION_CHIPS) + list(IMAGE_INTENT_CLARIFICATION_CHIPS_HI)
+
 
 @dataclass
 class ImageTurnResult:
@@ -65,12 +93,20 @@ class ImageTurnResult:
             "upload_id": self.upload_id,
             "detected_category": self.detected_category,
             "detected_machine_type": self.detected_category,
+            "detected_brand": self.detected_brand,
+            "detected_model": self.detected_model,
             "suggested_categories": list(self.suggested_categories),
             "confidence": self.confidence,
             "classifier_used": self.classifier_used,
             "image_intent": self.image_intent,
             "search_mode": self.search_mode,
             "search_query": self.detected_category,
+            "awaiting_image_choice": self.needs_clarification,
+            "pending_image_intent": (
+                "similar_category"
+                if self.image_intent == "unclear"
+                else self.image_intent
+            ),
         }
 
     def to_response_metadata(self) -> dict[str, Any]:

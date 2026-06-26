@@ -117,20 +117,21 @@ def generate_assistant_response(
 
 
 def transcribe_audio(file_path: str) -> dict[str, Any]:
-    """Speech-to-text — Groq Whisper (default). OpenAI reserved for later."""
-    if settings.openai_usable and settings.AI_PROVIDER == "openai":
-        return _openai_blocked()
+    """Speech-to-text — OpenAI Whisper or Groq Whisper based on AI_PROVIDER."""
+    from app.core.ai_client import ai_transcribe_audio
 
-    from app.ai.voice_service import transcribe_audio as groq_transcribe
-
-    return groq_transcribe(file_path)
+    return ai_transcribe_audio(file_path)
 
 
 def analyze_image(image_path: str) -> dict[str, Any]:
-    """Image classification — local YOLO/MobileNet/CLIP only (no paid vision API)."""
-    if settings.openai_usable and settings.AI_PROVIDER == "openai":
-        return _openai_blocked()
-
+    """Image classification — OpenAI vision (optional) + local YOLO/CLIP fallback."""
+    from app.core.ai_client import ai_vision_classify_machine
     from app.ai.image_classifier import classify_marketplace_image
 
-    return classify_marketplace_image(image_path)
+    if settings.openai_usable and settings.USE_OPENAI_VISION:
+        vision = ai_vision_classify_machine(image_path)
+        if vision and vision.get("machine_type"):
+            return {"success": True, "provider": "openai_vision", **vision}
+
+    result = classify_marketplace_image(image_path)
+    return {"success": True, "provider": "local", **result}
