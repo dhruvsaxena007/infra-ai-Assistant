@@ -5,8 +5,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { SendHorizonal, X, ImageIcon, FileText } from "lucide-react";
-import VoiceRecorder from "./VoiceRecorder";
+import { SendHorizonal, X, ImageIcon, FileText, Mic } from "lucide-react";
+import VoiceRecorder, { type VoiceRecorderHandle } from "./VoiceRecorder";
 import ImagePicker, { type ImagePickerHandle, type ImageSource } from "./ImagePicker";
 import DocumentPicker, { type DocumentPickerHandle } from "./DocumentPicker";
 import ChatInputActionMenu from "./ChatInputActionMenu";
@@ -61,6 +61,7 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const imagePickerRef = useRef<ImagePickerHandle>(null);
   const documentPickerRef = useRef<DocumentPickerHandle>(null);
+  const voiceRecorderRef = useRef<VoiceRecorderHandle>(null);
   const prevDisabledRef = useRef(disabled);
 
   useImperativeHandle(ref, () => ({
@@ -264,16 +265,8 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
         </div>
       )}
 
-      <div className="flex items-end gap-1.5 sm:gap-2">
-        {recording ? (
-          <VoiceRecorder
-            disabled={disabled}
-            onRecorded={onSendVoice}
-            onError={onError}
-            onRecordingChange={setRecording}
-            startSignal={startVoiceSignal}
-          />
-        ) : (
+      <div className="flex items-end gap-1.5 sm:gap-2 w-full">
+        {!recording && (
           <>
             <div className="chat-input-composite flex flex-1 items-end min-w-0 gap-0.5 sm:gap-1">
               <ChatInputActionMenu
@@ -308,14 +301,16 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
                 className="chat-textarea-inner flex-1 resize-none max-h-28 min-h-[40px] py-2.5 px-1 sm:px-1.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 bg-transparent border-0 focus:outline-none disabled:opacity-50 scrollbar-hide"
               />
 
-              <VoiceRecorder
+              <button
+                type="button"
+                onClick={() => voiceRecorderRef.current?.start()}
                 disabled={disabled}
-                onRecorded={onSendVoice}
-                onError={onError}
-                onRecordingChange={setRecording}
-                startSignal={startVoiceSignal}
-                variant="inline"
-              />
+                title="Record voice"
+                aria-label="Record voice message"
+                className="h-9 w-9 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-highest/80 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-primary/40 flex-shrink-0"
+              >
+                <Mic className="w-4 h-4" />
+              </button>
             </div>
 
             <DocumentPicker
@@ -337,6 +332,18 @@ const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
             </button>
           </>
         )}
+
+        {/* Single recorder instance — must not unmount when recording starts. */}
+        <VoiceRecorder
+          ref={voiceRecorderRef}
+          disabled={disabled}
+          onRecorded={onSendVoice}
+          onError={onError}
+          onRecordingChange={setRecording}
+          startSignal={startVoiceSignal}
+          hideIdleButton
+          className={recording ? "flex-1 min-w-0 w-full" : "sr-only"}
+        />
       </div>
     </div>
   );
